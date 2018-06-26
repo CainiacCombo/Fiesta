@@ -9,8 +9,8 @@ services:
 
 env:
   global:
-    - REGISTRY_USER=cainiaccombo
-    - IMAGE_NAME=cainiaccombo/fiesta
+    - REGISTRY_USER=cainwatson
+    - IMAGE_NAME=cainwatson/fiesta
     - version=$TRAVIS_COMMIT
   matrix:
     - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
@@ -32,10 +32,12 @@ script:
 before_deploy:
   - echo "$REGISTRY_USER $REGISTRY_PASS"
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
-  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
-  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+  - cd client
+  # - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+  # - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
 deploy:
   provider: script
-  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
+  script: echo "deploy script!"
+  # script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
   on:
     branch: master
