@@ -32,12 +32,17 @@ script:
 before_deploy:
   - echo "$REGISTRY_USER $REGISTRY_PASS"
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
-  - cd client
-  # - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
-  # - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+  - cd server
+  - docker build -t "$IMAGE_NAME" .
+  # - docker push "$IMAGE_NAME"
+  - cd docker/db
+  - docker build -t "${IMAGE_NAME}-DB" .
+  # - docker push "$IMAGE_NAME-DB"
+
 deploy:
   provider: script
-  script: echo "deploy script!"
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-DB:latest"
+  # script: echo "deploy script!"
   # script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
   on:
     branch: master
