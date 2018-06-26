@@ -11,7 +11,7 @@ env:
   global:
     - REGISTRY_USER=cainwatson
     - IMAGE_NAME=cainwatson/fiesta
-    - version=$TRAVIS_COMMIT
+    - IMAGE_VERSION=$TRAVIS_COMMIT
   matrix:
     - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
 
@@ -38,6 +38,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-db:latest" && docker push "${IMAGE_NAME}:${version}" && docker push "${IMAGE_NAME}-db:${version}"
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-db:latest"
   on:
     branch: master
