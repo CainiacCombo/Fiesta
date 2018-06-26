@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
+
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -9,6 +11,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SignupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  googleLogin() {
+    this.navCtrl.push(HomePage);
+  }
+
+  twitterLogin() {
+    this.navCtrl.push(HomePage);
   }
 
   ionViewDidLoad() {
