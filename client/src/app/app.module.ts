@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { TabsPageModule } from '../pages/tabs/tabs.module'
+import { FriendsPageModule } from '../pages/friends/friends.module'
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TabsPageModule } from '../pages/tabs/tabs.module'
     IonicModule.forRoot(MyApp),
     SignupPageModule,
     TabsPageModule,
+    FriendsPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

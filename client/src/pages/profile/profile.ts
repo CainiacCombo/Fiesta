@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { TimelinePage } from '../timeline/timeline'
+import { FriendsPage } from '../friends/friends'
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ export class ProfilePage {
 
   goToFriendsList() {
     console.log('go to friends list');
-    // this.navCtrl.push(TimelinePage);
+    this.navCtrl.push(FriendsPage);
   };
 
   ionViewDidLoad() {
