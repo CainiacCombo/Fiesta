@@ -1,9 +1,9 @@
 FROM node:carbon
 
-RUN mkdir -p /var/www/Fiesta
-WORKDIR /var/www/Fiesta
+RUN mkdir -p /usr/Fiesta/
+WORKDIR /usr/Fiesta
 
-COPY package*.json ./
+COPY package*.json /usr/Fiesta/
 RUN npm install
 
 COPY . .

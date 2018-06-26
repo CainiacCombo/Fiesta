@@ -32,4 +32,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 # PRODUCTION
-server/config/default.json
+docker-compose.yml
