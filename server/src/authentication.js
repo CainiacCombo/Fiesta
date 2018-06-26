@@ -5,7 +5,6 @@ const { Strategy } = require('passport-google-oauth20');
 
 module.exports = function (app) {
   const { secret, google } = app.get('authentication');
-  console.log(Strategy.Strategy);
   // Set up authentication with the secret
   app.configure(authentication({ secret }));
   app.configure(jwt());
@@ -23,15 +22,15 @@ module.exports = function (app) {
   // to create a new valid JWT (e.g. local or oauth2)
   app.service('authentication').hooks({
     before: {
-      // create: [
-      //   authentication.hooks.authenticate(['jwt'])
-      // ],
-      // remove: [
-      //   authentication.hooks.authenticate('jwt')
-      // ]
-      all: [
+      create: [
         authentication.hooks.authenticate(['jwt'])
+      ],
+      remove: [
+        authentication.hooks.authenticate('jwt')
       ]
+      // all: [
+      //   authentication.hooks.authenticate(['jwt'])
+      // ]
     }
   });
 };
