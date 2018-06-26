@@ -5,10 +5,35 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
+  
   const users = sequelizeClient.define('users', {
-    text: {
+    username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    nickname: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.STRING
+    },
+    googleid: {
+      type: DataTypes.STRING,
+    },
+    twitterid: {
+      type: DataTypes.STRING,
+    },
+    longitude: {
+      type: DataTypes.STRING,
+    }, 
+    latitude: {
+      type: DataTypes.STRING,
+    },
+    rating: {
+      type: DataTypes.STRING,
     }
   }, {
     hooks: {
