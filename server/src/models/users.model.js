@@ -20,10 +20,10 @@ module.exports = function (app) {
     phone: {
       type: DataTypes.STRING
     },
-    googleid: {
+    googleId: {
       type: DataTypes.STRING,
     },
-    twitterid: {
+    twitterId: {
       type: DataTypes.STRING,
     },
     longitude: {
