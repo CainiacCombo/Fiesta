@@ -12,7 +12,7 @@ env:
     - REGISTRY_USER=cainiaccombo
     - IMAGE_NAME=cainiaccombo/fiesta
     - version=$TRAVIS_COMMIT
-  - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
+    - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
 
 cache:
   directories:
