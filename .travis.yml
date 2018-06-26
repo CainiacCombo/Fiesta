@@ -8,6 +8,10 @@ services:
   - mysql
 
 env:
+  global:
+    - REGISTRY_USER=cainiaccombo
+    - IMAGE_NAME=cainiaccombo/fiesta
+    - version=$TRAVIS_COMMIT
   - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
 
 cache:
@@ -15,7 +19,7 @@ cache:
     - "server/node_modules"
     - "client/node_modules"
 
-before_install:
+install:
   - mysql -u root -e "CREATE DATABASE IF NOT EXISTS fiesta;"
   - cd server; npm ci; cd ../
   - cd client; npm ci; cd ../
@@ -23,3 +27,15 @@ before_install:
 script:
   - cd server; npm test; cd ../
   - cd client; npm test; cd ../
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+deploy:
+  provider: script
+  script:
+    - docker push "${IMAGE_NAME}:latest"
+    - docker push "${IMAGE_NAME}:${version}"
+  on:
+    branch: master
