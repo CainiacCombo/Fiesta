@@ -19,7 +19,7 @@ cache:
     - "server/node_modules"
     - "client/node_modules"
 
-install:
+before_install:
   - mysql -u root -e "CREATE DATABASE IF NOT EXISTS fiesta;"
   - cd server; npm ci; cd ../
   - cd client; npm ci; cd ../
