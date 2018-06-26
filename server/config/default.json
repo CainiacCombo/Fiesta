@@ -6,5 +6,37 @@
     "default": 10,
     "max": 50
   },
-  "mysql": "mysql://root@localhost:3306/fiesta"
+  "mysql": "mysql://root@localhost:3306/fiesta",
+  "authentication": {
+    "secret": "bd101a7d73d8947007d34e07130223e9108e4e6b09d296806c2308ba2d0e1548bfcccdec98e2ee1ee2c362fb0bcaefc5c4cc812d3c764f438e262267634d89e3794ce32f3e528650ae36b5ad6082079179049fcd2569a8c2f5979d284a3d38a10c1aac2cc56e6e1747e54d05ca0ffbc5e377057c32890196297386395ad5b48ab6a7ff8a640c2fca5535a4332f058cd928cf7d14cd4b7e582b8df508608685fb089b1e6174f4b5be238fd3c97ae91c1bd6310cdd292bd8e61f646cf452911decaf1a0795661c38645372ef7745061e406af5d1515b70bf9b5bc7202fd90783e097bc60b552f191a6f10388533001162f9ed7268e39ff7751fd8f110a50620f07",
+    "strategies": [
+      "jwt"
+    ],
+    "path": "/authentication",
+    "service": "auth",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "google": {
+      "clientID": "508966744275-89h943rnn2m8ls2rg0276hlptc5ucnft.apps.googleusercontent.com",
+      "clientSecret": "QU5YIqL6EjlUPRKeh9equd0K",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
 }
