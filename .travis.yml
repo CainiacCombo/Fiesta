@@ -36,13 +36,12 @@ before_deploy:
   - docker build -t "$IMAGE_NAME" .
   # - docker push "$IMAGE_NAME"
   - cd docker/db
-  - docker build -t "${IMAGE_NAME}-DB" .
+  - docker build -t "${IMAGE_NAME}-db" .
   # - docker push "$IMAGE_NAME-DB"
 
 deploy:
   provider: script
-  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-DB:latest"
-  # script: echo "deploy script!"
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-db:latest"
   # script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
   on:
     branch: master
