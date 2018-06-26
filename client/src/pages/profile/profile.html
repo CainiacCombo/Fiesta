@@ -1,13 +1,37 @@
+<!--
+  Generated template for the ProfilePage page.
 
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-
   <ion-navbar>
-    <ion-title class="nav_username">@PlaceHolder</ion-title>
+    <ion-title>@Placeholder</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-
-</ion-content>
+  <ion-content padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-icon col-12 name='contact'></ion-icon>
+        </ion-col>
+        <ion-col col-6>
+          <ion-row>Username</ion-row>
+          <ion-row>NickName</ion-row>
+          <ion-row>Bio</ion-row>
+          <ion-row>
+            <button>Edit Profile</button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <div class="container">
+          <ion-col>Friends</ion-col>
+          <ion-col>Hosted Parties</ion-col>
+          <ion-col>Parties Attended</ion-col>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
