@@ -30,14 +30,11 @@ script:
   - cd client; npm test; cd ../
 
 before_deploy:
-  - echo "$REGISTRY_USER $REGISTRY_PASS"
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
   - cd server
   - docker build -t "$IMAGE_NAME" .
-  # - docker push "$IMAGE_NAME"
   - cd docker/db
   - docker build -t "${IMAGE_NAME}-db" .
-  # - docker push "$IMAGE_NAME-DB"
 
 deploy:
   provider: script
