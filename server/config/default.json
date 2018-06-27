@@ -8,7 +8,7 @@
   },
   "mysql": "mysql://root@localhost:3306/fiesta",
   "authentication": {
-    "secret": "",
+    "secret": "wazwiti",
     "strategies": [
       "jwt",
       "google"
