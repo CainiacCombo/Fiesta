@@ -1,23 +1,12 @@
 const authentication = require('@feathersjs/authentication');
 const jwt = require('@feathersjs/authentication-jwt');
 
-const oauth2 = require('@feathersjs/authentication-oauth2');
-const { Strategy } = require('passport-google-oauth20');
-
 module.exports = function (app) {
-  const { secret, google } = app.get('authentication');
+  const { secret } = app.get('authentication');
 
   // Set up authentication with the secret
   app.configure(authentication({ secret }));
   app.configure(jwt({ entity: 'users' }));
-
-  app.configure(oauth2(Object.assign({
-    name: 'google',
-    Strategy,
-    clientID: google.clientID,
-    clientSecret: google.clientSecret,
-    scope: google.scope
-  })));
 
   // The `authentication` service is used to create a JWT.
   // The before `create` hook registers strategies that can be used
