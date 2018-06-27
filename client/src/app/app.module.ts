@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { HomePageModule } from '../pages/home/home.module'
-import { FriendsPageModule } from '../pages/friends/friends.module'
+import { FriendsPageModule } from '../pages/home/friends/friends.module'
 
 @NgModule({
   declarations: [

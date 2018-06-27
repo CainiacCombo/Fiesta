@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { FriendsPage } from '../../friends/friends'
+import { FriendsPage } from '../friends/friends'
 
 @IonicPage()
 @Component({
