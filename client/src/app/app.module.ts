@@ -10,11 +10,7 @@ import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/home/friends/friends.module'
-<<<<<<< HEAD
-import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module'
-=======
 import { UserProvider } from '../providers/user/user';
->>>>>>> db9f2136c5f6a0c09897f043de8ee9eaff7547a2
 
 @NgModule({
   declarations: [

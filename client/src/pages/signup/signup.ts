@@ -11,7 +11,7 @@ export class SignupPage {
 
   nickname: string = '';
   phone: string = '';
-  username: string = '';
+  userData: any;
 
   constructor(navParams: NavParams, public navCtrl: NavController) {
     this.userData = navParams.get('userData');
