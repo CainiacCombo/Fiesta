@@ -9,7 +9,7 @@ module.exports = function (app) {
 
   // Set up authentication with the secret
   app.configure(authentication({ secret }));
-  app.configure(jwt());
+  app.configure(jwt({ entity: 'users' }));
 
   app.configure(oauth2(Object.assign({
     name: 'google',
