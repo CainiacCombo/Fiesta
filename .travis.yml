@@ -26,9 +26,9 @@ before_install:
   - cd client; npm ci; cd ../
 
 script:
-  - cd server; npm test
+  - cd server && npm test
   - cd ../
-  - cd client; npm test
+  - cd client && npm test
   - cd ../
 
 before_deploy:
