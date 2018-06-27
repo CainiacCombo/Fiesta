@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
-<<<<<<< HEAD
-import { SignupPage } from '../signup/signup'
-=======
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { UserProvider } from '../../providers/user/user';
->>>>>>> db9f2136c5f6a0c09897f043de8ee9eaff7547a2
 
 @IonicPage()
 @Component({
