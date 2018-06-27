@@ -20,7 +20,8 @@
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "start": "node src/",
-    "mocha": "mocha test/ --recursive --exit"
+    "mocha": "mocha test/ --recursive --exit",
+    "coverage": "istanbul cover _mocha test/ -x *.test.js"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.6",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2"
