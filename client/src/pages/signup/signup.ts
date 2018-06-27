@@ -11,12 +11,13 @@ export class SignupPage {
 
   nickname: string = '';
   phone: string = '';
+  username: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   onSubmit() {
-    const { nickname, phone } = this;
+    const { nickname, phone, username } = this;
     this.navCtrl.push(HomePage);
     // send use provider to send PUT to user
   }
