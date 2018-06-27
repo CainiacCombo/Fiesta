@@ -1,5 +1,21 @@
-<ion-content padding class="body">
-  <h1 ion-title class="title">¡Fiesta!</h1>
-  <button ion-button full class="google_login" (click)='googleLogin()'>Login with Google</button>
-  <button ion-button full class="twitter_login" (click)='twitterLogin()'>Login with Twitter</button>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <div ion-item>
+      <ion-label for="#nickname" floating>Nickname</ion-label>
+      <ion-input [(ngModel)]="nickname" id="nickname" type="text"></ion-input>
+    </div>
+    <div ion-item>
+      <ion-label for="#phone" floating>Phone Number</ion-label>
+      <ion-input [(ngModel)]="phone" id="phone" type="text"></ion-input>
+    </div>
+  </div>
+  <div class="submit">
+    <button (click)="onSubmit()" ion-button full>Let's Party</button>
+  </div>
 </ion-content>

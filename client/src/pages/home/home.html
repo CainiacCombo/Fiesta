@@ -1,15 +1,5 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-       ¡Fiesta!
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  Quack Quack Quack Quack
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<ion-tabs>
+  <ion-tab [root]="timelineRoot" tabIcon="home"></ion-tab>
+  <ion-tab [root]="searchRoot" tabIcon="search"></ion-tab>
+  <ion-tab [root]="profileRoot" tabIcon="contact"></ion-tab>
+</ion-tabs>

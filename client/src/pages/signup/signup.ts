@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { HomePage } from '../home/home';
+import { HomePage } from '../home/home'
 
 @IonicPage()
 @Component({
@@ -10,19 +9,16 @@ import { HomePage } from '../home/home';
 })
 export class SignupPage {
 
+  nickname: string = '';
+  phone: string = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  googleLogin() {
+  onSubmit() {
+    const { nickname, phone } = this;
     this.navCtrl.push(HomePage);
-  }
-
-  twitterLogin() {
-    this.navCtrl.push(HomePage);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    // send use provider to send PUT to user
   }
 
 }
