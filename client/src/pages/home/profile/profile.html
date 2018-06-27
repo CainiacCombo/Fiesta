@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>@Placeholder</ion-title>
+    <ion-title>@Username</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,19 +12,26 @@
           <ion-icon col-12 name="contact"></ion-icon>
         </ion-col>
         <ion-col col-6>
-          <ion-row>Username</ion-row>
+          <ion-row>@Username</ion-row>
           <ion-row>NickName</ion-row>
           <ion-row>Bio</ion-row>
           <ion-row>
-            <button>Edit Profile</button>
+            <button (click)="editProfile()">Edit Profile</button>
           </ion-row>
         </ion-col>
       </ion-row>
       <ion-row>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </ion-row>
+      <ion-row>
         <div class="container">
-          <ion-col (click)="goToFriendsList()">Friends</ion-col>
-          <ion-col>Hosted Parties</ion-col>
-          <ion-col>Parties Attended</ion-col>
+          <ion-col (click)="goToFriendsList()">2 <br> Party Friends</ion-col>
+          <ion-col>1 <br> Hosted Parties</ion-col>
+          <ion-col>0 <br> Parties Attended</ion-col>
         </div>
       </ion-row>
     </div>
@@ -36,6 +43,11 @@
             <p class="people">17 people</p>
           </div>
           <p>Date</p>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star-outline"></ion-icon>
+          <ion-icon name="star-outline"></ion-icon>
         </div>
           <ion-thumbnail item-end>
             <img src="img/thumbnail-totoro.png">
