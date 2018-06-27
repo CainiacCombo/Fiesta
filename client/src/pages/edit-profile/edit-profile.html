@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <div ion-item>
+      <ion-label for="#nickname" floating>Nickname</ion-label>
+      <ion-input [(ngModel)]="nickname" id="nickname" type="text"></ion-input>
+    </div>
+    <div ion-item>
+      <ion-label for="#bio" floating>bio</ion-label>
+      <ion-textarea [(ngModel)]="bio" id="bio" type="text"></ion-textarea>
+    </div>
+    <button ion-button full (click)="updateProfile()">Update Profile</button>
+  </div>
+</ion-content>
