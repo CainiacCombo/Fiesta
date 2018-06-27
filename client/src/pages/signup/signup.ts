@@ -15,7 +15,7 @@ export class SignupPage {
 
   googleLogin() {
     console.log('logged in with google');
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage, null);
   }
 
   twitterLogin() {
