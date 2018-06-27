@@ -12,6 +12,9 @@ module.exports = function (app) {
       allowNull: false,
       unique: true,
     },
+    bio: {
+      type: DataTypes.STRING,
+    },
     nickname: {
       type: DataTypes.STRING,
     },
