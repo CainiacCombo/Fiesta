@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home'
 
 @IonicPage()
 @Component({
@@ -16,6 +17,7 @@ export class SignupPage {
 
   onSubmit() {
     const { nickname, phone } = this;
+    this.navCtrl.push(HomePage);
     // send use provider to send PUT to user
   }
 
