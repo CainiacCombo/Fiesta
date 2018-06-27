@@ -6,9 +6,6 @@ import { SignupPage } from './signup';
   declarations: [
     SignupPage,
   ],
-  entryComponents: [
-    SignupPage,
-  ],
   imports: [
     IonicPageModule.forChild(SignupPage),
   ],

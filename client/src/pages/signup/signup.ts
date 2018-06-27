@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs'
-
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -10,21 +8,15 @@ import { TabsPage } from '../tabs/tabs'
 })
 export class SignupPage {
 
+  nickname: string = '';
+  phone: string = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  googleLogin() {
-    console.log('logged in with google');
-    this.navCtrl.setRoot(TabsPage, null);
-  }
-
-  twitterLogin() {
-    console.log('logged in with twitter');
-    this.navCtrl.push(TabsPage);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  onSubmit() {
+    const { nickname, phone } = this;
+    // send use provider to send PUT to user
   }
 
 }
