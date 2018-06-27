@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
-import { HomePage } from '../home/home'
 import { SignupPage } from '../signup/signup'
 
 @IonicPage()

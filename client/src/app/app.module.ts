@@ -9,6 +9,7 @@ import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/home/friends/friends.module'
+import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FriendsPageModule } from '../pages/home/friends/friends.module'
     SignupPageModule,
     HomePageModule,
     FriendsPageModule,
+    EditProfilePageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
