@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs'
 
 @IonicPage()
 @Component({
@@ -14,11 +14,13 @@ export class SignupPage {
   }
 
   googleLogin() {
-    this.navCtrl.push(HomePage);
+    console.log('logged in with google');
+    this.navCtrl.setRoot(TabsPage, null);
   }
 
   twitterLogin() {
-    this.navCtrl.push(HomePage);
+    console.log('logged in with twitter');
+    this.navCtrl.push(TabsPage);
   }
 
   ionViewDidLoad() {

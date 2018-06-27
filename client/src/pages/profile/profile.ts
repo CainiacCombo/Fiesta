@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FriendsPage } from '../friends/friends'
 
 @IonicPage()
 @Component({
@@ -17,6 +12,11 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+  goToFriendsList() {
+    console.log('go to friends list');
+    this.navCtrl.push(FriendsPage);
+  };
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
