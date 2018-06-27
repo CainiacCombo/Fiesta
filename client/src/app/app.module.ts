@@ -5,10 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
-import { TabsPageModule } from '../pages/tabs/tabs.module'
+import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/friends/friends.module'
-
 
 @NgModule({
   declarations: [
@@ -17,8 +17,9 @@ import { FriendsPageModule } from '../pages/friends/friends.module'
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    LoginPageModule,
     SignupPageModule,
-    TabsPageModule,
+    HomePageModule,
     FriendsPageModule,
   ],
   bootstrap: [IonicApp],
