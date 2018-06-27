@@ -38,7 +38,7 @@ const operatorsAliases = {
 };
 
 module.exports = function (app) {
-  const connectionString = app.get('mysql');
+  const connectionString = process.env.SQL_URI || app.get('mysql');
   const sequelize = new Sequelize(connectionString, {
     dialect: 'mysql',
     logging: false,

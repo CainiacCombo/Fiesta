@@ -1,0 +1,43 @@
+sudo: required
+
+language: node_js
+node_js:
+  - "node"
+
+services:
+  - mysql
+
+env:
+  global:
+    - REGISTRY_USER=cainwatson
+    - IMAGE_NAME=cainwatson/fiesta
+    - IMAGE_VERSION=$TRAVIS_COMMIT
+  matrix:
+    - PORT=3030 MYSQL_URI=mysql://root@localhost:3306/fiesta
+
+cache:
+  directories:
+    - "server/node_modules"
+    - "client/node_modules"
+
+before_install:
+  - mysql -u root -e "CREATE DATABASE IF NOT EXISTS fiesta;"
+  - cd server; npm ci; cd ../
+  - cd client; npm ci; cd ../
+
+script:
+  - cd server; npm test; cd ../
+  - cd client; npm test; cd ../
+
+before_deploy:
+  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
+  - cd server
+  - docker build -t "$IMAGE_NAME" .
+  - cd docker/db
+  - docker build -t "${IMAGE_NAME}-db" .
+
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}-db:latest"
+  on:
+    branch: master

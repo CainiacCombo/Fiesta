@@ -1,4 +1,4 @@
 {
-  "host": "fiesta-app.feathersjs.com",
-  "port": "PORT"
+  "host": "http://ec2-18-220-113-177.us-east-2.compute.amazonaws.com",
+  "port": "80"
 }
