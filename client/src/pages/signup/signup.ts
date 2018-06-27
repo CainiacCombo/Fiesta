@@ -18,10 +18,10 @@ export class SignupPage {
   }
 
   onSubmit() {
-    const { nickname, phone } = this;
+    // const { nickname, phone } = this;
     this.navCtrl.push(HomePage);
     // send use provider to send PUT to user
-    console.log(this.userData);
+    // console.log(this.userData);
   }
 
 }
