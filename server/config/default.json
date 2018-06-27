@@ -13,7 +13,7 @@
       "jwt"
     ],
     "path": "/authentication",
-    "service": "auth",
+    "service": "users",
     "jwt": {
       "header": {
         "typ": "access"
@@ -26,7 +26,7 @@
     },
     "google": {
       "clientID": "508966744275-89h943rnn2m8ls2rg0276hlptc5ucnft.apps.googleusercontent.com",
-      "clientSecret": "QU5YIqL6EjlUPRKeh9equd0K",
+      "clientSecret": "0bm6H663CmuX4NHkvoaNFNzc",
       "successRedirect": "/",
       "scope": [
         "profile openid email"
