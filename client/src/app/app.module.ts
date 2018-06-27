@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -9,6 +10,7 @@ import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/home/friends/friends.module'
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { FriendsPageModule } from '../pages/home/friends/friends.module'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     SignupPageModule,
@@ -29,7 +32,8 @@ import { FriendsPageModule } from '../pages/home/friends/friends.module'
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
