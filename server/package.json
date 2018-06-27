@@ -21,7 +21,8 @@
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "start": "node src/",
     "mocha": "mocha test/ --recursive --exit",
-    "coverage": "istanbul cover _mocha test/ -x *.test.js"
+    "coverage": "istanbul cover _mocha test/",
+    "showcoverage": "open coverage/lcov-report/index.html"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.6",
