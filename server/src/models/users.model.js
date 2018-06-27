@@ -5,36 +5,48 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  
+
   const users = sequelizeClient.define('users', {
     username: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      unique: true,
     },
     nickname: {
       type: DataTypes.STRING,
     },
+    avatar: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
     phone: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
     googleId: {
       type: DataTypes.STRING,
+      unique: true,
     },
     twitterId: {
       type: DataTypes.STRING,
+      unique: true,
     },
     longitude: {
       type: DataTypes.STRING,
-    }, 
+    },
     latitude: {
       type: DataTypes.STRING,
     },
     rating: {
-      type: DataTypes.STRING,
-    }
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   }, {
     hooks: {
       beforeCount(options) {
