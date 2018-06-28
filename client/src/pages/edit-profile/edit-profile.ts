@@ -26,10 +26,10 @@ export class EditProfilePage {
   this.view.dismiss();
  }
 
- updateProfile(user) {
-   const { nickname, bio } = this;
+ updateProfile() {
+   const { nickname, bio, user } = this;
    console.log(nickname, bio, user);
    this.userProvider.updateUser(user.id, {nickname, bio})
-   .then(()=>this.view.dismiss(user))
+   .then(()=>this.view.dismiss())
  }
 }
