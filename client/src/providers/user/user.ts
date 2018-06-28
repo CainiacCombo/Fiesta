@@ -31,6 +31,10 @@ export class UserProvider {
     return app.service('users').create(data);
   }
 
+  updateUser(id, data) {
+    return app.service('users').patch(id, data);
+  }
+
   private getGoogleProfile(payload): GoogleAuth {
     const auth = payload.getAuthResponse();
     const accessToken = auth.access_token;
