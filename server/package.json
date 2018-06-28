@@ -39,6 +39,7 @@
     "feathers-sequelize": "^3.1.2",
     "helmet": "^3.12.1",
     "mysql2": "^1.5.3",
+    "nodemon": "^1.17.5",
     "passport-custom": "^1.0.5",
     "passport-google-oauth20": "^1.0.0",
     "sequelize": "^4.38.0",
