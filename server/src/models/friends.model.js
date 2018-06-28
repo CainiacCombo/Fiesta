@@ -6,9 +6,13 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const friends = sequelizeClient.define('friends', {
-    text: {
+    user1_id: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    user2_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   }, {
     hooks: {
