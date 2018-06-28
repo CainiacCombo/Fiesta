@@ -1,4 +1,8 @@
-<ion-tabs>
+<ion-menu [content]="home" type="overlay">
+  <page-sidebar></page-sidebar>
+</ion-menu>
+
+<ion-tabs #home>
   <ion-tab [root]="timelineRoot" tabIcon="home"></ion-tab>
   <ion-tab [root]="searchRoot" tabIcon="search"></ion-tab>
   <ion-tab [root]="profileRoot" [rootParams]="rootParams" tabIcon="contact"></ion-tab>
