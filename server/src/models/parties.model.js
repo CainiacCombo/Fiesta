@@ -9,7 +9,7 @@ module.exports = function (app) {
     start_date: {
       type: DataTypes.STRING,
       allowNull: false,
-    }, 
+    },
     end_date: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,23 +20,18 @@ module.exports = function (app) {
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     longitude: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     latitude: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     rating: {
       type: DataTypes.INTEGER,
-      allowNull: true, 
     },
     is_private: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
     }
   }, {
     hooks: {
