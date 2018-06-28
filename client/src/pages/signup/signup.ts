@@ -32,11 +32,6 @@ export class SignupPage {
     }
     this.userProvider.createUser(user);
     this.navCtrl.push(HomePage);
-<<<<<<< HEAD
-    // send use provider to send PUT to user
-    console.log(this.userData);
-=======
->>>>>>> a6eefb15f2d477dcc2b6b38924ce8cdbb0253adb
   }
 
 }
