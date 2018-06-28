@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
@@ -12,7 +12,7 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public userProvider: UserProvider) { }
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public userProvider: UserProvider) { }
 
   authenticate(userData, findBy, authentication) {
     this.userProvider.findUser(findBy)
@@ -23,11 +23,14 @@ export class LoginPage {
   }
 
   googleLogin() {
+    const loader = this.loadingCtrl.create();
+    loader.present();
     this.userProvider.googleSignin()
       .then(user => this.authenticate(user, { googleId: user.googleId }, {
         strategy: 'google',
         access_token: user.accessToken,
-      }));
+      }))
+      .then(()=>loader.dismiss());
   }
 
   twitterLogin() {
