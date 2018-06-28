@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -30,6 +31,7 @@ import { reducers } from '../store/reducers';
     EditProfilePageModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
