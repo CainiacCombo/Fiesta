@@ -1,13 +1,15 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const getUserFriends = require('../../hooks/get-user-friends');
+const catchFriendshipConflict = require('../../hooks/catch-friendship-conflict');
+const removeFriendRequest = require('../../hooks/remove-friend-request');
 
 module.exports = {
   before: {
     all: [ authenticate(['jwt'])],
     find: [],
     get: [],
-    create: [],
+    create: [ catchFriendshipConflict(), removeFriendRequest() ],
     update: [],
     patch: [],
     remove: []
