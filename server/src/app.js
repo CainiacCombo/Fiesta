@@ -43,6 +43,11 @@ app.configure(socketio((io) => {
       console.log(data);
     });
   });
+
+  io.use((socket, next) => {
+    socket.feathers.referrer = socket.request.referrer;
+    next();
+  });
 }));
 
 app.configure(sequelize);
