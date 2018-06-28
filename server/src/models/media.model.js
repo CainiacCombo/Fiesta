@@ -6,9 +6,17 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const media = sequelizeClient.define('media', {
-    text: {
+    link: {
       type: DataTypes.STRING,
-      allowNull: false
+    },
+    caption: {
+      type: DataTypes.STRING,
+    },
+    dm_id: {
+      type: DataTypes.UUID,
+    }, 
+    party_id: {
+      type: DataTypes.UUID,
     }
   }, {
     hooks: {
