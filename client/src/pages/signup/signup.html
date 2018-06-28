@@ -7,6 +7,10 @@
 <ion-content padding>
   <div>
     <div ion-item>
+      <ion-label for="#username" floating>Username</ion-label>
+      <ion-input [(ngModel)]="username" id="username" type="text"></ion-input>
+    </div>
+    <div ion-item>
       <ion-label for="#nickname" floating>Nickname</ion-label>
       <ion-input [(ngModel)]="nickname" id="nickname" type="text"></ion-input>
     </div>

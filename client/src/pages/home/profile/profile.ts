@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { FriendsPage } from '../friends/friends'
 
@@ -10,7 +10,7 @@ import { FriendsPage } from '../friends/friends'
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
   }
 
   goToFriendsList() {
@@ -21,5 +21,10 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
+
+  editProfile() {
+    const editModal = this.modalCtrl.create('EditProfilePage');
+    editModal.present();
+  }  
 
 }
