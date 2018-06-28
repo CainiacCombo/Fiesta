@@ -21,3 +21,13 @@ DELETE FROM friend_requests;
 
 INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 2, NOW(), NOW());
 INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (5, 2, NOW(), NOW());
+
+-- PARTIES
+DELETE FROM parties;
+
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (1, "Bob's Jamsesh", 0, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+
+-- GROUP USERS
+DELETE FROM group_users;
+
+INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (1, 1, true, NOW(), NOW());
