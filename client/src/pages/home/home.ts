@@ -11,6 +11,7 @@ export class HomePage {
   timelineRoot = 'TimelinePage'
   searchRoot = 'SearchPage'
   profileRoot = 'ProfilePage'
+  createPartyRoot = 'CreatePartyPage';
   rootParams: any = {}
 
   constructor(navParams: NavParams) {

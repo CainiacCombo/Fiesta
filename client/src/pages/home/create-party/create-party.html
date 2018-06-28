@@ -7,12 +7,53 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>create-party</ion-title>
+    <ion-title>Create Your Party</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-</ion-content>
+  <div>
+    <h4>Party Details</h4>
+    <div ion-item>
+      <ion-label for="#name" inline>Party Name</ion-label>
+      <ion-input [(ngModel)]="name" id="name" type="text"></ion-input>
+    </div>
+    <div ion-item>
+      <ion-label for="#location" inline>Location</ion-label>
+      <ion-input [(ngModel)]="location" id="location" type="text"></ion-input>
+    </div>
+    <h4>Party Start</h4>
+    <div ion-item>
+      <br>
+    <ion-label for="#start-date">Date</ion-label>
+    <ion-datetime id="start-date" displayFormat="MMMM DD YYYY" min="2018" max="2019-10-31" [(ngModel)]="startDate">
+    </ion-datetime>
+    </div>
+    <div ion-item>
+      <ion-label for="#start-time">Time</ion-label>
+      <ion-datetime id="start-time" displayFormat="h:mm a"[(ngModel)]="startTime">
+      </ion-datetime>
+    </div>
+    <h4>Party End</h4>
+    <div ion-item>
+      <ion-label for="#end-date">Date</ion-label>
+      <ion-datetime id="end-date" displayFormat="MMMM DD YYYY" min="2018" max="2019-10-31" [(ngModel)]="endDate">
+      </ion-datetime>
+    </div>
+    <div ion-item>
+      <ion-label for="#end-time">Time</ion-label>
+      <ion-datetime id="end-time" displayFormat="h:mm a" [(ngModel)]="endTime">
+      </ion-datetime>
+    </div>
+    <h4>Party Preference</h4>
+    <div ion-item>
+      <ion-label>Private</ion-label>
+      <ion-checkbox [(ngModel)]="isPrivate"></ion-checkbox>
+    </div>
+    <div class="submit">
+      <button (click)="onSubmit()" ion-button full>Party On!</button>
+    </div>
+  </div>
+</ion-content>  
