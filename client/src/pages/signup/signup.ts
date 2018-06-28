@@ -28,10 +28,13 @@ export class SignupPage {
       'googleId': userData.googleId,
       'email': userData.email,
       'avatar': userData.avatar,
-      'accessToken': userData.accessToken,
     }
-    this.userProvider.createUser(user);
-    this.navCtrl.push(HomePage);
+    this.userProvider.createUser(user)
+      .then(user => this.userProvider.authenticate({
+        strategy: 'google',
+        access_token: userData.accessToken,
+      }).then(() => this.navCtrl.setRoot(HomePage, {user})));
+    
   }
 
 }
