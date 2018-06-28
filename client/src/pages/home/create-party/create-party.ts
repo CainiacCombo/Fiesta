@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party'
-import { UserProvider } from '../../../providers/user/user'
 
 
 /**
@@ -36,8 +35,10 @@ export class CreatePartyPage {
   user: User;
   userSub: Subscription
 
-  constructor(public userProvider: UserProvider, public partyProvider: PartyProvider, private store: Store<AppState>, public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public partyProvider: PartyProvider, 
+    private store: Store<AppState>, 
+    public navCtrl: NavController, 
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePartyPage');
