@@ -8,11 +8,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LoginPageModule } from '../pages/login/login.module'
-import { SignupPageModule } from '../pages/signup/signup.module'
-import { HomePageModule } from '../pages/home/home.module'
-import { FriendsPageModule } from '../pages/home/friends/friends.module'
-import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module'
+import { LoginPageModule } from '../pages/login/login.module';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { HomePageModule } from '../pages/home/home.module';
+import { FriendsPageModule } from '../pages/home/friends/friends.module';
+import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module';
 import { UserProvider } from '../providers/user/user';
 import { PartyProvider } from '../providers/party/party';
 
