@@ -9,10 +9,10 @@ import { FriendsPage } from '../friends/friends'
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
- user: any = {};
+  user: any = {};
+  
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
   this.user = navParams.get('user') || {};
-    console.log('profile', navParams.get('user'));
   }
 
   goToFriendsList() {
@@ -24,8 +24,8 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  editProfile() {
-    const editModal = this.modalCtrl.create('EditProfilePage');
+  editProfile(user) {
+    const editModal = this.modalCtrl.create('EditProfilePage', { user });
     editModal.present();
   }  
 
