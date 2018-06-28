@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,7 +11,10 @@ export class HomePage {
   timelineRoot = 'TimelinePage'
   searchRoot = 'SearchPage'
   profileRoot = 'ProfilePage'
+  rootParams: any = {}
 
-  constructor() {}
+  constructor(navParams: NavParams) {
+    this.rootParams.user = navParams.get('user');
+  }
 
 }

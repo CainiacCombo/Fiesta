@@ -9,8 +9,10 @@ import { FriendsPage } from '../friends/friends'
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
+ user: any = {};
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
+  this.user = navParams.data.user || {};
+    console.log('profile', navParams);
   }
 
   goToFriendsList() {
