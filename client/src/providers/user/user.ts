@@ -40,7 +40,7 @@ export class UserProvider {
   private getGoogleProfile(payload): GoogleAuth {
     const auth = payload.getAuthResponse();
     const accessToken = auth.access_token;
-
+    
     const user = payload.getBasicProfile();
     const googleId = user.getId();
     const name = user.getName();

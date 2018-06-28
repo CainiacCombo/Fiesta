@@ -8,10 +8,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/take';
 
-import { User } from '../../interfaces/User';
-import { UserProvider } from '../../providers/user/user';
-import { AppState } from '../../store/reducers';
-import { Update } from '../../store/user/user.actions';
+import { User } from '../../../interfaces/User';
+import { UserProvider } from '../../../providers/user/user';
+import { AppState } from '../../../store/reducers';
+import { Update } from '../../../store/user/user.actions';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
