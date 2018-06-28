@@ -6,9 +6,37 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const parties = sequelizeClient.define('parties', {
-    text: {
+    start_date: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+    }, 
+    end_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    longitude: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    latitude: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true, 
+    },
+    is_private: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
     }
   }, {
     hooks: {
