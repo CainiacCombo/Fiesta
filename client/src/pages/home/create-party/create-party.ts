@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { query } from '@angular/core/src/animation/dsl';
-import { fail } from 'assert';
 import { User } from '../../../interfaces/User';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
