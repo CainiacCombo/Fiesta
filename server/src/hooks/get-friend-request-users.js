@@ -17,5 +17,6 @@ module.exports = (options = {}) => async (context) => {
 
     return data;
   }));
+
   return context;
 };
