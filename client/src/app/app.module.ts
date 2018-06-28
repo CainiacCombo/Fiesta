@@ -14,6 +14,7 @@ import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/home/friends/friends.module'
 import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module'
 import { UserProvider } from '../providers/user/user';
+import { PartyProvider } from '../providers/party/party';
 
 import { reducers } from '../store/reducers';
 
@@ -41,7 +42,8 @@ import { reducers } from '../store/reducers';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    PartyProvider
   ]
 })
 export class AppModule {}

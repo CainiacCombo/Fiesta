@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { User } from '../../interfaces/User';
 
 export enum UserTypes {
-  LOGIN = '[User] LOAD',
+  LOGIN = '[User] LOGIN',
   UPDATE = '[User] UPDATE',
   LOGOUT = '[User] LOGOUT',
 }

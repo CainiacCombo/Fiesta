@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar margin-top>
+    <ion-searchbar
+      [(ngModel)]="query"
+      (ionInput)="onQuery()"
+      (ionCancel)="reset()"
+      (ionClear)="reset()"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item></ion-item>
+  </ion-list>
+</ion-content>
