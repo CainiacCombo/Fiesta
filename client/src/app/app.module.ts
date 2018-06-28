@@ -10,7 +10,7 @@ import { LoginPageModule } from '../pages/login/login.module'
 import { SignupPageModule } from '../pages/signup/signup.module'
 import { HomePageModule } from '../pages/home/home.module'
 import { FriendsPageModule } from '../pages/home/friends/friends.module'
-import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module'
+import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module'
 import { UserProvider } from '../providers/user/user';
 
 @NgModule({
