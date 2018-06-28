@@ -7,11 +7,11 @@ module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const friends = sequelizeClient.define('friends', {
     user1_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: true
     },
     user2_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: true,
     }
   }, {
