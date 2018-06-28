@@ -9,6 +9,10 @@ module.exports = function (app) {
     text: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    user_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
     }
   }, {
     hooks: {
