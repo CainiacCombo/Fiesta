@@ -5,34 +5,15 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const parties = sequelizeClient.define('parties', {
-    start_date: {
-      type: DataTypes.STRING,
+  const friendRequests = sequelizeClient.define('friend_requests', {
+    from_user_id: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
-    end_date: {
-      type: DataTypes.STRING,
+    to_user_id: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    location: {
-      type: DataTypes.STRING,
-    },
-    longitude: {
-      type: DataTypes.STRING,
-    },
-    latitude: {
-      type: DataTypes.STRING,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-    },
-    is_private: {
-      type: DataTypes.BOOLEAN,
-    }
   }, {
     hooks: {
       beforeCount(options) {
@@ -42,10 +23,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  parties.associate = function (models) {
+  friendRequests.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return parties;
+  return friendRequests;
 };
