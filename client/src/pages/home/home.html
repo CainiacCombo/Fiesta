@@ -4,7 +4,7 @@
 
 <ion-tabs #home>
   <ion-tab [root]="timelineRoot" tabIcon="home"></ion-tab>
-  <ion-tab [root]="createPartyRoot" tabIcon="md-add"></ion-tab>
+  <ion-tab [root]="createPartyRoot" [rootParams]="rootParams" tabIcon="md-add"></ion-tab>
   <ion-tab [root]="searchRoot" tabIcon="search"></ion-tab>
   <ion-tab [root]="profileRoot" [rootParams]="rootParams" tabIcon="contact"></ion-tab>
 </ion-tabs>

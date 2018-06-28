@@ -11,4 +11,8 @@ export class PartyProvider {
     return app.service('group-users').find({ query: { user_id: uid } });
   }
 
+  createParty(data) {
+    return app.service('parties').create(data);
+  };
+
 }
