@@ -11,8 +11,8 @@ import { FriendsPage } from '../friends/friends'
 export class ProfilePage {
  user: any = {};
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
-  this.user = navParams.data.user || {};
-    console.log('profile', navParams);
+  this.user = navParams.get('user') || {};
+    console.log('profile', navParams.get('user'));
   }
 
   goToFriendsList() {

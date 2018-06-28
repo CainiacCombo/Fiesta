@@ -33,8 +33,7 @@ export class SignupPage {
       .then(user => this.userProvider.authenticate({
         strategy: 'google',
         access_token: userData.accessToken,
-      }))
-      .then(() => this.navCtrl.push(HomePage))
+      }).then(() => this.navCtrl.setRoot(HomePage, {user})));
     
   }
 
