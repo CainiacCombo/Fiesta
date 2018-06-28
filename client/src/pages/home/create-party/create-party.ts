@@ -8,14 +8,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party'
 
-
-/**
- * Generated class for the CreatePartyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-create-party',
