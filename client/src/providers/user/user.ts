@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../../interfaces/User';
 import { app } from '../../feathers';
 
 declare const gapi: any;
@@ -19,8 +20,9 @@ export class UserProvider {
 
   constructor(public http: HttpClient) { }
 
-  authenticate(payload) {
-    return app.authenticate(payload);
+  authenticate(id, payload): Promise<User> {
+    return app.authenticate(payload)
+      .then(() => this.findUser({ id }));
   }
 
   findUser(findBy) {
@@ -29,6 +31,10 @@ export class UserProvider {
 
   createUser(data) {
     return app.service('users').create(data);
+  }
+
+  updateUser(id, data): Promise<User> {
+    return app.service('users').patch(id, data);
   }
 
   private getGoogleProfile(payload): GoogleAuth {
