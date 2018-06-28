@@ -1,5 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const getUserFriends = require('../../hooks/get-user-friends');
+
 module.exports = {
   before: {
     all: [ authenticate(['jwt'])],
@@ -23,7 +25,7 @@ module.exports = {
 
   error: {
     all: [],
-    find: [],
+    find: [ getUserFriends() ],
     get: [],
     create: [],
     update: [],
