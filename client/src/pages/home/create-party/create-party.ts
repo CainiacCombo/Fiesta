@@ -22,6 +22,7 @@ export class CreatePartyPage implements OnDestroy {
   isPrivate: boolean = false
   longitude: string = ''
   latitude: string = ''
+
   user: User
   userSub: Subscription
 
@@ -51,14 +52,14 @@ export class CreatePartyPage implements OnDestroy {
       location: location,
       start_date: start,
       end_date: end,
-      isPrivate: isPrivate,
+      is_private: isPrivate,
       longitude: 'haha nope',
       latitude: 'you thought',
       userId: user.id,
     };
 
-    this.partyProvider.createParty(party);
-    // send to party page
+    return this.partyProvider.createParty(party)
+      .then(party => this.navCtrl.push('InvitePage', { party, onDone: () => this.navCtrl.setRoot('') }));
   }
 
   getDate(dateString, time) {
