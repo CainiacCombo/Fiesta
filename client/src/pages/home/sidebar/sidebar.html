@@ -1,16 +1,10 @@
-<ion-header>
-  <ion-toolbar margin-top>
-    <ion-searchbar
-      [(ngModel)]="query"
-      (ionInput)="onQuery()"
-      (ionCancel)="reset()"
-      (ionClear)="reset()"
-    ></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-toolbar margin-top>
+    <ion-searchbar [(ngModel)]="query" (ionInput)="onQuery()" (ionCancel)="reset()" (ionClear)="reset()"></ion-searchbar>
+  </ion-toolbar>
   <ion-list>
-    <ion-item></ion-item>
+    <button *ngFor="let party of parties" (click)="goToParty(party)" ion-item>
+      {{party.name}}
+    </button>
   </ion-list>
 </ion-content>

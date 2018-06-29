@@ -8,14 +8,14 @@ module.exports = function (app) {
   const groupMessages = sequelizeClient.define('group_messages', {
     message_id: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
     },
     dm_id: {
       type: DataTypes.UUID,
     },
     party_id: {
       type: DataTypes.UUID,
-    }
+    },
   }, {
     hooks: {
       beforeCount(options) {

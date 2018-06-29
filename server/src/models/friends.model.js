@@ -8,12 +8,12 @@ module.exports = function (app) {
   const friends = sequelizeClient.define('friends', {
     user1_id: {
       type: DataTypes.UUID,
-      allowNull: true
+      allowNull: false,
     },
     user2_id: {
       type: DataTypes.UUID,
-      allowNull: true,
-    }
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {
