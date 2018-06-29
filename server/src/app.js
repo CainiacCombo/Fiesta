@@ -37,7 +37,6 @@ app.use('/', express.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
-
 app.configure(sequelize);
 
 // Configure other middleware (see `middleware/index.js`)
