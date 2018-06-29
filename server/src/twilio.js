@@ -10,6 +10,6 @@ phoneNum.forEach((num) => {
     body: 'you have been invited to the party',
     to: num, // Text this number 
     from: '+15046080915' // From a valid Twilio number
-  }).then((message) => console.log(`sent to ${num} sid: ${message.sid}`))
-    .catch((error) => console.log(`did NOT send to ${num} error: ${error}`));
+  }).then((message) => message.sid)
+    .catch((error) => error);
 });
