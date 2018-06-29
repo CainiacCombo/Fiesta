@@ -26,6 +26,7 @@ module.exports = function (app) {
   friends.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    // friends.belongsTo(models.users);
   };
 
   return friends;
