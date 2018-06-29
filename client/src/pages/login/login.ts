@@ -32,7 +32,7 @@ export class LoginPage {
         ? this.navCtrl.push(SignupPage, { userData })
         : this.userProvider.authenticate(user.id, authentication)
            .then(user => this.store.dispatch(new Login(user)))
-           .then(() => this.navCtrl.setRoot(HomePage, { user }, { animate: true, direction: 'right' })))
+           .then(() => this.navCtrl.setRoot(HomePage, null, { animate: true, direction: 'right' })))
   }
 
   googleLogin() {
