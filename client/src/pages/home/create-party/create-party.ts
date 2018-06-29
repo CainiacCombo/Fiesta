@@ -58,7 +58,7 @@ export class CreatePartyPage implements OnDestroy {
     };
 
     this.partyProvider.createParty(party);
-    // send to party page
+    this.navCtrl.setRoot('PartyPage', {party});
   }
 
   getDate(dateString, time) {
