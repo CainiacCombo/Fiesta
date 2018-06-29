@@ -1,8 +1,8 @@
 const assert = require('assert');
 const feathers = require('@feathersjs/feathers');
-const texts = require('../../src/hooks/texts');
+const textInvite = require('../../src/hooks/text-invite');
 
-describe('\'texts\' hook', () => {
+describe('\'text-invite\' hook', () => {
   let app;
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('\'texts\' hook', () => {
     });
 
     app.service('dummy').hooks({
-      before: texts()
+      before: textInvite()
     });
   });
 

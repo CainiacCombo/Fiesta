@@ -1,6 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const texts = require('../../hooks/texts');
+const textInvite = require('../../hooks/text-invite');
 
 module.exports = {
   before: {
@@ -9,7 +9,7 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [texts()],
+    patch: [ textInvite() ],
     remove: []
   },
 
