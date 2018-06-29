@@ -1,6 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const textInvite = require('../../hooks/text-invite');
+const addUserHost = require('../../hooks/add-user-host');
 
 module.exports = {
   before: {
@@ -17,7 +18,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [ addUserHost() ],
     update: [],
     patch: [],
     remove: []
