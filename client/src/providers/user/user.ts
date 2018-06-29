@@ -48,7 +48,7 @@ export class UserProvider {
   }
 
   findUser(findBy) {
-    return app.service('users').find(findBy).then(response => response.data[0]);
+    return app.service('users').find({ query: findBy }).then(response => response.data[0]);
   }
 
   createUser(data) {
