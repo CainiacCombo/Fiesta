@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
+import { PartyProvider } from '../../../providers/party/party';
 
 @IonicPage()
 @Component({
@@ -11,14 +12,14 @@ export class InvitePage {
   phoneNumber: string
   partyId: string
 
-  constructor(public navParams: NavParams) {
+  constructor(public navParams: NavParams, public partyProvider: PartyProvider) {
     const party = this.navParams.get('party');
     this.partyId = party.id;
   }
 
   addNumber() {
-    console.log(this.partyId, this.phoneNumber);
-    this.phoneNumber = '';
+    this.partyProvider.inviteUser(this.partyId, this.phoneNumber)
+      .then(() => this.phoneNumber = '');
   }
 
   onDone() {

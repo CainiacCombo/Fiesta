@@ -17,7 +17,7 @@ export class PartyProvider {
   }
 
   inviteUser(partyId, phoneNumber) {
-    return app.service('parties').patch(partyId, phoneNumber);
+    return app.service('parties').patch(partyId, { phoneNumber });
   }
 
 }
