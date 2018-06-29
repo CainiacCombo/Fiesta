@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { Login } from '../../store/user/user.actions';
-import { AppState } from '../../store/reducers';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -14,41 +9,19 @@ import { HomePage } from '../home/home';
 })
 export class SignupPage {
 
+  username: string = ''
   nickname: string = ''
   phone: string = ''
-  username: string = ''
-  userData: any
 
-  constructor(
-    navParams: NavParams,
-    public navCtrl: NavController,
-    public userProvider: UserProvider,
-    private store: Store<AppState>,
-  ) {
-    this.userData = navParams.get('userData');
-  }
+  constructor(public navParams: NavParams, public userProvider: UserProvider) { }
 
   onSubmit() {
-    const { nickname, phone, username, userData } = this;
-    const { googleId, email, avatar } = userData;
+    const authenticate = this.navParams.get('authenticate');
+    const { accessToken, googleId, email, avatar } = this.navParams.get('googleUser');
+    const { nickname, phone, username } = this;
 
-    const user = {
-      username,
-      nickname,
-      phone,
-      googleId,
-      email,
-      avatar,
-    };
-
-    this.userProvider.createUser(user)
-      .then(user => this.userProvider.authenticate(user.id, {
-        strategy: 'google',
-        access_token: userData.accessToken,
-      }))
-      .then(user => this.store.dispatch(new Login(user)))
-      .then(() => this.navCtrl.setRoot(HomePage, null, { animate: true, direction: 'right' }));
-
+    this.userProvider.createUser({ username, nickname, phone, googleId, email, avatar })
+      .then(user => authenticate(user, accessToken));
   }
 
 }

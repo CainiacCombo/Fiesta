@@ -8,12 +8,12 @@ module.exports = function (app) {
   const messages = sequelizeClient.define('messages', {
     text: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.UUID,
       allowNull: false,
-    }
+    },
   }, {
     hooks: {
       beforeCount(options) {
