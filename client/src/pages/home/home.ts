@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
       pluck('id'),
       switchMap(id => this.partyProvider.getUserParties(id)),
     )
-      .do(parties => this.store.dispatch(new AddUserParties(parties.data)))
+      .do(parties => this.store.dispatch(new AddUserParties(parties)))
       .take(1)
       .subscribe();
   }
