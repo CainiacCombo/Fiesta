@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Invite</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-input [(ngModel)]="phoneNumber" placeholder="Phone number"></ion-input>
+    <button (click)="addNumber()" ion-button>Add Number</button>
+  </div>
+  <button (click)="onDone()" ion-button full>Done</button>
+</ion-content>
