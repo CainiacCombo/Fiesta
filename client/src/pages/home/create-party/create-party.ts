@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
+import { AddUserParties } from '../../../store/parties/parties.actions';
 import { PartyProvider } from '../../../providers/party/party'
 
 @IonicPage()
@@ -28,9 +29,9 @@ export class CreatePartyPage implements OnDestroy {
 
   constructor(
     public partyProvider: PartyProvider,
-    private store: Store<AppState>,
     public navCtrl: NavController,
     public navParams: NavParams,
+    private store: Store<AppState>,
   ) {}
 
   ngOnInit() {
@@ -61,7 +62,9 @@ export class CreatePartyPage implements OnDestroy {
     return this.partyProvider.createParty(party)
       .then(party => this.navCtrl.setRoot('InvitePage', {
         party,
-        onDone: () => this.navCtrl.setRoot('PartyPage', { party }),
+        onDone: () => this.partyProvider.getUserParties(user.id)
+          .then(parties => this.store.dispatch(new AddUserParties(parties)))
+          .then(() => this.navCtrl.setRoot('PartyPage')),
       }));
   }
 

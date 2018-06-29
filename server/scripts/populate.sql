@@ -8,6 +8,7 @@ INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, 
 INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (3, "fake-google-id-3", "Taylor Swift", "T-Swizzle", "http://theweeklyspoon.com/wp-content/uploads/2018/05/F814A5D3-D18F-4A2F-81D2-D385431B1C92.jpeg", "Hey its your local country girl Taylor!!", "taylorswift@taylorswift.taylorswift", "444-3333", 5, NOW(), NOW());
 INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (4, "fake-google-id-4", "bob-backup-1", "Bob's Backup Acc 1", "<some avatar url>", "Backup #1 for @bob", "bob-1@bob.mail", "444-1112", 1, NOW(), NOW());
 INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (5, "fake-google-id-5", "bob-backup-2", "Bob's Backup Acc 2", "<some avatar url>", "Backup #2 for @bob", "bob-2@bob.mail", "444-1113", 1, NOW(), NOW());
+INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (6, "109322987592954020059", "tay", "tay", "https://lh6.googleusercontent.com/-FdokHVutAbw/AAAAAAAAAAI/AAAAAAAAAAA/AB6qoq1ogk_liUaFlfHJAvHfY770sYXsLw/s96-c/photo.jpg", "yup", "taylorshephard1@gmail.com", "5551285", 1, NOW(), NOW());
 
 -- FRIENDS
 DELETE FROM friends;
@@ -33,3 +34,5 @@ DELETE FROM group_users;
 
 INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (1, 1, true, NOW(), NOW());
 INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (1, 2, false, NOW(), NOW());
+INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (6, 1, true, NOW(), NOW());
+INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (6, 2, false, NOW(), NOW());

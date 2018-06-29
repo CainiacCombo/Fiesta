@@ -1,8 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const textInvite = require('../../hooks/text-invite');
-const addUserHost = require('../../hooks/add-user-host');
-
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -10,7 +7,7 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [ textInvite() ],
+    patch: [],
     remove: []
   },
 
@@ -18,7 +15,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ addUserHost() ],
+    create: [],
     update: [],
     patch: [],
     remove: []

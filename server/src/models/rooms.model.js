@@ -5,17 +5,14 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const groupMessages = sequelizeClient.define('group_messages', {
-    message_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
+  const rooms = sequelizeClient.define('rooms', {
+    game: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    dm_id: {
-      type: DataTypes.UUID,
-    },
-    party_id: {
-      type: DataTypes.UUID,
-    },
+    name: {
+      type: DataTypes.STRING,
+    }
   }, {
     hooks: {
       beforeCount(options) {
@@ -25,11 +22,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  groupMessages.associate = function (models) {
+  rooms.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    // group_messages.belongsTo(models.parties); 
   };
 
-  return groupMessages;
+  return rooms;
 };
