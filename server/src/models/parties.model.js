@@ -29,10 +29,12 @@ module.exports = function (app) {
     },
     rating: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     is_private: {
       type: DataTypes.BOOLEAN,
-    }
+      allowNull: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {

@@ -3,8 +3,7 @@
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const dm = sequelizeClient.define('dm', {
-  }, {
+  const dm = sequelizeClient.define('dm', {}, {
     hooks: {
       beforeCount(options) {
         options.raw = true;

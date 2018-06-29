@@ -34,10 +34,7 @@ module.exports = function (app) {
     },
     googleId: {
       type: DataTypes.STRING,
-      unique: true,
-    },
-    twitterId: {
-      type: DataTypes.STRING,
+      allowNull: false,
       unique: true,
     },
     longitude: {
