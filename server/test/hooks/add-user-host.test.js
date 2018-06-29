@@ -8,20 +8,26 @@ describe('\'add-user-host\' hook', () => {
   beforeEach(() => {
     app = feathers();
 
+    app.use('/group-users', {
+      async create() {
+        return {};
+      }
+    });
+
     app.use('/dummy', {
-      async get(id) {
-        return { id };
+      async create() {
+        return {};
       }
     });
 
     app.service('dummy').hooks({
-      before: addUserHost()
+      after: addUserHost()
     });
   });
 
   it('runs the hook', async () => {
-    const result = await app.service('dummy').get('test');
-    
-    assert.deepEqual(result, { id: 'test' });
+    const result = await app.service('dummy').create({});
+
+    assert.deepEqual(result, {});
   });
 });

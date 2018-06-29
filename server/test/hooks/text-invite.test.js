@@ -9,8 +9,8 @@ describe('\'text-invite\' hook', () => {
     app = feathers();
 
     app.use('/dummy', {
-      async get(id) {
-        return { id };
+      async create() {
+        return {};
       }
     });
 
@@ -20,8 +20,8 @@ describe('\'text-invite\' hook', () => {
   });
 
   it('runs the hook', async () => {
-    const result = await app.service('dummy').get('test');
-    
-    assert.deepEqual(result, { id: 'test' });
+    const result = await app.service('dummy').create({});
+
+    assert.deepEqual(result, {});
   });
 });
