@@ -1,5 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const getUserParties = require('../../hooks/get-user-parties');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -13,7 +15,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [ getUserParties() ],
     get: [],
     create: [],
     update: [],

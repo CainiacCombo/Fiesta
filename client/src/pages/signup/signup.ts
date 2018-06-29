@@ -47,7 +47,7 @@ export class SignupPage {
         access_token: userData.accessToken,
       }))
       .then(user => this.store.dispatch(new Login(user)))
-      .then(() => this.navCtrl.setRoot(HomePage));
+      .then(() => this.navCtrl.setRoot(HomePage, null, { animate: true, direction: 'right' }));
 
   }
 
