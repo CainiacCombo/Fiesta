@@ -10,7 +10,7 @@ try {
   client = new Twilio(accountSid, authToken);
 } catch (e) {
   // eslint-disable-next-line no-console
-  console.error('Twilio authentication failed:', e);
+  console.error('Twilio authentication failed:', e.message);
 }
 
 module.exports = client;
