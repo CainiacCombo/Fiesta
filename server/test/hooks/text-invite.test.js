@@ -1,27 +1,27 @@
 const assert = require('assert');
 const feathers = require('@feathersjs/feathers');
-const texts = require('../../src/hooks/texts');
+const textInvite = require('../../src/hooks/text-invite');
 
-describe('\'texts\' hook', () => {
+describe('\'text-invite\' hook', () => {
   let app;
 
   beforeEach(() => {
     app = feathers();
 
     app.use('/dummy', {
-      async get(id) {
-        return { id };
+      async create() {
+        return {};
       }
     });
 
     app.service('dummy').hooks({
-      before: texts()
+      before: textInvite()
     });
   });
 
   it('runs the hook', async () => {
-    const result = await app.service('dummy').get('test');
-    
-    assert.deepEqual(result, { id: 'test' });
+    const result = await app.service('dummy').create({});
+
+    assert.deepEqual(result, {});
   });
 });
