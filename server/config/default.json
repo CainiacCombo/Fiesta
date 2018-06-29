@@ -6,7 +6,7 @@
     "default": 10,
     "max": 50
   },
-  "mysql": "mysql://root@localhost:3306/fiesta",
+  "mysql": "mysql://root:password@localhost:3306/fiesta",
   "authentication": {
     "secret": "wazwiti",
     "strategies": [

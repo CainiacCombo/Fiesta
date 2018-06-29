@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
   timelineRoot = 'TimelinePage'
   searchRoot = 'SearchPage'
   profileRoot = 'ProfilePage'
+  createPartyRoot = 'CreatePartyPage';
 
   user$: Observable<User>
 

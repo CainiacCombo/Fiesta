@@ -12,4 +12,8 @@ export class PartyProvider {
       .then(response => response.data.map(data => data.party))
   }
 
+  createParty(data) {
+    return app.service('parties').create(data);
+  };
+
 }
