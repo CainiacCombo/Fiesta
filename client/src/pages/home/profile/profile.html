@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>@{{user.username}}</ion-title>
+    <ion-buttons (click)="signout()" right>
+      <button ion-button>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -15,7 +20,7 @@
         <ion-row>{{user.nickname}}</ion-row>
         <ion-row>{{user.bio}}</ion-row>
         <ion-row>
-          <button (click)="editProfile(user)">Edit Profile</button>
+          <button (click)="goToEditProfile()">Edit Profile</button>
         </ion-row>
       </ion-col>
     </ion-row>
