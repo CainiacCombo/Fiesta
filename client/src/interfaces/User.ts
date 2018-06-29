@@ -9,5 +9,4 @@ export interface User {
   longitude?: string
   latitude?: string
   googleId?: string
-  twitterId?: string
 }
