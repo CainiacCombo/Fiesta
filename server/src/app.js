@@ -36,7 +36,19 @@ app.use('/', express.static(app.get('public')));
 
 // Set up Plugins and providers
 app.configure(express.rest());
-app.configure(socketio());
+app.configure(socketio((io) => {
+  io.on('connection', (socket) => {
+    socket.emit('news', {text: 'Client is connected'});
+    socket.on('my other event', (data) => {
+      console.log(data);
+    });
+  });
+
+  io.use((socket, next) => {
+    socket.feathers.referrer = socket.request.referrer;
+    next();
+  });
+}));
 
 app.configure(sequelize);
 

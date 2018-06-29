@@ -28,6 +28,7 @@ module.exports = function (app) {
   groupMessages.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    // group_messages.belongsTo(models.parties); 
   };
 
   return groupMessages;
