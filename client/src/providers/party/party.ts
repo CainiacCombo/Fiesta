@@ -16,6 +16,10 @@ export class PartyProvider {
     return app.service('parties').create(data);
   }
 
+  createMessage(data) {
+    return app.service('messages').create(data);
+  }
+
   inviteUser(partyId, phoneNumber) {
     return app.service('parties').patch(partyId, { phoneNumber });
   }

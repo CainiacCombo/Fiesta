@@ -1,13 +1,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>party</ion-title>
+    <ion-title>{{party.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<input placeholder="Send Chat" >
-<button ion-button small></button>
+  <ion-list>
+    <ion-item *ngFor="let message of messages" no-lines>
+      <p class="message">{{message}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>
+        <ion-textarea for=#message [(ngModel)]="message" class="chat_input" placeholder="Send Chat"></ion-textarea> 
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button small (click)="onSend()">send</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -61,7 +61,7 @@ export class CreatePartyPage implements OnDestroy {
     return this.partyProvider.createParty(party)
       .then(party => this.navCtrl.setRoot('InvitePage', {
         party,
-        onDone: () => this.navCtrl.setRoot('PartyPage'),
+        onDone: () => this.navCtrl.setRoot('PartyPage', { party }),
       }));
   }
 
