@@ -8,7 +8,7 @@ module.exports = function (app) {
   const groupUsers = sequelizeClient.define('group_users', {
     user_id: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
     },
     dm_id: {
       type: DataTypes.UUID,
@@ -18,7 +18,7 @@ module.exports = function (app) {
     },
     is_host: {
       type: DataTypes.BOOLEAN,
-    }
+    },
   }, {
     hooks: {
       beforeCount(options) {
