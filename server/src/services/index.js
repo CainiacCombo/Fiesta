@@ -10,14 +10,14 @@ const friendRequests = require('./friend-requests/friend-requests.service.js');
 const rooms = require('./rooms/rooms.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
+  app.configure(dm);
   app.configure(users);
-  app.configure(friends);
   app.configure(parties);
+  app.configure(friends);
   app.configure(messages);
   app.configure(groupMessages);
   app.configure(groupUsers);
   app.configure(media);
-  app.configure(dm);
   app.configure(friendRequests);
   app.configure(rooms);
 };

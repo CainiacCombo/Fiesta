@@ -1,11 +1,14 @@
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
-// for more of what you can do here.
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 
-module.exports = function (app) {
+module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
   const parties = sequelizeClient.define('parties', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     start_date: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,14 +42,13 @@ module.exports = function (app) {
     hooks: {
       beforeCount(options) {
         options.raw = true;
-      }
-    }
+      },
+    },
   });
 
-  // eslint-disable-next-line no-unused-vars
-  parties.associate = function (models) {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  parties.associate = (models) => {
+    parties.belongsToMany(models.users, { through: models.group_users, foreignKey: 'party_id', otherKey: 'user_id' });
+    parties.belongsToMany(models.messages, { through: models.group_messages, foreignKey: 'party_id', otherKey: 'message_id' });
   };
 
   return parties;
