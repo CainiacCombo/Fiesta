@@ -43,6 +43,7 @@ module.exports = (app) => {
 
   parties.associate = (models) => {
     parties.belongsToMany(models.users, { through: models.group_users, foreignKey: 'party_id' });
+    parties.belongsToMany(models.messages, { through: models.group_messages, foreignKey: 'party_id' });
   };
 
   return parties;

@@ -6,6 +6,11 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const groupMessages = sequelizeClient.define('group_messages', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     message_id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -28,7 +33,6 @@ module.exports = function (app) {
   groupMessages.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    // group_messages.belongsTo(models.parties); 
   };
 
   return groupMessages;

@@ -33,3 +33,15 @@ DELETE FROM group_users;
 
 INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (1, 1, true, NOW(), NOW());
 INSERT INTO group_users (user_id, party_id, is_host, createdAt, updatedAt) VALUES (1, 2, false, NOW(), NOW());
+
+-- MESSAGES
+DELETE FROM messages;
+
+INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (1, 1, "You guys ready to pawtay?", NOW(), NOW());
+INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (2, 1, "...Because I am!", NOW(), NOW());
+
+-- GROUP MESSAGES
+DELETE FROM group_messages;
+
+INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (1, 1, NOW(), NOW());
+INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (2, 1, NOW(), NOW());
