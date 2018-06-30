@@ -15,7 +15,7 @@ describe('\'get-group-user-profile\' hook', () => {
     };
     groupUsers = [
       { id: 1, user_id: 1, party_id: 1 },
-      { id: 2, user_id: 2, party_id: 2 },
+      { id: 2, user_id: 2, party_id: 1 },
     ];
 
     app.use('/users', { get: async id => users[id] });
@@ -34,7 +34,7 @@ describe('\'get-group-user-profile\' hook', () => {
   });
 
   it('retreives the party profile', async () => {
-    const result = await app.service('group-users').find();
+    const result = await app.service('group-users').find({ query: { party_id: 1 } });
     const expected = {
       total: groupUsers.length,
       limit: 10,
