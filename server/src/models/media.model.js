@@ -9,6 +9,10 @@ module.exports = (app) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
     link: {
       type: DataTypes.STRING,
       allowNull: false,
