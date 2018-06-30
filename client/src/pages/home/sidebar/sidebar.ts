@@ -51,7 +51,7 @@ export class SidebarPage {
   }
 
   goToParty(party) {
-    // this.navCtrl.setRoot();
+    this.navCtrl.push('PartyPage', { party });
   }
 
 }

@@ -1,9 +1,7 @@
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
-// for more of what you can do here.
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 
-module.exports = function (app) {
+module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
   const groupMessages = sequelizeClient.define('group_messages', {
     id: {
@@ -11,28 +9,16 @@ module.exports = function (app) {
       autoIncrement: true,
       primaryKey: true,
     },
-    message_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
-    dm_id: {
-      type: DataTypes.UUID,
-    },
-    party_id: {
-      type: DataTypes.UUID,
-    },
   }, {
     hooks: {
       beforeCount(options) {
         options.raw = true;
-      }
-    }
+      },
+    },
   });
 
   // eslint-disable-next-line no-unused-vars
-  groupMessages.associate = function (models) {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  groupMessages.associate = (models) => {
   };
 
   return groupMessages;

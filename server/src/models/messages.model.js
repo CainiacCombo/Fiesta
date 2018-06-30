@@ -4,6 +4,11 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
   const messages = sequelizeClient.define('messages', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     text: {
       type: DataTypes.STRING,
       allowNull: false,

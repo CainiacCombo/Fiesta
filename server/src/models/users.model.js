@@ -5,6 +5,11 @@ module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
 
   const users = sequelizeClient.define('users', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,

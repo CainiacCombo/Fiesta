@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+  <ion-buttons start>
+    <button ion-button (click)="closeModal()">Close</button>
+  </ion-buttons>
+    <ion-title class="party-name">{{party.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4>Location</h4>
+    <p>{{party.location}}</p>
+  <h4>Start</h4>
+    <p>{{party.start_date}}</p>
+  <h4>End</h4>
+    <p>{{party.end_date}}</p>
+</ion-content>

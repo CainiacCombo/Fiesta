@@ -11,12 +11,14 @@ import { MyApp } from './app.component';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { HomePageModule } from '../pages/home/home.module';
-import { PartyPageModule } from '../pages/party/party.module';
+import { PartyPageModule } from '../pages/home/party/party.module';
 import { FriendsPageModule } from '../pages/home/friends/friends.module';
 import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module';
 import { UserProvider } from '../providers/user/user';
 import { PartyProvider } from '../providers/party/party';
 import { InvitePageModule } from '../pages/home/invite/invite.module'
+import { PartyInfoPageModule } from '../pages/home/party-info/party-info.module'
+
 
 import { reducers } from '../store/reducers';
 
@@ -34,6 +36,7 @@ import { reducers } from '../store/reducers';
     EditProfilePageModule,
     InvitePageModule,
     PartyPageModule,
+    PartyInfoPageModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
