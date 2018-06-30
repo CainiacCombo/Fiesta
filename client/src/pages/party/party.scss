@@ -1,21 +1,17 @@
 page-party {
-   .chat-message {
-      width: 80%;
+    .chat-message {
+      position: relative;
+      float: right;
+      margin-right: 30px;
+      width: 180px;
       min-height: 40px;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      width: 0;
-      height: 0;
-      background: lightblue;
-      border: 35px solid transparent;
-      border-right: 0;
-      margin-top: -35px;
-      margin-right: -35px;
+      border-radius: .4em;
+      border-bottom-right-radius: 2px;
+      background-color: lightblue;
+      padding: 5px 15px 15px;
     }
       span.msg-name {
         font-size: 12px;
         font-weight: bold;
-        color: black;
       }
 }

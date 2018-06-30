@@ -8,14 +8,17 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let message of messages" no-lines>
-      <p class="message">{{message}}</p>
-    </ion-item>
-  </ion-list>
 </ion-content>
 
 <ion-footer>
+  <ion-list>
+    <ion-item *ngFor="let message of messages" no-lines>
+      <div class="chat-message" text-right>
+          <span class="msg-name">Me</span>
+          <p text-wrap>{{message}}</p>
+      </div>
+    </ion-item>
+  </ion-list>
   <ion-grid>
     <ion-row>
       <ion-col col-8>

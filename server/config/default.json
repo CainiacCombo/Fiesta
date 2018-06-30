@@ -7,9 +7,9 @@
     "max": 50
   },
   "twilio": {
-    "accountSid": "<account sid>",
-    "authToken": "<auth token>",
-    "twilio_number": "<number>"
+    "accountSid": "AC4346d5a841ab4499fd47d5893b89c4e2",
+    "authToken": "e116763f26cdea975e7ccd7b2b7543b2",
+    "twilio_number": "+15046080915"
   },
   "mysql": "mysql://root@localhost:3306/fiesta",
   "authentication": {

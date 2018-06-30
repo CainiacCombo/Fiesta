@@ -37,7 +37,7 @@ export class PartyPage {
       party_id: this.party.id,
     }
     messages.push(newMessage.text);
-    this.partyProvider.createMessage(newMessage)
+    // this.partyProvider.createMessage(newMessage)
   }
 
 }
