@@ -1,20 +1,16 @@
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
-// for more of what you can do here.
-
-module.exports = function (app) {
+module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
   const dm = sequelizeClient.define('dm', {}, {
     hooks: {
       beforeCount(options) {
         options.raw = true;
-      }
-    }
+      },
+    },
   });
 
-  // eslint-disable-next-line no-unused-vars
-  dm.associate = function (models) {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  dm.associate = (models) => {
+    dm.belongsToMany(models.users, { through: models.group_users, foreignKey: 'dm_id' });
+    dm.belongsToMany(models.messages, { through: models.group_messages, foreignKey: 'dm_id' });
   };
 
   return dm;
