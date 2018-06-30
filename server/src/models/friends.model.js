@@ -6,6 +6,11 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const friends = sequelizeClient.define('friends', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     user1_id: {
       type: DataTypes.UUID,
       allowNull: false,

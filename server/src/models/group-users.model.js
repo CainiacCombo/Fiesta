@@ -1,20 +1,13 @@
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
-// for more of what you can do here.
 const Sequelize = require('sequelize');
 const DataTypes = Sequelize.DataTypes;
 
-module.exports = function (app) {
+module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient');
   const groupUsers = sequelizeClient.define('group_users', {
-    user_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
-    dm_id: {
-      type: DataTypes.UUID,
-    },
-    party_id: {
-      type: DataTypes.UUID,
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
     is_host: {
       type: DataTypes.BOOLEAN,
@@ -28,9 +21,7 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  groupUsers.associate = function (models) {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  groupUsers.associate = (models) => {
   };
 
   return groupUsers;

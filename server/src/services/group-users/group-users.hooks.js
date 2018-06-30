@@ -1,6 +1,8 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const getUserParties = require('../../hooks/get-user-parties');
+const getGroupProfile = require('../../hooks/get-group-profile');
+const getGroupUserProfile = require('../../hooks/get-group-user-profile');
+const convertToBoolean = require('../../hooks/convert-to-boolean');
 
 module.exports = {
   before: {
@@ -15,7 +17,11 @@ module.exports = {
 
   after: {
     all: [],
-    find: [ getUserParties() ],
+    find: [
+      getGroupProfile(),
+      getGroupUserProfile(),
+      convertToBoolean({ keys: ['is_host'], all: true }),
+    ],
     get: [],
     create: [],
     update: [],
