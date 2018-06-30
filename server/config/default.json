@@ -6,6 +6,11 @@
     "default": 10,
     "max": 50
   },
+  "cloudinary": {
+    "cloud_name": "<cloud name>",
+    "apiKey": "<apikey>",
+    "apiSecret": "<apiSecret>"
+  },
   "twilio": {
     "accountSid": "<account sid>",
     "authToken": "<auth token>",
