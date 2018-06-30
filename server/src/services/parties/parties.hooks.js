@@ -1,5 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const addSequelizeLike = require('../../hooks/add-sequelize-like');
 const textInvite = require('../../hooks/text-invite');
 const convertToBoolean = require('../../hooks/convert-to-boolean');
 const addUserHost = require('../../hooks/add-user-host');
@@ -7,7 +8,7 @@ const addUserHost = require('../../hooks/add-user-host');
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
-    find: [],
+    find: [ addSequelizeLike() ],
     get: [],
     create: [],
     update: [],
