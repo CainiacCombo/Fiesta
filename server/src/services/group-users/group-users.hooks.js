@@ -1,6 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
-const getUserParties = require('../../hooks/get-user-parties');
+const getGroupProfile = require('../../hooks/get-group-profile');
+const getGroupUserProfile = require('../../hooks/get-group-user-profile');
 
 module.exports = {
   before: {
@@ -15,7 +16,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [ getUserParties() ],
+    find: [ getGroupProfile(), getGroupUserProfile() ],
     get: [],
     create: [],
     update: [],
