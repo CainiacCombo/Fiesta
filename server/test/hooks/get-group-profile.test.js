@@ -29,7 +29,7 @@ describe('\'getGroupProfile\' hook', () => {
     });
 
     app.service('group-users').hooks({
-      after: getGroupProfile()
+      after: getGroupProfile(),
     });
   });
 
