@@ -8,4 +8,5 @@ export interface Party {
   latitude: string
   rating: number
   is_private: boolean
+  user_count: number
 }
