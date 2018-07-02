@@ -19,9 +19,6 @@ import { UserProvider } from '../../../providers/user/user';
 })
 export class ProfilePage implements OnInit, OnDestroy {
 
-  stars = []
-  emptyStars = []
-
   user: User
   userSub: Subscription
 
@@ -36,8 +33,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.store.select('user').subscribe((user) => {
       this.user = user;
-      this.stars = new Array(user.rating);
-      this.emptyStars = new Array(5 - user.rating);
     });
   }
 

@@ -64,8 +64,8 @@ export class CreatePartyPage implements OnDestroy {
         party,
         onDone: () => this.partyProvider.getUserParties(user.id)
           .then(parties => this.store.dispatch(new AddUserParties(parties)))
-          .then(() => this.navCtrl.setRoot('PartyPage')),
-      }));
+          .then(() => this.navCtrl.push('PartyPage', { party }))
+      }, { animate: true, direction: 'right' }));
   }
 
   getDate(dateString, time) {

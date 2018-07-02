@@ -1,16 +1,41 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Party } from '../../interfaces/Party';
+import { FeathersPayload } from '../../interfaces/FeathersRespose';
 import { app } from '../../feathers';
+
+type PartiesResponse = FeathersPayload<Party>;
 
 @Injectable()
 export class PartyProvider {
 
-  constructor(public http: HttpClient) { }
+  constructor() { }
 
-  getUserParties(uid): Promise<Party[]> {
-    return app.service('group-users').find({ query: { user_id: uid } })
-      .then(response => response.data.map(data => data.party))
+  getParties(query?): Promise<PartiesResponse> {
+    return app.service('parties').find({ query });
+  }
+
+  getPartiesByName(name: string): Promise<PartiesResponse> {
+    return this.getParties({
+      name: {
+        $like: `${name}%`,
+      },
+    });
+  }
+
+  getUserParties(user_id): Promise<Party[]> {
+    return app.service('group-users').find({ query: { user_id } })
+      .then(response => response.data.map(data => data.party));
+  }
+
+  userInParties(user_id: string, parties: Party[]): Promise<boolean[]> {
+    return Promise.all(parties.map(party =>
+      app.service('group-users').find({ query: { party_id: party.id } })
+        .then(groupUser => groupUser.user_id === user_id)
+    ));
+  }
+
+  joinParty(user_id, party_id) {
+    return app.service('group-users').create({ party_id, user_id });
   }
 
   createParty(data) {
