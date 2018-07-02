@@ -1,0 +1,4 @@
+<div>
+  <ion-icon *ngFor="let _ of stars; index as i" name="star" class="star" [class.last]="i === stars.length - 1"></ion-icon>
+  <ion-icon *ngFor="let _ of emptyStars" name="star-outline" class="star star--empty"></ion-icon>
+</div>
