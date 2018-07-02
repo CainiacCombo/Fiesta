@@ -28,7 +28,10 @@ INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VAL
 DELETE FROM parties;
 
 INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (1, "Bob's Jamsesh", 0, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
-INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (2, "Sasha's Foam Party", 0, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (2, "Sasha's Foam Party", 0, true, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (3, "Johnson Family Reunion", 3, true, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (4, "Bob's Fiesta", 1, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (5, "Eric's Birthday", 0, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
 
 -- GROUP USERS
 DELETE FROM group_users;
@@ -39,6 +42,9 @@ INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) V
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (4, 6, 2, false, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (5, 7, 1, true, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (6, 7, 2, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (7, 1, 3, true, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (8, 1, 4, true, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (9, 2, 5, true, NOW(), NOW());
 
 -- MESSAGES
 DELETE FROM messages;
