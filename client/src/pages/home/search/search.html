@@ -1,18 +1,42 @@
-<!--
-  Generated template for the SearchPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>search</ion-title>
+    <ion-searchbar
+      [(ngModel)]="query"
+      (ionInput)="onQuery()"
+      (ionCancel)="reset()"
+      (ionClear)="reset()"
+      class="search"
+    ></ion-searchbar>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-<ion-searchbar></ion-searchbar>
+  <ion-list>
+    <p *ngIf="parties.length === 0">Nothing showed up for "{{query}}"</p>
+    <ion-item *ngFor="let party of parties" class="party" no-padding>
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col col-9 no-padding>
+            <ion-row no-padding>
+              <h1 class="name">{{party.name}}</h1>
+            </ion-row>
+            <ion-row no-padding>
+              <rating [rating]="party.rating"></rating>
+              <ion-icon *ngIf="party.is_private" name="lock" class="lock"></ion-icon>
+            </ion-row>
+          </ion-col>
+          <ion-col col-3 no-padding text-right>
+            <div *ngIf="isUserParty(party.id) | async; then isUserPartyButton else isNotUserPartyButton"></div>
+            <ng-template #isUserPartyButton>
+              <button (click)="goToParty('go', party)" color="secondary" ion-button>Go</button>
+            </ng-template>
+            <ng-template #isNotUserPartyButton>
+              <button *ngIf="!party.is_private" (click)="goToParty('join', party)" ion-button>Join</button>
+              <button *ngIf="party.is_private" (click)="goToParty('join--private', party)" color="light" ion-button disabled>Join</button>
+            </ng-template>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
