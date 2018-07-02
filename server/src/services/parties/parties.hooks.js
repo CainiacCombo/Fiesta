@@ -3,6 +3,7 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 const addSequelizeLike = require('../../hooks/add-sequelize-like');
 const textInvite = require('../../hooks/text-invite');
 const convertToBoolean = require('../../hooks/convert-to-boolean');
+const getPartyUsersCount = require('../../hooks/get-party-users-count');
 const addUserHost = require('../../hooks/add-user-host');
 
 module.exports = {
@@ -18,8 +19,11 @@ module.exports = {
 
   after: {
     all: [],
-    find: [ convertToBoolean({ keys: ['is_private'], all: true }) ],
-    get: [],
+    find: [
+      convertToBoolean({ keys: ['is_private'], all: true }),
+      getPartyUsersCount()
+    ],
+    get: [ getPartyUsersCount() ],
     create: [ addUserHost() ],
     update: [],
     patch: [],
