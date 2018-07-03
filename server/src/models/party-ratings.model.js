@@ -6,8 +6,8 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const partyRatings = sequelizeClient.define('party_ratings', {
-    text: {
-      type: DataTypes.STRING,
+    rating: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
