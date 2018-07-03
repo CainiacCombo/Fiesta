@@ -43,6 +43,14 @@ export class PartyPage {
 
   getPartyInfo() {
     const { party } = this;
+    const startTime = party.start_date;
+    const startTimeDate = new Date(startTime);
+    const start = startTimeDate.toString()
+    const endTime = party.start_date;
+    const endTimeDate = new Date(endTime);
+    const end = endTimeDate.toString()
+    party.end_date = end;
+    party.start_date = start;
     const partyModal = this.modalCtrl.create('PartyInfoPage', { party })
     partyModal.present();
   }

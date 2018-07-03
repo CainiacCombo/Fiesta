@@ -1,16 +1,8 @@
 import { NgModule } from '@angular/core';
-import { IonicModule } from 'ionic-angular';
-import { RatingComponent } from './rating/rating';
-
+import { UploadComponent } from './upload/upload';
 @NgModule({
-	declarations: [
-    RatingComponent,
-  ],
-	imports: [
-    IonicModule,
-  ],
-	exports: [
-    RatingComponent,
-  ],
+	declarations: [UploadComponent],
+	imports: [],
+	exports: [UploadComponent]
 })
 export class ComponentsModule {}
