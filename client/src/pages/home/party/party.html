@@ -2,6 +2,9 @@
 
   <ion-navbar>
     <ion-title (click)="getPartyInfo()">{{party.name}}</ion-title>
+    <ion-buttons right>
+      <button (click)="goToRate()"><ion-icon name="star"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
