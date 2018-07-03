@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Camera } from '@ionic-native/camera';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
@@ -58,6 +59,7 @@ import { reducers } from '../store/reducers';
     PartyProvider,
     FileTransfer,
     Camera,
+    GooglePlus,
   ]
 })
 export class AppModule {}

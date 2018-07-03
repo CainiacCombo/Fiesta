@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/User';
 import { GoogleUser } from '../../interfaces/GoogleUser';
 import { app } from '../../feathers';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 declare const gapi: any;
 const GAPI_KEY = 'AIzaSyA5ywuy4AD7qzXvEqskL6Rzt3QFPFD0Aws';
@@ -40,7 +41,7 @@ const createGoogleProfile = (payload): GoogleUser => {
 @Injectable()
 export class UserProvider {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, private googlePlus: GooglePlus) { }
 
   authenticate(id, access_token): Promise<User> {
     return app.authenticate({ strategy: 'google', access_token })
@@ -60,14 +61,32 @@ export class UserProvider {
   }
 
   googleSignin() {
-    return initializeGoogle()
-      .then(() => {
-        const instance = gapi.auth2.getAuthInstance();
-        return instance.isSignedIn.get()
-          ? instance.currentUser.get()
-          : instance.signIn();
+    return this.googlePlus.login({});
+    // return initializeGoogle()
+    //   .then(() => {
+    //     const instance = gapi.auth2.getAuthInstance();
+    //     return instance.isSignedIn.get()
+    //       ? instance.currentUser.get()
+    //       : instance.signIn();
+    //   })
+    //   .then(createGoogleProfile);
+  }
+
+
+  login() {
+    this.googlePlus.login({})
+      .then(res => {
+        console.log(res);
+        // this.displayName = res.displayName;
+        // this.email = res.email;
+        // this.familyName = res.familyName;
+        // this.givenName = res.givenName;
+        // this.userId = res.userId;
+        // this.imageUrl = res.imageUrl;
+
+        // this.isLoggedIn = true;
       })
-      .then(createGoogleProfile);
+      .catch(err => console.error(err));
   }
 
   googleSignout(): Promise<any> {
