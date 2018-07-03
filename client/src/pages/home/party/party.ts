@@ -4,7 +4,11 @@ import { Party } from '../../../interfaces/Party';
 import { PartyProvider } from '../../../providers/party/party';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
+<<<<<<< HEAD
 import { UploadComponent } from '../../../components/upload/upload';
+=======
+import { RateComponent } from '../../../components/rate/rate';
+>>>>>>> 5be2b497811d950a915b76073a654a18502a682c
 
 @IonicPage()
 @Component({
@@ -58,6 +62,12 @@ export class PartyPage {
 
   goToUpload() {
   this.modalCtrl.create(UploadComponent, { party: this.party }).present();   
+  }
+  
+  goToRate() {
+    const { party } = this;
+    const partyModal = this.modalCtrl.create(RateComponent, { party })
+    partyModal.present();
   }
 
 }

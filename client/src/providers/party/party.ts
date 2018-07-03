@@ -53,5 +53,9 @@ export class PartyProvider {
   uploadToStory(data) {
     return app.service('media').create(data);
   }
+  
+  rateParty(data){
+    return app.service('party-ratings').create(data);
+  }
 
 }
