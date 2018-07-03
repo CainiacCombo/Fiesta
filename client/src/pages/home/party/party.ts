@@ -4,6 +4,7 @@ import { Party } from '../../../interfaces/Party';
 import { PartyProvider } from '../../../providers/party/party';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
+import { RateComponent } from '../../../components/rate/rate';
 
 @IonicPage()
 @Component({
@@ -44,6 +45,12 @@ export class PartyPage {
   getPartyInfo() {
     const { party } = this;
     const partyModal = this.modalCtrl.create('PartyInfoPage', { party })
+    partyModal.present();
+  }
+
+  goToRate() {
+    const { party } = this;
+    const partyModal = this.modalCtrl.create(RateComponent, { party })
     partyModal.present();
   }
 
