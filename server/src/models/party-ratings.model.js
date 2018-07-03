@@ -9,6 +9,9 @@ module.exports = function (app) {
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    party_id: {
+      type: DataTypes.UUID
     }
   }, {
     hooks: {
