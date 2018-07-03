@@ -50,6 +50,10 @@ export class PartyProvider {
     return app.service('parties').patch(partyId, { phoneNumber });
   }
 
+  uploadToStory(data) {
+    return app.service('media').create(data);
+  }
+  
   rateParty(data){
     return app.service('party-ratings').create(data);
   }
