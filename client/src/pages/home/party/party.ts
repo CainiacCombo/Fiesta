@@ -4,6 +4,7 @@ import { Party } from '../../../interfaces/Party';
 import { PartyProvider } from '../../../providers/party/party';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
+import { UploadComponent } from '../../../components/upload/upload';
 
 @IonicPage()
 @Component({
@@ -38,7 +39,7 @@ export class PartyPage {
       party_id: this.party.id,
     }
     messages.push(newMessage.text);
-    // this.partyProvider.createMessage(newMessage)
+    this.partyProvider.createMessage(newMessage)
   }
 
   getPartyInfo() {
@@ -53,6 +54,10 @@ export class PartyPage {
     party.start_date = start;
     const partyModal = this.modalCtrl.create('PartyInfoPage', { party })
     partyModal.present();
+  }
+
+  goToUpload() {
+  this.modalCtrl.create(UploadComponent, { party: this.party }).present();   
   }
 
 }
