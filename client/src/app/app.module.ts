@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+import { Contacts } from '@ionic-native/contacts';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -49,11 +51,12 @@ import { reducers } from '../store/reducers';
     MyApp,
   ],
   providers: [
-    StatusBar,
+    Contacts,
     SplashScreen,
+    StatusBar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    PartyProvider
-  ]
+    PartyProvider,
+  ],
 })
 export class AppModule {}
