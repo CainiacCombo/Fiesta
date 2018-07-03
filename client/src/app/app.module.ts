@@ -6,6 +6,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Contacts } from '@ionic-native/contacts';
+import { GooglePlus } from '@ionic-native/google-plus';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -52,6 +53,7 @@ import { reducers } from '../store/reducers';
   ],
   providers: [
     Contacts,
+    GooglePlus,
     SplashScreen,
     StatusBar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
