@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/Observable/forkJoin';
-import { timer } from 'rxjs/Observable/timer';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { timer } from 'rxjs/observable/timer';
 import { map } from 'rxjs/operators/map';
 
 import { Party } from '../../../interfaces/Party';
