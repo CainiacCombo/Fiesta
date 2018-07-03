@@ -7,6 +7,7 @@ const groupUsers = require('./group-users/group-users.service.js');
 const media = require('./media/media.service.js');
 const dm = require('./dm/dm.service.js');
 const friendRequests = require('./friend-requests/friend-requests.service.js');
+const partyRatings = require('./party-ratings/party-ratings.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(dm);
@@ -18,4 +19,5 @@ module.exports = function (app) {
   app.configure(groupUsers);
   app.configure(media);
   app.configure(friendRequests);
+  app.configure(partyRatings);
 };
