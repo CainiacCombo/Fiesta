@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { PartyProvider } from '../../../providers/party/party';
 import { Party } from '../../../interfaces/Party';
+import moment from 'moment';
 
 
 @IonicPage()
@@ -22,5 +23,10 @@ export class PartyInfoPage {
   closeModal() {
     this.view.dismiss();
   }
+
+  parseDate(date) {
+    return moment(date).format('MMMM Do YYYY, h:mm a');
+  }
+
 
 }
