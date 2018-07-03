@@ -11,10 +11,12 @@ module.exports = function (app) {
       allowNull: false
     },
     party_id: {
-      type: DataTypes.UUID
+      type: DataTypes.UUID,
+      allowNull: false
     },
     user_id: {
-      type: DataTypes.UUID
+      type: DataTypes.UUID,
+      allowNull: false
     }
   }, {
     hooks: {
