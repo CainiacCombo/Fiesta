@@ -12,6 +12,9 @@ module.exports = function (app) {
     },
     party_id: {
       type: DataTypes.UUID
+    },
+    user_id: {
+      type: DataTypes.UUID
     }
   }, {
     hooks: {
