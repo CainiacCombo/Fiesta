@@ -6,6 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
@@ -53,7 +55,9 @@ import { reducers } from '../store/reducers';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    PartyProvider
+    PartyProvider,
+    FileTransfer,
+    Camera,
   ]
 })
 export class AppModule {}
