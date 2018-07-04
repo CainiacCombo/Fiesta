@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RatingComponent implements OnInit {
 
-  @Input('rating') rating: number
+  @Input('rating')
+  rating: number
   stars: any[] = []
   emptyStars: any[] = []
 
