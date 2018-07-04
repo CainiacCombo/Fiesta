@@ -91,4 +91,5 @@
         <string>We allow users to import their contacts to easily invite people to an event</string>
     </config-file>
     <engine name="ios" spec="~4.5.4" />
+    <engine name="browser" spec="~5.0.3" />
 </widget>
