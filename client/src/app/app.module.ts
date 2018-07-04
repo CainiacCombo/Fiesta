@@ -9,6 +9,8 @@ import { Contacts } from '@ionic-native/contacts';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
@@ -59,6 +61,9 @@ import { reducers } from '../store/reducers';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     PartyProvider,
-  ],
+    FileTransfer,
+    Camera,
+    GooglePlus,
+  ]
 })
 export class AppModule {}
