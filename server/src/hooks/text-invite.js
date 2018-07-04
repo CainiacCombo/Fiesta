@@ -9,7 +9,7 @@ module.exports = (options = {}) => async context => {
 
   if (phoneNumber) {
     await twilio.messages.create({
-      to: `+1${phoneNumber}`,
+      to: phoneNumber,
       from: twilio_number,
       body: 'You have been invited to a party on ¡Fiesta!',
     });
