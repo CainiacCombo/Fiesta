@@ -7,13 +7,15 @@ import { AppState } from '../../../store/reducers';
 import { AddUserParties } from '../../../store/parties/parties.actions';
 import { PartyProvider } from '../../../providers/party/party'
 
+declare var google;
+
 @IonicPage()
 @Component({
   selector: 'page-create-party',
   templateUrl: 'create-party.html',
 })
 export class CreatePartyPage implements OnDestroy {
-
+  autocomplete:any 
   name: string = ''
   location: string = ''
   startDate: string = ''
@@ -44,18 +46,27 @@ export class CreatePartyPage implements OnDestroy {
     this.userSub.unsubscribe();
   }
 
+  ionViewDidLoad(){
+    var input = document.querySelector('#location input');
+    this.autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['address']
+    });
+  }
+
   onSubmit() {
     const { user, name, location, startDate, endDate, startTime, endTime, isPrivate } = this;
     const start = this.getDate(startDate, startTime);
     const end = this.getDate(endDate, endTime);
+    const placeLat = this.autocomplete.getPlace().geometry.location.lat();
+    const placeLong = this.autocomplete.getPlace().geometry.location.lng();
     const party = {
       name: name,
       location: location,
       start_date: start,
       end_date: end,
       is_private: isPrivate,
-      longitude: 'haha nope',
-      latitude: 'you thought',
+      longitude: placeLat,
+      latitude: placeLong,
       userId: user.id,
     };
 
