@@ -3,7 +3,7 @@
     <name>¡Fiesta!</name>
     <description>An awesome party app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Cainiac Combo</author>
-    <content original-src="index.html" src="http://172.24.4.60:8100" />
+    <content original-src="index.html" src="http://172.24.6.45:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -84,7 +84,8 @@
     <allow-navigation href="http://172.24.4.60:8100" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
+    <allow-navigation href="http://172.24.6.45:8100" />
     <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="^7.1.0" />
-    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <engine name="android" spec="7.1.0" />
+    <engine name="browser" spec="5.0.3" />
 </widget>

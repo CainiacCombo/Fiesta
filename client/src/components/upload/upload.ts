@@ -16,6 +16,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   imageFileName: any;
   userId: string;
   userSub: Subscription
+  dataUri: String;
 
 
   constructor(public navCtrl: NavController,
@@ -53,21 +54,27 @@ export class UploadComponent implements OnInit, OnDestroy {
   getImage() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // this.imageURI = imageData;
-      this.partyProvider.uploadToStory({
-        dataUri: imageData,
-        userId: this.userId,
-        // party_id: ,/
-      })
+      this.dataUri = `data:image/jpeg;base64,${imageData}`
     }, (err) => {
       console.log(err);
       this.presentToast(err);
     });
+  }
+
+  upload() {
+    this.partyProvider.uploadToStory({
+      dataUri: this.dataUri,
+      userId: this.userId,
+      party_id: 1
+    })
+    .then(() => this.navCtrl.pop())
   }
 
 }
