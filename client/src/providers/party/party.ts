@@ -3,11 +3,6 @@ import { Party } from '../../interfaces/Party';
 import { FeathersPayload } from '../../interfaces/FeathersRespose';
 import { app } from '../../feathers';
 
-const normalizePhoneNumber = (phoneNumber: string): string | false =>
-  !/^1?[\-\. ]?\(?(\d{3})\)?[\-\. ]?\d{3}[\-\. ]?\d{4}$/.test(phoneNumber)
-    ? phoneNumber.replace(/\D/g, '')
-    : false;
-
 type PartiesResponse = FeathersPayload<Party>;
 
 @Injectable()
@@ -52,12 +47,7 @@ export class PartyProvider {
   }
 
   inviteUser(partyId, phoneNumber) {
-    phoneNumber = `+1${normalizePhoneNumber(phoneNumber)}`;
-
-    if (!phoneNumber) {
-      return Promise.reject(new Error('Invalid Phone Number'));
-    }
-
+    phoneNumber = `+1${phoneNumber.replace(/\D/g, '')}`
     return app.service('parties').patch(partyId, { phoneNumber });
   }
 
