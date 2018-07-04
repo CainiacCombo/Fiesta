@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
@@ -14,6 +14,7 @@ import { PartyProvider } from '../../../providers/party/party'
 })
 export class CreatePartyPage implements OnDestroy {
 
+  @ViewChild('destination') locationRef: ElementRef
   name: string = ''
   location: string = ''
   startDate: string = ''
@@ -38,6 +39,13 @@ export class CreatePartyPage implements OnDestroy {
     this.userSub = this.store.select('user').subscribe((user) => {
       this.user = user;
     });
+    console.log(this.locationRef);
+    var options = {
+      types: ['address']
+    };
+
+    var input = document.getElementById('location');
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
   }
 
   ngOnDestroy() {
