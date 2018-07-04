@@ -1,7 +1,7 @@
 const twilio = require('../twilio');
 const config = require('../../config/default.json');
 
-const { twilio_number } = process.env.TWILIO_NUMBER || config.twilio;
+const twilio_number = process.env.TWILIO_NUMBER || config.twilio.twilio_number;
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => async context => {
