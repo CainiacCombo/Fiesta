@@ -7,6 +7,7 @@
 <ion-content padding>
   <div>
     <ion-input [(ngModel)]="phoneNumber" placeholder="Phone number"></ion-input>
+    <button (click)="getContact()" ion-button>Pick From Contacts</button>
     <button (click)="addNumber()" ion-button>Add Number</button>
   </div>
   <button (click)="onDone()" ion-button full>Done</button>
