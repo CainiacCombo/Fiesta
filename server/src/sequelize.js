@@ -63,7 +63,7 @@ module.exports = function (app) {
     });
 
     // Sync to the database
-    sequelize.sync();
+    sequelize.sync({ force: process.env.NODE_ENV === 'production' });
 
     return result;
   };
