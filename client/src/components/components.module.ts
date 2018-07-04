@@ -8,6 +8,7 @@ import { RateComponent } from './rate/rate';
 	declarations: [
     RatingComponent,
     RateComponent,
+    UploadComponent
   ],
 	imports: [
     IonicModule,
@@ -15,9 +16,11 @@ import { RateComponent } from './rate/rate';
 	exports: [
     RatingComponent,
     RateComponent,
+    UploadComponent
   ],
   entryComponents: [
     RateComponent,
+    UploadComponent
   ]
 })
 export class ComponentsModule {}
