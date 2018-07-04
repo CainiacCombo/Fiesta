@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.fiesta.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>¡Fiesta!</name>
     <description>An awesome party app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Cainiac Combo</author>
-    <content original-src="index.html" src="http://172.24.4.60:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -84,6 +84,9 @@
     <allow-navigation href="http://172.24.4.60:8100" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
-    <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="^7.1.0" />
+    <config-file parent="NSContactsUsageDescription" target="*-Info.plist">
+        <string>We allow users to import their contacts to easily invite people to an event</string>
+    </config-file>
+    <engine name="ios" spec="~4.5.4" />
 </widget>
