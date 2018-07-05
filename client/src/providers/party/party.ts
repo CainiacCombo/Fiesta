@@ -41,14 +41,14 @@ export class PartyProvider {
     .then(async response => {
       const messages = await Promise.all(response.data.map(async groupMessage => {
         const user = await app.service('users').get(groupMessage.message.user_id)
-        return { 
+        return {
           ...groupMessage.message,
           username: user.username,
         }
       }))
       return {
-        ...response, 
-        data: messages 
+        ...response,
+        data: messages
       }
     })
   }
@@ -76,6 +76,17 @@ export class PartyProvider {
 
   uploadToStory(data) {
     return app.service('media').create(data);
+  }
+
+  getPartyMedia(party: Party) {
+    return app.service('media').find({
+      query: {
+        party_id: party.id,
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    }).then(media => ({ ...party, media }));
   }
 
 }
