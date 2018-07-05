@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IonicPage, App, NavController, ModalController } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { User } from '../../../interfaces/User';
+import { Party } from '../../../interfaces/Party';
 
 import { AppState } from '../../../store/reducers';
 import { Logout } from '../../../store/user/user.actions';
@@ -22,6 +24,8 @@ export class ProfilePage implements OnInit, OnDestroy {
   user: User
   userSub: Subscription
 
+  parties$: Observable<Party[]>
+
   constructor(
     public app: App,
     public navCtrl: NavController,
@@ -34,6 +38,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.userSub = this.store.select('user').subscribe((user) => {
       this.user = user;
     });
+    this.parties$ = this.store.select('parties');
   }
 
   ngOnDestroy() {

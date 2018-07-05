@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button (click)="viewCtrl.dismiss()" ion-button>Close</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides [initialSlide]="startingIndex">
+    <ion-slide *ngFor="let item of media">
+      <img [src]="item.link" [alt]="item.caption" />
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -31,27 +31,13 @@
       <div class="container">
         <ion-col (click)="goToFriendsList()">2 <br/> Friends</ion-col>
         <ion-col>1 <br/> Hosted Parties</ion-col>
-        <ion-col>0 <br/> Parties Attended</ion-col>
+        <ion-col>{{(parties$ | async)?.length}} <br/> Parties Attended</ion-col>
       </div>
     </ion-row>
   </div>
   <ion-list>
-    <ion-item>
-      <div>
-        <div class="container">
-          <h2>PartyName</h2>
-          <p class="people">17 people</p>
-        </div>
-        <p>Date</p>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-      </div>
-        <ion-thumbnail item-end>
-          <img src="img/thumbnail-totoro.png">
-        </ion-thumbnail>
+    <ion-item *ngFor="let party of parties$ | async">
+      <party-story [party]="party"></party-story>
     </ion-item>
   </ion-list>
 </ion-content>
