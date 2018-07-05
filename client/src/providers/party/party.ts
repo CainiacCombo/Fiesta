@@ -56,14 +56,14 @@ export class PartyProvider {
         party_id,
         $sort: {createdAt: -1},
         $limit: 15,
-      } 
+      },
     })
     .then(async (response) => ({
       ...response,
-      data: await Promise.all(response.data.map(this.getGroupMessageUser)) 
+      data: await Promise.all(response.data.map(this.getGroupMessageUser))
     }))
   }
-  
+
   getGroupMessageUser(groupMessage) {
     return app.service('users').get(groupMessage.message.user_id)
     .then(user => ({
@@ -95,6 +95,17 @@ export class PartyProvider {
 
   uploadToStory(data) {
     return app.service('media').create(data);
+  }
+
+  getPartyMedia(party: Party) {
+    return app.service('media').find({
+      query: {
+        party_id: party.id,
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    }).then(media => ({ ...party, media }));
   }
 
 }

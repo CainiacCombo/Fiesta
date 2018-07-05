@@ -35,19 +35,9 @@
     </ion-row>
   </div>
   <!-- profile timeline -->
-  <ion-list >
-    <ion-item *ngFor="let party of parties">
-      <div>
-        <div class="container">
-          <h2>{{party.name}}</h2>
-          <p class="people">{{party.user_count}}</p>
-        </div>
-        <p>{{parseDate(party.start_date)}}</p>
-        <rating [rating]="party.rating"></rating>
-      </div>
-        <ion-thumbnail item-end>
-          <img src="img/thumbnail-totoro.png">
-        </ion-thumbnail>
+  <ion-list>
+    <ion-item *ngFor="let party of parties$ | async">
+      <party-story [party]="party"></party-story>
     </ion-item>
   </ion-list>
 </ion-content>
