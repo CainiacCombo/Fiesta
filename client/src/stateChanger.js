@@ -30,6 +30,32 @@
           // pause all aniation, transition to lobby
         },
       }),
+  };
+  function aState(name) {
+    return {
+      exit(toState) {
+        console.log(`${this.getName()} transitioning to ${toState.getName()}`);
+      },
+      enter(fromState) {
+        console.log(`Entered ${this.getName()} from to ${fromState.getName()}`);
+      },
+      getName() {
+        return name;
+      },
+      // transition methods: override per state as needed //
+      toLobby() {
+        // do nothing //
+      },
+      play() {
+        // do nothing //
+      },
+      pause() {
+        // do nothing //
+      },
+      end() {
+        // do nothing //
+      }
+    };
   }
 }
 })(window);
