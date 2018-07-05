@@ -22,6 +22,14 @@
           }, 1000);
         },
       }),
+      playing: _.assign(aState('playing'), {
+        pause() {
+          // pause all animation, show stats?
+        },
+        end() {
+          // pause all aniation, transition to lobby
+        },
+      }),
   }
 }
 })(window);
