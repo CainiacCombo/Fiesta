@@ -8,9 +8,14 @@ describe('\'create-group-message\' hook', () => {
   beforeEach(() => {
     app = feathers();
 
+    app.use('/group-messages', {
+      async create(newGroupMessage) {
+        return newGroupMessage;
+      }
+    });
     app.use('/dummy', {
-      async get(id) {
-        return { id };
+      async create(newDummy) {
+        return { ...newDummy, message_id: 3 };
       }
     });
 
@@ -20,8 +25,13 @@ describe('\'create-group-message\' hook', () => {
   });
 
   it('runs the hook', async () => {
-    const result = await app.service('dummy').get('test');
+    const data = { user_id: 1, party_id: 2 };
+    const result = await app.service('dummy').create(data);
+    const expect = {
+      ...data,
+      message_id: 3,
+    };
     
-    assert.deepEqual(result, { id: 'test' });
+    assert.deepEqual(result, expect);
   });
 });
