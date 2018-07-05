@@ -7,16 +7,11 @@
     const states = {
       incept: Object.assign(aState('incept'), {
         play() {
-          // get user's high scores, then go to lobby //
-
           setState(states.lobby);
         }
       }),
       lobby: _.assign(aState('lobby'), {
         play() {
-          // async...
-          // do all game start shit, then when everything is init,
-          // set state to playing
           setTimeout(function () {
             setState(states.playing);
           }, 1000);
@@ -24,10 +19,8 @@
       }),
       playing: _.assign(aState('playing'), {
         pause() {
-          // pause all animation, show stats?
         },
         end() {
-          // pause all aniation, transition to lobby
         },
       }),
   };
@@ -42,18 +35,13 @@
       getName() {
         return name;
       },
-      // transition methods: override per state as needed //
       toLobby() {
-        // do nothing //
       },
       play() {
-        // do nothing //
       },
       pause() {
-        // do nothing //
       },
       end() {
-        // do nothing //
       }
     };
   }
