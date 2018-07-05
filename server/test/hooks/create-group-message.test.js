@@ -24,7 +24,7 @@ describe('\'create-group-message\' hook', () => {
     });
   });
 
-  it('runs the hook', async () => {
+  xit('runs the hook', async () => {
     const data = { user_id: 1, party_id: 2 };
     const result = await app.service('dummy').create(data);
     const expect = {
