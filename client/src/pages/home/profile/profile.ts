@@ -7,8 +7,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { User } from '../../../interfaces/User';
 import { Party } from '../../../interfaces/Party';
 
-import { Observable } from 'rxjs/Observable';
-
 import { AppState } from '../../../store/reducers';
 import { Logout } from '../../../store/user/user.actions';
 
@@ -29,15 +27,13 @@ export class ProfilePage implements OnInit, OnDestroy {
   userSub: Subscription
   parties$: Observable<Party[]>
 
-  parties$: Observable<Party[]>
-
   constructor(
     public app: App,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public userProvider: UserProvider,
     private store: Store<AppState>,
-  ) { 
+  ) {
     this.parties$ = store.select('parties');
     this.parties$.subscribe((parties) => {
       this.parties = parties;
