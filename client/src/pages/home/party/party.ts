@@ -1,31 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Party } from '../../../interfaces/Party';
+import { Message } from '../../../interfaces/Message';
+  
 import { PartyProvider } from '../../../providers/party/party';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
 import { RateComponent } from '../../../components/rate/rate';
 import { UploadComponent } from '../../../components/upload/upload';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
   selector: 'page-party',
   templateUrl: 'party.html',
 })
-export class PartyPage {
+export class PartyPage implements OnInit, OnDestroy{
 
-  messages: string[] = [];
+  messages: Message[] = [];
   message: string = '';
   party: Party;
-  userid: string;
+  user: any = {};
+  userSub: Subscription;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public partyProvider: PartyProvider,
     public modalCtrl: ModalController,
-    store: Store<AppState>,) {
+    private store: Store<AppState>,) {
     this.party = navParams.get('party')
-    store.select('user').take(1).subscribe(user => this.userid = user.id);
+  }
+
+  ngOnInit() {
+    const party = this.party;
+    this.partyProvider.getPartyMessages(party.id)
+    .then(response => {
+      this.messages = response.data
+    });
+
+    this.userSub = this.store.select('user').subscribe(user => {
+      console.log(JSON.stringify(user))
+      this.user = user
+    });
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe()
   }
 
   exitChat() {
@@ -36,11 +56,13 @@ export class PartyPage {
     const { message, messages } = this;
     const newMessage = {
       text: message,
-      user_id: this.userid,
+      user_id: this.user.id,
       party_id: this.party.id,
-    }
-    messages.push(newMessage.text);
+    };
+
     this.partyProvider.createMessage(newMessage)
+    .then(message => messages.push(message))
+    .catch(() => console.log('ERROR WHEN CREATING MESSAGE'))
   }
 
   getPartyInfo() {
