@@ -12,6 +12,16 @@
           setState(states.lobby);
         }
       }),
-  },
+      lobby: _.assign(aState('lobby'), {
+        play() {
+          // async...
+          // do all game start shit, then when everything is init,
+          // set state to playing
+          setTimeout(function () {
+            setState(states.playing);
+          }, 1000);
+        },
+      }),
+  }
 }
 })(window);
