@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Party } from '../../interfaces/Party';
+import { Message } from '../../interfaces/Message';
 import { FeathersPayload } from '../../interfaces/FeathersRespose';
 import { app } from '../../feathers';
 
 type PartiesResponse = FeathersPayload<Party>;
+type MessagesResponse = FeathersPayload<Message>;
 
 @Injectable()
 export class PartyProvider {
@@ -32,6 +34,23 @@ export class PartyProvider {
       app.service('group-users').find({ query: { party_id: party.id } })
         .then(groupUser => groupUser.user_id === user_id)
     ));
+  }
+
+  getPartyMessages(party_id): Promise<MessagesResponse> {
+    return app.service('group-messages').find({query: {party_id} })
+    .then(async response => {
+      const messages = await Promise.all(response.data.map(async groupMessage => {
+        const user = await app.service('users').get(groupMessage.message.user_id)
+        return { 
+          ...groupMessage.message,
+          username: user.username,
+        }
+      }))
+      return {
+        ...response, 
+        data: messages 
+      }
+    })
   }
 
   joinParty(user_id, party_id) {
