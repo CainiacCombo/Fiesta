@@ -37,20 +37,25 @@ export class PartyProvider {
   }
 
   getPartyMessages(party_id): Promise<MessagesResponse> {
-    return app.service('group-messages').find({query: {party_id} })
-    .then(async response => {
-      const messages = await Promise.all(response.data.map(async groupMessage => {
-        const user = await app.service('users').get(groupMessage.message.user_id)
-        return {
-          ...groupMessage.message,
-          username: user.username,
-        }
-      }))
-      return {
-        ...response,
-        data: messages
-      }
+    return app.service('group-messages').find({
+      query: {
+        party_id,
+        $sort: {createdAt: -1},
+        $limit: 15,
+      },
     })
+    .then(async (response) => ({
+      ...response,
+      data: await Promise.all(response.data.map(this.getGroupMessageUser))
+    }))
+  }
+
+  getGroupMessageUser(groupMessage) {
+    return app.service('users').get(groupMessage.message.user_id)
+    .then(user => ({
+      ...groupMessage.message,
+      username: user.username,
+    }))
   }
 
   joinParty(user_id, party_id) {
