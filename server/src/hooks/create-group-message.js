@@ -10,7 +10,7 @@ module.exports = function (options = {}) {
         message_id,
       });
       const groupMessage = await context.app.service('group-messages').get(id);
-      context.service('group-messages').emit('new-message', groupMessage);
+      context.app.service('group-messages').emit('new-message', groupMessage);
     }
     return context;
   };
