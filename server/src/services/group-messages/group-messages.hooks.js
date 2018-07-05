@@ -17,7 +17,7 @@ module.exports = {
     all: [],
     find: [ getGroupMessages() ],
     get: [ getGroupMessages() ],
-    create: [],
+    create: [ getGroupMessages() ],
     update: [],
     patch: [],
     remove: []
