@@ -77,7 +77,8 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-contacts": {},
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.297220851081-gntof27b2e1gb7279qcak31o1fjoeohc"
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.297220851081-gntof27b2e1gb7279qcak31o1fjoeohc",
+        "WEB_APPLICATION_CLIENT_ID": "508966744275-71kg0n4705b07hg8eembqfi4jc84q10q.apps.googleusercontent.com"
       },
       "cordova-plugin-camera": {},
       "cordova-plugin-file": {},

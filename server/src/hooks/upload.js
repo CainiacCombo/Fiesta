@@ -2,9 +2,9 @@ const cloudinary = require('cloudinary');
 const config = require('../../config/default.json');
 
 cloudinary.config({
-  cloud_name: config.cloudinary.cloud_name,
-  api_key: config.cloudinary.api_key,
-  api_secret: config.cloudinary.api_secret,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || config.cloudinary.cloud_name,
+  api_key: process.env.CLOUDINARY_API_KEY || config.cloudinary.api_key,
+  api_secret: process.env.CLOUDINARY_API_SECRET || config.cloudinary.api_secret,
 });
 
 const upload = imgPath => new Promise((resolve, reject) =>
