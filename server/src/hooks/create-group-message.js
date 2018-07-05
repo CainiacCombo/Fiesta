@@ -4,11 +4,13 @@ module.exports = function (options = {}) {
     const {user_id, party_id } = context.data;
     const message_id = context.result.id;
     if (party_id) {
-      await context.app.service('group-messages').create({
+      const { id } = await context.app.service('group-messages').create({
         user_id, 
         party_id,
         message_id,
       });
+      const groupMessage = await context.app.service('group-messages').get(id);
+      context.service('group-messages').emit('new-message', groupMessage);
     }
     return context;
   };
