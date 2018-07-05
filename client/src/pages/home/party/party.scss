@@ -1,17 +1,37 @@
 page-party {
-    .chat-message {
+  .list {
+    overflow: auto;
+  }
+    .right-bubble{
       position: relative;
       float: right;
       margin-right: 30px;
       width: 180px;
       min-height: 40px;
-      border-radius: .4em;
+      border-radius: 4em;
       border-bottom-right-radius: 2px;
       background-color: lightblue;
-      padding: 5px 15px 15px;
+      padding: 8px 15px 15px;
     }
       span.msg-name {
         font-size: 12px;
-        font-weight: bold;
       }
+    .message {
+      font: 16px;
+      color: black;
+      font-weight: bold;
+      text-align: left;
+    }
+    .left-bubble {
+      position: relative;
+      float: left;
+      margin-right: 30px;
+      width: 180px;
+      min-height: 40px;
+      border-radius: 2em;
+      border-bottom-left-radius: 2px;;
+      background-color: lightcoral;
+      padding: 5px 15px 15px;
+    }
+    
 }
