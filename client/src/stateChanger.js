@@ -64,5 +64,21 @@
     _state = toState;
     _state.enter(fromState);
   }
+  _state = states.incept;
+
+  return {
+    toLobby() {
+      _state.toLobby();
+    },
+    play() {
+      _state.play();
+    },
+    pause() {
+      _state.pause();
+    },
+    end() {
+      _state.end();
+    }
+  };
 }
 })(window);
