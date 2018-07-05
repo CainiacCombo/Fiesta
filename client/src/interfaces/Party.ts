@@ -1,3 +1,5 @@
+import { Media } from './Media';
+
 export interface Party {
   id: string
   start_date: string
@@ -9,4 +11,5 @@ export interface Party {
   rating: number
   is_private: boolean
   user_count: number
+  media: Media[]
 }
