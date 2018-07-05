@@ -1,35 +1,32 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title (click)="getPartyInfo()">{{party.name}}</ion-title>
     <ion-buttons right>
       <button (click)="goToRate()"><ion-icon name="star"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-    <div ion-list class="list">
-        <ion-item *ngFor="let message of messages" no-lines>
-          <div class="right-bubble" *ngIf="message.user_id == user.id">
-            <p text-wrap class="message">{{message.text}}</p>
-            <span class="msg-name">{{user.username}}</span>
-          </div>
-          <div class="left-bubble" *ngIf="message.user_id != user.id">
-            <p text-wrap class="message">{{message.text}}</p>
-            <span class="msg-name">{{message.username}}</span>
-          </div>
-        </ion-item>
+  <div ion-list class="list">
+    <ion-item *ngFor="let message of messages" no-lines>
+      <div class="right-bubble" *ngIf="message.user_id == user.id">
+        <p text-wrap class="message">{{message.text}}</p>
+        <span class="msg-name">{{user.username}}</span>
       </div>
+      <div class="left-bubble" *ngIf="message.user_id != user.id">
+        <p text-wrap class="message">{{message.text}}</p>
+        <span class="msg-name">{{message.username}}</span>
+      </div>
+    </ion-item>
+  </div>
 </ion-content>
 
 <ion-footer>
   <ion-grid>
     <ion-row>
       <ion-col col-8>
-        <ion-textarea for=#message [(ngModel)]="message" class="chat_input" placeholder="Send Chat"></ion-textarea> 
+        <ion-textarea for=#message [(ngModel)]="message" class="chat_input" placeholder="Send Chat"></ion-textarea>
       </ion-col>
       <ion-col col-2>
         <button ion-button small (click)="onSend()">send</button>

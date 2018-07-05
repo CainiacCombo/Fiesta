@@ -1,0 +1,14 @@
+<ion-card class="party" (click)="goToParty(party)">
+  <ion-card-header>
+    <div class="header flex">
+      <h1 no-margin>{{party.name}}</h1>
+      <span>{{getPartyStartDate(party.start_time)}}</span>
+    </div>
+    <rating [rating]="party.rating" class="party__rating"></rating>
+  </ion-card-header>
+  <ion-card-content class="flex">
+    <div *ngFor="let media of party.media | slice:0:3" class="party__media">
+      <img [src]="media.link" alt="media.caption" />
+    </div>
+  </ion-card-content>
+</ion-card>
