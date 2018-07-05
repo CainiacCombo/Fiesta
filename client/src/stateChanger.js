@@ -57,5 +57,12 @@
       }
     };
   }
+  function setState(toState) {
+    const fromState = _state;
+
+    _state.exit(toState);
+    _state = toState;
+    _state.enter(fromState);
+  }
 }
 })(window);
