@@ -9,6 +9,7 @@ import { AppState } from '../../../store/reducers';
 import { RateComponent } from '../../../components/rate/rate';
 import { UploadComponent } from '../../../components/upload/upload';
 import { Subscription } from 'rxjs/Subscription';
+import { app } from '../../../feathers';
 
 @IonicPage()
 @Component({
@@ -23,11 +24,13 @@ export class PartyPage implements OnInit, OnDestroy{
   user: any = {};
   userSub: Subscription;
 
-  constructor(public navCtrl: NavController, 
+  constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams,
     public partyProvider: PartyProvider,
     public modalCtrl: ModalController,
-    private store: Store<AppState>,) {
+    private store: Store<AppState>,
+  ) {
     this.party = navParams.get('party')
   }
 
@@ -39,9 +42,17 @@ export class PartyPage implements OnInit, OnDestroy{
     });
 
     this.userSub = this.store.select('user').subscribe(user => {
-      console.log(JSON.stringify(user))
-      this.user = user
+      this.user = user;
     });
+
+    app.service('group-messages').on('created', (newMessage) => {
+      this.partyProvider.getGroupMessageUser(newMessage)
+      .then(message => {
+        if (message.user_id != this.user.id) {
+          this.messages.push(message);
+        }
+      })
+    })
   }
 
   ngOnDestroy() {
