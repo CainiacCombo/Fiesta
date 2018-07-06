@@ -29,5 +29,17 @@ profile {
   .people{
       margin-left: auto;
   }
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  rating .star {
+    font-size: 2.5rem;
+  }
+
 }
 
