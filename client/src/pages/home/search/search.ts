@@ -11,6 +11,7 @@ import { Party } from '../../../interfaces/Party';
 import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
+import { UserProvider } from '../../../providers/user/user';
 import { AddUserParties } from '../../../store/parties/parties.actions';
 import { ProfileComponent } from '../../../components/profile/profile';
 
@@ -34,6 +35,7 @@ export class SearchPage {
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public partyProvider: PartyProvider,
+    public userProvider: UserProvider,
     private store: Store<AppState>,
   ) {
     this.parties$ = store.select('parties');
@@ -45,7 +47,7 @@ export class SearchPage {
     this.partyProvider.getPartiesByName(this.query)
       .then(parties => this.parties = parties.data);
 
-    this.partyProvider.getUsersByUsername(this.query)
+    this.userProvider.getUsersByUsername(this.query)
     .then(users => this.users = users.data);
   }
 
@@ -53,7 +55,7 @@ export class SearchPage {
     this.partyProvider.getParties()
       .then(parties => this.parties = parties.data);
 
-    this.partyProvider.getUsers()
+    this.userProvider.getUsers()
     .then(users => this.users = users.data);
   }
 
