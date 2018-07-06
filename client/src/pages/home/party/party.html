@@ -7,7 +7,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-menu [content]="partyContent" type="overlay" side="right">
+  <party-sidebar [party]="party"></party-sidebar>
+</ion-menu>
+
+<ion-content padding #partyContent>
   <div ion-list class="list">
     <ion-item *ngFor="let message of messages" no-lines>
       <div class="right-bubble" *ngIf="message.user_id == user.id">

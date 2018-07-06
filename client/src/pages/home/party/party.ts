@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Party } from '../../../interfaces/Party';
 import { Message } from '../../../interfaces/Message';
-  
-import { PartyProvider } from '../../../providers/party/party';
-import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
+import { PartyProvider } from '../../../providers/party/party';
 import { RateComponent } from '../../../components/rate/rate';
 import { UploadComponent } from '../../../components/upload/upload';
-import { Subscription } from 'rxjs/Subscription';
 import { app } from '../../../feathers';
 
 @IonicPage()
@@ -25,7 +25,7 @@ export class PartyPage implements OnInit, OnDestroy{
   userSub: Subscription;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public partyProvider: PartyProvider,
     public modalCtrl: ModalController,
@@ -35,32 +35,26 @@ export class PartyPage implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-    const party = this.party;
-    this.partyProvider.getPartyMessages(party.id)
-    .then(response => {
-      this.messages = response.data
-    });
+    this.partyProvider.getPartyMessages(this.party.id)
+      .then(response => this.messages = response.data);
 
-    this.userSub = this.store.select('user').subscribe(user => {
-      this.user = user;
-    });
+    this.userSub = this.store.select('user').subscribe(user => this.user = user);
 
-    app.service('group-messages').on('created', (newMessage) => {
+    app.service('group-messages').on('created', newMessage =>
       this.partyProvider.getGroupMessageUser(newMessage)
-      .then(message => {
-        if (message.user_id != this.user.id) {
-          this.messages.push(message);
-        }
-      })
-    })
+        .then((message) => {
+          if (message.user_id != this.user.id) {
+            this.messages.push(message);
+          }
+        }));
   }
 
   ngOnDestroy() {
-    this.userSub.unsubscribe()
+    this.userSub.unsubscribe();
   }
 
   exitChat() {
-    this.navCtrl.setRoot('PartyPage')
+    this.navCtrl.setRoot('PartyPage');
   }
 
   onSend() {
@@ -95,9 +89,9 @@ export class PartyPage implements OnInit, OnDestroy{
     const partyModal = this.modalCtrl.create(RateComponent, { party })
     partyModal.present();
   }
-  
+
   goToUpload() {
-  this.modalCtrl.create(UploadComponent, { party: this.party }).present();   
+  this.modalCtrl.create(UploadComponent, { party: this.party }).present();
   }
 
 }
