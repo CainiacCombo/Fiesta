@@ -7,8 +7,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { User } from '../../../interfaces/User';
 import { Party } from '../../../interfaces/Party';
 
-import { Observable } from 'rxjs/Observable';
-
 import { AppState } from '../../../store/reducers';
 import { Logout } from '../../../store/user/user.actions';
 
@@ -27,8 +25,6 @@ export class ProfilePage implements OnInit, OnDestroy {
   user: User
   parties: Array<Party> = []
   userSub: Subscription
-  parties$: Observable<Party[]>
-
   parties$: Observable<Party[]>
 
   constructor(
