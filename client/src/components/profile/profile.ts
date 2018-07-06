@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { App, NavParams, NavController, ViewController, ModalController } from 'ionic-angular';
 import { User } from '../../interfaces/User';
 import { Party } from '../../interfaces/Party';
-import { NavParams } from 'ionic-angular/navigation/nav-params';
 import { UserProvider } from '../../providers/user/user';
+import { AppState } from '../../store/reducers';
+import { FriendsPage } from '../../pages/home/friends/friends';
+import { Logout } from '../../store/user/user.actions';
+import { LoginPage } from '../../pages/login/login';
 
 @Component({
   selector: 'profile',
@@ -11,20 +15,24 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class ProfileComponent implements OnInit {
 
-  text: string;
-  user: User;
+  @Input('user') inUser: User
+  @Input('isUserProfile') isUserProfile: boolean
+  user: User
   parties: Party[] = []
   partiesHosted: Party[] = []
 
   constructor(
+    public app: App,
+    public modalCtrl: ModalController,
+    public navCtrl: NavController,
     public view: ViewController, 
     public navParams: NavParams,
     public userProvider: UserProvider,
-  ){
-    this.user = navParams.get('user');
-  }
+    private store: Store<AppState>,
+  ) { }
 
   ngOnInit() {
+    this.user = this.inUser || this.navParams.get('user');
     this.userProvider.getUserParties(this.user.id)
       .then((parties) => {
         this.parties = parties.data.map(groupUser => groupUser.party);
@@ -32,11 +40,24 @@ export class ProfileComponent implements OnInit {
           .filter(groupUser => groupUser.is_host === true)
           .map(groupUser => groupUser.party);
       });
-      
   }
   
   closeModal() {
     this.view.dismiss();
+  }
+
+  goToFriendsList() {
+    this.navCtrl.push(FriendsPage);
+  }
+
+  goToEditProfile() {
+    this.modalCtrl.create('EditProfilePage').present();
+  }
+
+  signout() {
+    this.userProvider.googleSignout()
+      .then(() => this.app.getRootNav().setRoot(LoginPage, null, { animate: true, direction: 'left' }))
+      .then(() => this.store.dispatch(new Logout()))
   }
 
 }
