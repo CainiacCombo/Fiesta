@@ -12,7 +12,9 @@ module.exports = function (app) {
     },
     match_link: {
       type: DataTypes.STRING,
-      allowNull: false,
+    },
+    party_id: {
+      type: DataTypes.UUID,
     }
   }, {
     hooks: {
