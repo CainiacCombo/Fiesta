@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button (click)="viewCtrl.dismiss()" ion-button>Close</button>
+    </ion-buttons>
+    <ion-title>Create Game</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Game</ion-label>
+    <ion-select [(ngModel)]="name">
+      <ion-option value="match">Match</ion-option>
+    </ion-select>
+  </ion-item>
+  <button (click)="create()" ion-button>Submit</button>
+</ion-content>
