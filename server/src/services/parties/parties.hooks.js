@@ -5,7 +5,6 @@ const textInvite = require('../../hooks/text-invite');
 const convertToBoolean = require('../../hooks/convert-to-boolean');
 const getPartyUsersCount = require('../../hooks/get-party-users-count');
 const addUserHost = require('../../hooks/add-user-host');
-
 const getPartyMedia = require('../../hooks/get-party-media');
 
 module.exports = {

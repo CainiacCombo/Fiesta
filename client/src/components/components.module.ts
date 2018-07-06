@@ -6,6 +6,8 @@ import { RateComponent } from './rate/rate';
 import { PartyStoryComponent } from './party-story/party-story';
 import { MediaComponent } from './media/media';
 import { ProfileComponent } from './profile/profile';
+import { PartySidebarComponent } from './party-sidebar/party-sidebar';
+import { CreateGameComponent } from './create-game/create-game';
 
 @NgModule({
 	declarations: [
@@ -14,7 +16,9 @@ import { ProfileComponent } from './profile/profile';
     UploadComponent,
     PartyStoryComponent,
     MediaComponent,
-    ProfileComponent
+    ProfileComponent,
+    PartySidebarComponent,
+    CreateGameComponent
   ],
 	imports: [
     IonicModule,
@@ -25,7 +29,9 @@ import { ProfileComponent } from './profile/profile';
     UploadComponent,
     PartyStoryComponent,
     MediaComponent,
-    ProfileComponent
+    ProfileComponent,
+    PartySidebarComponent,
+    CreateGameComponent
   ],
   entryComponents: [
     RatingComponent,
@@ -34,6 +40,8 @@ import { ProfileComponent } from './profile/profile';
     PartyStoryComponent,
     MediaComponent,
     ProfileComponent,
+    PartySidebarComponent,
+    CreateGameComponent,
   ],
 })
 export class ComponentsModule {}

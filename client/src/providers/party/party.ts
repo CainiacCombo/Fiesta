@@ -94,4 +94,8 @@ export class PartyProvider {
     }).then(media => ({ ...party, media }));
   }
 
+  createGame(data) {
+    return app.service('games').create(data);
+  }
+
 }

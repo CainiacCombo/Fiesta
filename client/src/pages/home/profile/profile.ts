@@ -33,7 +33,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     public modalCtrl: ModalController,
     public userProvider: UserProvider,
     private store: Store<AppState>,
-  ) { 
+  ) {
     this.parties$ = store.select('parties');
     this.parties$.subscribe((parties) => {
       this.parties = parties;
