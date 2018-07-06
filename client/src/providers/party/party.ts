@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Party } from '../../interfaces/Party';
 import { Message } from '../../interfaces/Message';
-import { User } from '../../interfaces/User';
 import { FeathersPayload } from '../../interfaces/FeathersRespose';
 import { app } from '../../feathers';
 
 type PartiesResponse = FeathersPayload<Party>;
 type MessagesResponse = FeathersPayload<Message>;
-type UsersResponse = FeathersPayload<User>;
 
 @Injectable()
 export class PartyProvider {
@@ -18,22 +16,10 @@ export class PartyProvider {
     return app.service('parties').find({ query });
   }
 
-  getUsers(query?): Promise<UsersResponse> {
-    return app.service('users').find({ query });
-  }
-
   getPartiesByName(name: string): Promise<PartiesResponse> {
     return this.getParties({
       name: {
         $like: `${name}%`,
-      },
-    });
-  }
-
-  getUsersByUsername(username: string): Promise<UsersResponse> {
-    return this.getUsers({
-      username: {
-        $like: `${username}%`,
       },
     });
   }

@@ -3,6 +3,10 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { app } from '../../feathers';
 import { User } from '../../interfaces/User';
 import { GoogleUser } from '../../interfaces/GoogleUser';
+import { FeathersPayload } from '../../interfaces/FeathersRespose';
+
+
+type UsersResponse = FeathersPayload<User>;
 
 const createGoogleProfile = (payload): GoogleUser => ({
   accessToken: payload.accessToken,
@@ -40,6 +44,18 @@ export class UserProvider {
 
   googleSignout() {
     return this.googlePlus.disconnect();
+  }
+
+  getUsers(query?): Promise<UsersResponse> {
+    return app.service('users').find({ query });
+  }
+
+  getUsersByUsername(username: string): Promise<UsersResponse> {
+    return this.getUsers({
+      username: {
+        $like: `${username}%`,
+      },
+    });
   }
 
 }
