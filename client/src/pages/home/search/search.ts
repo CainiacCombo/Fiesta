@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, ModalController } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
@@ -11,7 +11,9 @@ import { Party } from '../../../interfaces/Party';
 import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
+import { UserProvider } from '../../../providers/user/user';
 import { AddUserParties } from '../../../store/parties/parties.actions';
+import { ProfileComponent } from '../../../components/profile/profile';
 
 @IonicPage()
 @Component({
@@ -26,11 +28,14 @@ export class SearchPage {
   parties$: Observable<Party[]>
   users$: Observable<User[]>
   userId: string
+  relationship: 'parties' | 'users' = 'parties'
 
   constructor(
     public navCtrl: NavController,
+    public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public partyProvider: PartyProvider,
+    public userProvider: UserProvider,
     private store: Store<AppState>,
   ) {
     this.parties$ = store.select('parties');
@@ -42,7 +47,7 @@ export class SearchPage {
     this.partyProvider.getPartiesByName(this.query)
       .then(parties => this.parties = parties.data);
 
-    this.partyProvider.getUsersByUsername(this.query)
+    this.userProvider.getUsersByUsername(this.query)
     .then(users => this.users = users.data);
   }
 
@@ -50,7 +55,7 @@ export class SearchPage {
     this.partyProvider.getParties()
       .then(parties => this.parties = parties.data);
 
-    this.partyProvider.getUsers()
+    this.userProvider.getUsers()
     .then(users => this.users = users.data);
   }
 
@@ -79,6 +84,11 @@ export class SearchPage {
     } else if (action === 'join--private') {
       console.log('join private party');
     }
+  }
+
+  goToProfile(user) {
+    const userModal= this.modalCtrl.create(ProfileComponent, { user })
+    userModal.present();
   }
 
 }
