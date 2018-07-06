@@ -10,48 +10,34 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- profile user info top -->
   <div>
     <ion-row>
       <ion-col col-6>
-        <img [src]="user.avatar">
+        <ion-row><img [src]="user.avatar"></ion-row>
+        <ion-row><rating [rating]="user.rating"></rating></ion-row>
       </ion-col>
       <ion-col col-6>
-        <ion-row>@{{user.username}}</ion-row>
-        <ion-row>{{user.nickname}}</ion-row>
-        <ion-row>{{user.bio}}</ion-row>
-        <ion-row>
-          <button (click)="goToEditProfile()">Edit Profile</button>
+        <ion-row class="username">@{{user.username}}</ion-row>
+        <ion-row class="nickname-bio">{{user.nickname}}</ion-row>
+        <ion-row class="nickname-bio">{{user.bio}}</ion-row>
+        <ion-row class="edit-button">
+          <button ion-button small (click)="goToEditProfile()">Edit Profile</button>
         </ion-row>
       </ion-col>
     </ion-row>
     <ion-row>
-      <rating [rating]="user.rating"></rating>
-    </ion-row>
-    <ion-row>
       <div class="container">
-        <ion-col (click)="goToFriendsList()">2 <br/> Friends</ion-col>
-        <ion-col>1 <br/> Hosted Parties</ion-col>
-        <ion-col>0 <br/> Parties Attended</ion-col>
+        <ion-col class="count-bar-item" (click)="goToFriendsList()">2 <br/> Friends</ion-col>
+        <ion-col class="count-bar-item">1 <br/> Hosted</ion-col>
+        <ion-col class="count-bar-item">0 <br/> Attended</ion-col>
       </div>
     </ion-row>
   </div>
+  <!-- profile timeline -->
   <ion-list>
-    <ion-item>
-      <div>
-        <div class="container">
-          <h2>PartyName</h2>
-          <p class="people">17 people</p>
-        </div>
-        <p>Date</p>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-      </div>
-        <ion-thumbnail item-end>
-          <img src="img/thumbnail-totoro.png">
-        </ion-thumbnail>
+    <ion-item *ngFor="let party of parties$ | async">
+      <party-story [party]="party"></party-story>
     </ion-item>
   </ion-list>
 </ion-content>

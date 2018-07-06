@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PartyProvider } from '../../providers/party/party';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Party } from '../../interfaces/Party';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';
@@ -14,7 +14,11 @@ export class RateComponent {
   rating: number = 0; 
   party: Party
 
-  constructor(public partyProvider: PartyProvider, public store: Store<AppState>, navParams: NavParams) {
+  constructor(
+    public viewCtrl: ViewController, 
+    public partyProvider: PartyProvider, 
+    public store: Store<AppState>, 
+    navParams: NavParams) {
     this.party = navParams.get('party')
   }
 
@@ -26,10 +30,15 @@ export class RateComponent {
         party_id: this.party.id,
         rating: this.rating,
       }))
+    this.viewCtrl.dismiss();
   }
 
   changeRating(rating){
     this.rating = rating;
+  }
+
+  closeModal() {
+    this.viewCtrl.dismiss();
   }
 
 }

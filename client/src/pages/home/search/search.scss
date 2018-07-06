@@ -2,7 +2,9 @@ page-search {
   ion-content, .scroll-content {
     padding: 16px 20px !important;
   }
-
+  ion-list{
+    overflow: auto;
+  }
   .search {
     padding: 6px 8px !important;
   }

@@ -1,25 +1,24 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TimelinePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IonicPage } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { Party } from '../../../interfaces/Party';
+import { AppState } from '../../../store/reducers';
+import { PartyProvider } from '../../../providers/party/party';
 
 @IonicPage()
 @Component({
   selector: 'page-timeline',
   templateUrl: 'timeline.html',
 })
-export class TimelinePage {
+export class TimelinePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  parties$: Observable<Party[]>
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TimelinePage');
+  constructor(public partyProvider: PartyProvider, private store: Store<AppState>) { }
+
+  ngOnInit() {
+    this.parties$ = this.store.select('parties');
   }
 
 }

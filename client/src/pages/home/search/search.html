@@ -11,32 +11,52 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <p *ngIf="parties.length === 0">Nothing showed up for "{{query}}"</p>
-    <ion-item *ngFor="let party of parties" class="party" no-padding>
-      <ion-grid no-padding>
-        <ion-row no-padding>
-          <ion-col col-9 no-padding>
+    <ion-segment [(ngModel)]="relationship" color="primary">
+        <ion-segment-button value="parties">
+          Parties
+        </ion-segment-button>
+        <ion-segment-button value="users">
+          Users
+        </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="relationship">
+      <ion-list *ngSwitchCase="'parties'">
+        <p *ngIf="parties.length === 0">Nothing showed up for "{{query}}"</p>
+        <ion-item *ngFor="let party of parties" class="party" no-padding>
+          <ion-grid no-padding>
             <ion-row no-padding>
-              <h1 class="name">{{party.name}}</h1>
+              <ion-col col-9 no-padding>
+                <ion-row no-padding>
+                  <h1 class="name">{{party.name}}</h1>
+                </ion-row>
+                <ion-row no-padding>
+                  <rating [rating]="party.rating"></rating>
+                  <ion-icon *ngIf="party.is_private" name="lock" class="lock"></ion-icon>
+                </ion-row>
+              </ion-col>
+              <ion-col col-3 no-padding text-right>
+                <div *ngIf="isUserParty(party.id) | async; then isUserPartyButton else isNotUserPartyButton"></div>
+                <ng-template #isUserPartyButton>
+                  <button (click)="goToParty('go', party)" color="secondary" ion-button>Go</button>
+                </ng-template>
+                <ng-template #isNotUserPartyButton>
+                  <button *ngIf="!party.is_private" (click)="goToParty('join', party)" ion-button>Join</button>
+                  <button *ngIf="party.is_private" (click)="goToParty('join--private', party)" color="light" ion-button disabled>Join</button>
+                </ng-template>
+              </ion-col>
             </ion-row>
-            <ion-row no-padding>
-              <rating [rating]="party.rating"></rating>
-              <ion-icon *ngIf="party.is_private" name="lock" class="lock"></ion-icon>
-            </ion-row>
-          </ion-col>
-          <ion-col col-3 no-padding text-right>
-            <div *ngIf="isUserParty(party.id) | async; then isUserPartyButton else isNotUserPartyButton"></div>
-            <ng-template #isUserPartyButton>
-              <button (click)="goToParty('go', party)" color="secondary" ion-button>Go</button>
-            </ng-template>
-            <ng-template #isNotUserPartyButton>
-              <button *ngIf="!party.is_private" (click)="goToParty('join', party)" ion-button>Join</button>
-              <button *ngIf="party.is_private" (click)="goToParty('join--private', party)" color="light" ion-button disabled>Join</button>
-            </ng-template>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'users'">
+        <p *ngIf="users.length === 0">Nothing showed up for "{{query}}"</p>
+        <ion-item *ngFor="let user of users" class="user" no-padding>
+          <ion-avatar item-start>
+            <img [src]="user.avatar">
+          </ion-avatar>
+          <h2>{{user.username}}</h2>
+          <h4>{{user.nickname}}</h4>
+        </ion-item>       
+      </ion-list>
+    </div>  
 </ion-content>

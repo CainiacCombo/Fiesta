@@ -1,4 +1,24 @@
 page-profile {
+    .username{
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .nickname-bio{
+        font-size: 18px;
+        padding-top: .5rem;
+    }
+    .count-bar-item{
+        padding: 2.5rem;
+        padding-top: .5rem;
+        padding-bottom: 1.5rem;
+        font-size: 18px;
+    }
+    .edit-button{
+        padding-top: .5rem;
+    }
+    ion-content{
+        overflow: auto;
+    }
     .item {
         padding-left: 0;
     }

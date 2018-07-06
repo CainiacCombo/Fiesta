@@ -3,12 +3,16 @@ import { IonicModule } from 'ionic-angular';
 import { UploadComponent } from './upload/upload';
 import { RatingComponent } from './rating/rating';
 import { RateComponent } from './rate/rate';
+import { PartyStoryComponent } from './party-story/party-story';
+import { MediaComponent } from './media/media';
 
 @NgModule({
 	declarations: [
     RatingComponent,
     RateComponent,
-    UploadComponent
+    UploadComponent,
+    PartyStoryComponent,
+    MediaComponent
   ],
 	imports: [
     IonicModule,
@@ -16,11 +20,16 @@ import { RateComponent } from './rate/rate';
 	exports: [
     RatingComponent,
     RateComponent,
-    UploadComponent
+    UploadComponent,
+    PartyStoryComponent,
+    MediaComponent
   ],
   entryComponents: [
+    RatingComponent,
     RateComponent,
-    UploadComponent
-  ]
+    UploadComponent,
+    PartyStoryComponent,
+    MediaComponent,
+  ],
 })
 export class ComponentsModule {}

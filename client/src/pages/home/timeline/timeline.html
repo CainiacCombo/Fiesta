@@ -1,12 +1,11 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>¡Fiesta!</ion-title>
+    <ion-title>Timeline</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+  <div *ngFor="let party of parties$ | async" class="story">
+    <party-story [party]="party"></party-story>
+  </div>
 </ion-content>

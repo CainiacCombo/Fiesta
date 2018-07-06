@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Party } from '../../interfaces/Party';
 import { Message } from '../../interfaces/Message';
+import { User } from '../../interfaces/User';
 import { FeathersPayload } from '../../interfaces/FeathersRespose';
 import { app } from '../../feathers';
 
 type PartiesResponse = FeathersPayload<Party>;
 type MessagesResponse = FeathersPayload<Message>;
+type UsersResponse = FeathersPayload<User>;
 
 @Injectable()
 export class PartyProvider {
@@ -16,10 +18,22 @@ export class PartyProvider {
     return app.service('parties').find({ query });
   }
 
+  getUsers(query?): Promise<UsersResponse> {
+    return app.service('users').find({ query });
+  }
+
   getPartiesByName(name: string): Promise<PartiesResponse> {
     return this.getParties({
       name: {
         $like: `${name}%`,
+      },
+    });
+  }
+
+  getUsersByUsername(username: string): Promise<UsersResponse> {
+    return this.getUsers({
+      username: {
+        $like: `${username}%`,
       },
     });
   }
@@ -42,14 +56,14 @@ export class PartyProvider {
         party_id,
         $sort: {createdAt: -1},
         $limit: 15,
-      } 
+      },
     })
     .then(async (response) => ({
       ...response,
-      data: await Promise.all(response.data.map(this.getGroupMessageUser)) 
+      data: await Promise.all(response.data.map(this.getGroupMessageUser))
     }))
   }
-  
+
   getGroupMessageUser(groupMessage) {
     return app.service('users').get(groupMessage.message.user_id)
     .then(user => ({
@@ -81,6 +95,17 @@ export class PartyProvider {
 
   uploadToStory(data) {
     return app.service('media').create(data);
+  }
+
+  getPartyMedia(party: Party) {
+    return app.service('media').find({
+      query: {
+        party_id: party.id,
+        $sort: {
+          createdAt: -1,
+        },
+      },
+    }).then(media => ({ ...party, media }));
   }
 
 }

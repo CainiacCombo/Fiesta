@@ -8,6 +8,7 @@ import { timer } from 'rxjs/observable/timer';
 import { map } from 'rxjs/operators/map';
 
 import { Party } from '../../../interfaces/Party';
+import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
 import { AddUserParties } from '../../../store/parties/parties.actions';
@@ -21,7 +22,9 @@ export class SearchPage {
 
   query: string = ''
   parties: Party[] = []
+  users: User[] = []
   parties$: Observable<Party[]>
+  users$: Observable<User[]>
   userId: string
 
   constructor(
@@ -38,11 +41,17 @@ export class SearchPage {
   onQuery() {
     this.partyProvider.getPartiesByName(this.query)
       .then(parties => this.parties = parties.data);
+
+    this.partyProvider.getUsersByUsername(this.query)
+    .then(users => this.users = users.data);
   }
 
   reset() {
     this.partyProvider.getParties()
       .then(parties => this.parties = parties.data);
+
+    this.partyProvider.getUsers()
+    .then(users => this.users = users.data);
   }
 
   isUserParty(id: string): Observable<boolean> {
