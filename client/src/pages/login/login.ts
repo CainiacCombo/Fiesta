@@ -40,7 +40,7 @@ export class LoginPage {
   }
 
   authenticate(user: User, googleAccessToken: string) {
-    this.userProvider.authenticate(user.id, googleAccessToken)
+    return this.userProvider.authenticate(user.id, googleAccessToken)
       .then(() => this.partyProvider.getUserParties(user.id))
       .then((parties) => {
         this.store.dispatch(new Login(user));
