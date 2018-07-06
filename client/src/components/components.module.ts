@@ -5,6 +5,7 @@ import { RatingComponent } from './rating/rating';
 import { RateComponent } from './rate/rate';
 import { PartyStoryComponent } from './party-story/party-story';
 import { MediaComponent } from './media/media';
+import { ProfileComponent } from './profile/profile';
 
 @NgModule({
 	declarations: [
@@ -12,7 +13,8 @@ import { MediaComponent } from './media/media';
     RateComponent,
     UploadComponent,
     PartyStoryComponent,
-    MediaComponent
+    MediaComponent,
+    ProfileComponent
   ],
 	imports: [
     IonicModule,
@@ -22,7 +24,8 @@ import { MediaComponent } from './media/media';
     RateComponent,
     UploadComponent,
     PartyStoryComponent,
-    MediaComponent
+    MediaComponent,
+    ProfileComponent
   ],
   entryComponents: [
     RatingComponent,
@@ -30,6 +33,7 @@ import { MediaComponent } from './media/media';
     UploadComponent,
     PartyStoryComponent,
     MediaComponent,
+    ProfileComponent,
   ],
 })
 export class ComponentsModule {}

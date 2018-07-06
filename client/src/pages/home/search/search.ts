@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, ModalController } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
@@ -12,6 +12,7 @@ import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
 import { AddUserParties } from '../../../store/parties/parties.actions';
+import { ProfileComponent } from '../../../components/profile/profile';
 
 @IonicPage()
 @Component({
@@ -26,9 +27,11 @@ export class SearchPage {
   parties$: Observable<Party[]>
   users$: Observable<User[]>
   userId: string
+  relationship: 'parties' | 'users' = 'parties'
 
   constructor(
     public navCtrl: NavController,
+    public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public partyProvider: PartyProvider,
     private store: Store<AppState>,
@@ -79,6 +82,11 @@ export class SearchPage {
     } else if (action === 'join--private') {
       console.log('join private party');
     }
+  }
+
+  goToProfile(user) {
+    const userModal= this.modalCtrl.create(ProfileComponent, { user })
+    userModal.present();
   }
 
 }
