@@ -29,7 +29,7 @@ import { CreateGameComponent } from './create-game/create-game';
     UploadComponent,
     PartyStoryComponent,
     MediaComponent,
-    ProfileComponent,
+    ProfileComponent
     PartySidebarComponent,
     CreateGameComponent
   ],
