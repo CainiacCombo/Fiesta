@@ -34,4 +34,10 @@ page-search {
       width: 61px;
     }
   }
+
+  ion-avatar img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 }

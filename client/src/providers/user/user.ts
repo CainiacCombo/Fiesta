@@ -2,11 +2,22 @@ import { Injectable } from '@angular/core';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { app } from '../../feathers';
 import { User } from '../../interfaces/User';
+import { Party } from '../../interfaces/Party';
 import { GoogleUser } from '../../interfaces/GoogleUser';
 import { FeathersPayload } from '../../interfaces/FeathersRespose';
 
+interface GroupUser {
+  id: number
+  is_host: boolean,
+  createdAt: string
+  updatedAt: string
+  user_id: string
+  party_id?: string
+  party: Party
+}
 
 type UsersResponse = FeathersPayload<User>;
+type GroupUsersResponse = FeathersPayload<GroupUser>;
 
 const createGoogleProfile = (payload): GoogleUser => ({
   accessToken: payload.accessToken,
@@ -56,6 +67,10 @@ export class UserProvider {
         $like: `${username}%`,
       },
     });
+  }
+
+  getUserParties(user_id): Promise<GroupUsersResponse> {
+    return app.service('group-users').find({ query: { user_id } });
   }
 
 }
