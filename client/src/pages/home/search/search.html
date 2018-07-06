@@ -50,7 +50,7 @@
       </ion-list>
       <ion-list *ngSwitchCase="'users'">
         <p *ngIf="users.length === 0">Nothing showed up for "{{query}}"</p>
-        <ion-item *ngFor="let user of users" class="user" no-padding>
+        <ion-item *ngFor="let user of users" class="user" name="user" (click)="goToProfile(user)" no-padding>
           <ion-avatar item-start>
             <img [src]="user.avatar">
           </ion-avatar>
