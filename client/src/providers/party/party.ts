@@ -95,7 +95,7 @@ export class PartyProvider {
   }
 
   createGame(data) {
-    return app.service('games').create(data);
+    return app.service('game').create(data);
   }
 
 }

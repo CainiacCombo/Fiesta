@@ -14,8 +14,8 @@ export class PartySidebarComponent {
   constructor(public modalCtrl: ModalController) { }
 
   goToCreateGame() {
-    const party_id = this.party.id;
-    this.modalCtrl.create(CreateGameComponent, { party_id }).present();
+    const { party } = this;
+    this.modalCtrl.create(CreateGameComponent, { party }).present();
   }
 
 }
