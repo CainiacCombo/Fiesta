@@ -10,7 +10,7 @@
           setState(states.lobby);
         }
       }),
-      lobby: _.assign(aState('lobby'), {
+      lobby: Object.assign(aState('lobby'), {
         play() {
           setTimeout(function () {
             setState(states.playing);
