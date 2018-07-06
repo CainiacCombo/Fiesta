@@ -29,14 +29,15 @@
           <ion-row>
             <div class="container">
               <ion-col class="count-bar-item" >2 <br/> Friends</ion-col>
-              <ion-col class="count-bar-item">1 <br/> Hosted</ion-col>
-              <ion-col class="count-bar-item">0 <br/> Attended</ion-col>
+              <ion-col class="count-bar-item">{{partiesHosted.length}} <br/> Hosted</ion-col>
+              <ion-col class="count-bar-item">{{parties.length}} <br/> Attended</ion-col>
             </div>
           </ion-row>
         </div>
         <!-- profile timeline -->
         <ion-list>
-          <ion-item *ngFor="let party of parties$ | async">
+          <span *ngIf="parties.length === 0">This user isn't poppin :(</span>
+          <ion-item *ngFor="let party of parties">
             <party-story [party]="party"></party-story>
           </ion-item>
         </ion-list>
