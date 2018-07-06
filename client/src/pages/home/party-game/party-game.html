@@ -1,3 +1,16 @@
-<ion-content padding margin-top>
-  <h1>{{game.name === 'match' ? 'Match!' : match}}</h1>
+<ion-content [ngSwitch]="state" padding margin-top>
+  <h1>{{game.name === 'match' ? 'Match!' : game.name}}</h1>
+  <div *ngSwitchCase="'lobby'">
+    <button ion-button full (click)="startGame()">Start Game</button>
+    </div>
+  <div *ngSwitchCase="'starting'">
+    <p>Starting The Game</p>
+    <div *ngIf="chosen">
+      <button ion-button full>Upload</button>
+    </div>
+  </div>
+  <div *ngSwitchCase="'started'">
+    <h2>Go Find Them</h2>
+    <img *ngIf="game.name === 'match'" [src]="matchLink">
+  </div>
 </ion-content>

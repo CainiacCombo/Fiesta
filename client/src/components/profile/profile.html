@@ -1,13 +1,15 @@
-<ion-header>
-  <ion-buttons *ngIf="!isUserProfile" start>
-    <button ion-button (click)="closeModal()">Close</button>
-  </ion-buttons>
-  <ion-title>@{{user.username}}</ion-title>
-  <ion-buttons *ngIf="isUserProfile" (click)="signout()" right>
-    <button ion-button>
-      <ion-icon name="log-out"></ion-icon>
-    </button>
-  </ion-buttons>
+<ion-header margin-top>
+  <ion-navbar padding-top>
+    <ion-buttons *ngIf="!isUserProfile" start>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+    <ion-title>@{{user.username}}</ion-title>
+    <ion-buttons *ngIf="isUserProfile" (click)="signout()" right>
+      <button ion-button>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
