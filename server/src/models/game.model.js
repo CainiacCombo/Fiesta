@@ -6,9 +6,13 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const game = sequelizeClient.define('game', {
-    text: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    match_link: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   }, {
     hooks: {
