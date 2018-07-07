@@ -25,6 +25,7 @@
     "@feathersjs/authentication-client": "^1.0.2",
     "@feathersjs/client": "^3.5.2",
     "@feathersjs/socketio-client": "^1.1.0",
+    "@ionic-native/barcode-scanner": "^4.9.0",
     "@ionic-native/camera": "^4.9.0",
     "@ionic-native/contacts": "^4.9.0",
     "@ionic-native/core": "4.7.0",
@@ -53,6 +54,8 @@
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "moment": "^2.22.2",
+    "ngx-qrcode3": "^0.3.0",
+    "phonegap-plugin-barcodescanner": "^8.0.0",
     "rxjs": "5.5.11",
     "socket.io-client": "^2.1.1",
     "sw-toolbox": "3.6.0",
@@ -82,7 +85,8 @@
       },
       "cordova-plugin-camera": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-file-transfer": {}
+      "cordova-plugin-file-transfer": {},
+      "phonegap-plugin-barcodescanner": {}
     },
     "platforms": [
       "android",

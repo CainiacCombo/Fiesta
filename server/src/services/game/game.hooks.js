@@ -22,12 +22,13 @@ module.exports = {
     patch: [
       async context => {
         if (context.data.state === 'starting') {
-          const party_id = context.result.party_id;
+          const { id, party_id } = context.result;
           const userResponse = await context.app.service('group-users').find({ query: { party_id } });
           const random = Math.floor(Math.random() * userResponse.total);
           const randomUser = userResponse.data[random];
 
           context.result.match_it = randomUser;
+          await context.app.service('game').patch(id, { match_it_id: randomUser.user_id });
         }
 
         return context;

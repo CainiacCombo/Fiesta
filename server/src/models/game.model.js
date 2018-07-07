@@ -13,11 +13,15 @@ module.exports = function (app) {
     match_link: {
       type: DataTypes.STRING,
     },
+    match_it_id: {
+      type: DataTypes.UUID,
+    },
     party_id: {
       type: DataTypes.UUID,
     },
     state: {
       type: DataTypes.STRING,
+      defaultValue: 'lobby'
     },
   }, {
     hooks: {
