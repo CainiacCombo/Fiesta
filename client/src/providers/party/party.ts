@@ -98,4 +98,17 @@ export class PartyProvider {
     return app.service('game').create(data);
   }
 
+  findGame(party_id) {
+    return app.service('game').find({
+      query: {
+        party_id
+      }
+    })
+    .then((response) => {
+      return response.data.filter(game => {
+        return game.state !== 'ended';
+      })
+    })
+  }
+
 }

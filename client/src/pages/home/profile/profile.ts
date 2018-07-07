@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IonicPage, App, NavController, ModalController } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 
 import { User } from '../../../interfaces/User';

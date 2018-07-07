@@ -13,7 +13,6 @@ export class UploadComponent {
   imageFileName: any;
   dataUri: String;
 
-
   constructor(
     public navParams: NavParams,
     public viewCtrl: ViewController,
