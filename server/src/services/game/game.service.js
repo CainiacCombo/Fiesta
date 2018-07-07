@@ -18,5 +18,23 @@ module.exports = function (app) {
   // Get our initialized service so that we can register hooks
   const service = app.service('game');
 
+  service.on('start', async data => {
+    const partyId = data.party_id;
+
+    const userResponse = await app.service('group-users').find({
+      query: {
+        party_id: partyId
+      }
+    });
+
+    const random = Math.floor(Math.random() * userResponse.data.length);
+    
+    const randomUser = userResponse.data[random];
+
+    service.emit('chosen', {user: randomUser.user});
+
+  });
+
   service.hooks(hooks);
 };
+
