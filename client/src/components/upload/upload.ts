@@ -31,7 +31,7 @@ export class UploadComponent {
       loading.present();
       await this.navParams.get('upload')(this.dataUri)
       this.viewCtrl.dismiss();
-    } catch (e) { 
+    } catch (e) {
       this.toastCtrl.create({
         message: 'Something Went Wrong When Uploading Your Image',
         duration: 3000,
@@ -44,7 +44,7 @@ export class UploadComponent {
 
 
   async getImage() {
-    
+
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -54,7 +54,7 @@ export class UploadComponent {
     }
     const imageData = await this.camera.getPicture(options)
     this.dataUri = `data:image/jpeg;base64,${imageData}`
-  
+
   }
 
 }
