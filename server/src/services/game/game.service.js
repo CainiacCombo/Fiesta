@@ -35,6 +35,10 @@ module.exports = function (app) {
 
   });
 
+  service.on('found', (data) => {
+    service.emit('end', data);
+  });
+
   service.hooks(hooks);
 };
 
