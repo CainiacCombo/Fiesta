@@ -15,7 +15,10 @@ module.exports = function (app) {
     },
     party_id: {
       type: DataTypes.UUID,
-    }
+    },
+    state: {
+      type: DataTypes.STRING,
+    },
   }, {
     hooks: {
       beforeCount(options) {

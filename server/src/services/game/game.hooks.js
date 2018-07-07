@@ -19,7 +19,20 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
+    patch: [
+      async context => {
+        if (context.data.state === 'starting') {
+          const party_id = context.result.party_id;
+          const userResponse = await context.app.service('group-users').find({ query: { party_id } });
+          const random = Math.floor(Math.random() * userResponse.total);
+          const randomUser = userResponse.data[random];
+
+          context.result.match_it = randomUser;
+        }
+
+        return context;
+      },
+    ],
     remove: []
   },
 

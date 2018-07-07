@@ -14,6 +14,6 @@ export const app = feathers();
 
 app.configure(auth({ storage: window.localStorage }));
 app.configure(socketio(socket));
-app.service('media').timeout = 60000
-app.service('game').timeout = 60000
 
+app.service('media').timeout = 60000;
+app.service('game').timeout = 60000;
