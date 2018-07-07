@@ -22,11 +22,10 @@ export class PartyGamePage implements OnInit, OnDestroy {
   state = 'lobby'
   matchLink: string
   chosen: boolean = false
-  
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     public store: Store<AppState>,
     public modalCtrl: ModalController,
   ) { }
@@ -34,19 +33,21 @@ export class PartyGamePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.party = this.navParams.get('party');
     this.game = this.navParams.get('game');
+
     this.userSub = this.store.select('user').subscribe((user) => {
       this.user = user;
-    })
-    app.service('game').on('chosen', (data) => {
-      console.log(JSON.stringify(data));
-      if (data.user_id === this.user.id) {
-        console.log('chosen');
-        this.chosen = true;
+    });
+
+    app.service('game').on('patched', (data) => {
+      this.state = data.state;
+
+      if (data.name === 'match') {
+        if (data.state === 'starting') {
+          this.chosen = data.match_it.user_id === this.user.id;
+        } else if (data.state === 'started') {
+          this.matchLink = data.match_link;
+        }
       }
-    })
-    app.service('game').on('started', (data) => {
-      this.state = 'started';
-      console.log(JSON.stringify(data));
     });
   }
 
@@ -55,20 +56,25 @@ export class PartyGamePage implements OnInit, OnDestroy {
   }
 
   startGame() {
-    app.service('game').emit('start', { 
-      party_id: this.party.id,
-      game_id: this.game.id
-    });
-    this.state = 'starting';
+    app.service('game').patch(this.game.id, { state: 'starting' });
+  }
+
+  endGame() {
+    app.service('game').patch(this.game.id, { state: 'ended' });
   }
 
   goToUpload() {
-  this.modalCtrl.create(UploadComponent, { 
-    party: this.party,
-    upload() {
-      
-    }
-  }).present();
+    this.modalCtrl.create(UploadComponent, {
+      party: this.party,
+      upload: dataUri => app.service('game').patch(this.game.id, {
+        dataUri,
+        state: 'started',
+      }),
+    }).present();
+  }
+
+  scanQR() {
+
   }
 
 }
