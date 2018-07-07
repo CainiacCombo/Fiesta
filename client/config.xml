@@ -89,6 +89,15 @@
     <config-file parent="NSContactsUsageDescription" target="*-Info.plist">
         <string>We allow users to import their contacts to easily invite people to an event</string>
     </config-file>
+    <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+        <string>This app needs access to your Photo Library to include a screenshot with feedback foo.</string>
+    </config-file>
+    <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+        <string>Allow to use camera</string>
+    </config-file>
+    <config-file parent="NSContactsUsageDescription" target="*-Info.plist">
+        <string>We allow users to import their contacts to easily invite people to an event</string>
+    </config-file>
     <allow-navigation href="http://192.168.1.64:8100" />
     <allow-navigation href="http://192.168.99.1:8100" />
     <plugin name="cordova-plugin-googleplus" spec="^5.3.0">

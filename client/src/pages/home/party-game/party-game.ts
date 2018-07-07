@@ -47,10 +47,9 @@ export class PartyGamePage implements OnInit, OnDestroy {
 
     app.service('game').on('patched', (data) => {
       this.state = data.state;
-
-      if (data.name === 'match' && data.match_it) {
+      if (data.name === 'match') {
         if (data.state === 'starting') {
-          this.chosen = data.match_it.user_id === this.user.id;
+          this.chosen = data.match_it_id == this.user.id; 
         } else if (data.state === 'started') {
           this.matchLink = data.match_link;
         }
