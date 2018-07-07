@@ -1,57 +1,50 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavParams, LoadingController, ViewController, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PartyProvider } from '../../providers/party/party'
-import { Store } from '@ngrx/store';
-import { AppState } from '../../store/reducers';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'upload',
   templateUrl: 'upload.html'
 })
-export class UploadComponent implements OnInit, OnDestroy {
+export class UploadComponent {
 
   imageURI: any;
   imageFileName: any;
-  userId: string;
-  userSub: Subscription
   dataUri: String;
 
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navParams: NavParams,
     public viewCtrl: ViewController,
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public partyProvider: PartyProvider,
-    private store: Store<AppState>,) {}
+    public partyProvider: PartyProvider,) {}
 
-  ngOnInit() {
-    this.userSub = this.store.select('user').subscribe((user) => {
-      this.userId = user.id;
+
+  async upload() {
+    const loading = this.loadingCtrl.create({
+      content: 'uploading'
     });
+    try {
+      loading.present();
+      await this.navParams.get('upload')(this.dataUri)
+      this.viewCtrl.dismiss();
+    } catch (e) { 
+      this.toastCtrl.create({
+        message: 'Something Went Wrong When Uploading Your Image',
+        duration: 3000,
+        position: 'bottom'
+      }).present();
+    } finally{
+      loading.dismiss();
+    }
   }
 
-  ngOnDestroy() {
-    this.userSub.unsubscribe();
-  }
 
-  presentToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'bottom'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
-  }
-
-  getImage() {
+  async getImage() {
+    
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -59,22 +52,9 @@ export class UploadComponent implements OnInit, OnDestroy {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
     }
-
-    this.camera.getPicture(options).then((imageData) => {
-      this.dataUri = `data:image/jpeg;base64,${imageData}`
-    }, (err) => {
-      console.log(err);
-      this.presentToast(err);
-    });
-  }
-
-  upload() {
-    this.partyProvider.uploadToStory({
-      dataUri: this.dataUri,
-      userId: this.userId,
-      party_id: 1
-    })
-    .then(() => this.navCtrl.pop())
+    const imageData = await this.camera.getPicture(options)
+    this.dataUri = `data:image/jpeg;base64,${imageData}`
+  
   }
 
 }
