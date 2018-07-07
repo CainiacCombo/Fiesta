@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Party } from '../../../interfaces/Party';
 import { User } from '../../../interfaces/User';
 import { app } from '../../../feathers';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
+import { UploadComponent } from '../../../components/upload/upload';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,12 @@ export class PartyGamePage implements OnInit, OnDestroy {
   chosen: boolean = false
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public store: Store<AppState>) { }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public store: Store<AppState>,
+    public modalCtrl: ModalController,
+  ) { }
 
   ngOnInit() {
     this.party = this.navParams.get('party');
@@ -54,6 +60,15 @@ export class PartyGamePage implements OnInit, OnDestroy {
       game_id: this.game.id
     });
     this.state = 'starting';
+  }
+
+  goToUpload() {
+  this.modalCtrl.create(UploadComponent, { 
+    party: this.party,
+    upload() {
+      
+    }
+  }).present();
   }
 
 }

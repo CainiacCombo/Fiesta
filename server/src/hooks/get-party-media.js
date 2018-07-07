@@ -2,6 +2,7 @@ const getMedia = (app, party_id) => app.service('media').find({
   query: {
     party_id,
     $limit: 100,
+    $sort: {createdAt: -1}
   },
 }).then(response => response.data);
 
