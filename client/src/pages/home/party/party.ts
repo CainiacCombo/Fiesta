@@ -10,6 +10,7 @@ import { PartyProvider } from '../../../providers/party/party';
 import { RateComponent } from '../../../components/rate/rate';
 import { UploadComponent } from '../../../components/upload/upload';
 import { app } from '../../../feathers';
+import { AddUserParties } from '../../../store/parties/parties.actions';
 
 @IonicPage()
 @Component({
@@ -91,7 +92,16 @@ export class PartyPage implements OnInit, OnDestroy{
   }
 
   goToUpload() {
-  this.modalCtrl.create(UploadComponent, { party: this.party }).present();
+    this.modalCtrl.create(UploadComponent, { 
+      party: this.party,
+      upload: (dataUri) => this.partyProvider.uploadToStory({
+        dataUri,
+        userId: this.user.id,
+        party_id: this.party.id
+      })
+      .then(() => this.partyProvider.getUserParties(this.user.id))
+      .then((parties) => this.store.dispatch(new AddUserParties(parties)))
+    }).present();
   }
 
 }
