@@ -2,7 +2,7 @@ const assert = require('assert');
 const feathers = require('@feathersjs/feathers');
 const uploadMatch = require('../../src/hooks/upload-match');
 
-describe('\'uploadMatch\' hook', () => {
+xdescribe('\'uploadMatch\' hook', () => {
   let app;
 
   beforeEach(() => {
