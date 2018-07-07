@@ -1,5 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
+const uploadMatch = require('../../hooks/upload-match');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -7,7 +9,7 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
+    patch: [uploadMatch()],
     remove: []
   },
 
