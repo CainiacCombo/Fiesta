@@ -6,16 +6,16 @@
   </ion-navbar>
 </ion-header>
   
-  <ion-content padding>
-    <ion-item>
-      <p>{{imageURI}}</p>
-      <button ion-button color="secondary" (click)="getImage()">Get Image</button>
-    </ion-item>
-    <ion-item>
-      <h4>Image Preview</h4>
-      <img [src]="dataUri" *ngIf="dataUri" alt="Ionic File" width="300" />
-    </ion-item>
-    <ion-item>
-      <button ion-button (click)="upload()">Upload</button>
-    </ion-item>
-  </ion-content>
+<ion-content padding>
+  <ion-item>
+    <p>{{imageURI}}</p>
+    <button ion-button color="secondary" (click)="getImage()">Get Image</button>
+  </ion-item>
+  <ion-item>
+    <h4>Image Preview</h4>
+    <img [src]="dataUri" *ngIf="dataUri" alt="Ionic File" width="300" />
+  </ion-item>
+  <ion-item>
+    <button ion-button (click)="upload()">Upload</button>
+  </ion-item>
+</ion-content>

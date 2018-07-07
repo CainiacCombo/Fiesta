@@ -48,6 +48,14 @@ export class PartyPage implements OnInit, OnDestroy{
             this.messages.push(message);
           }
         }));
+
+      this.partyProvider.findGame(this.party.id)
+      .then((games) => {
+        const game = games[0];
+        if (game) {
+          this.navCtrl.setRoot('PartyGamePage', { party: this.party, game }, { animate: true, direction: 'right' });
+        }
+      })
   }
 
   ngOnDestroy() {

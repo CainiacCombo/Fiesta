@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/reducers';
 import { UploadComponent } from '../../../components/upload/upload';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @IonicPage()
 @Component({
@@ -19,29 +20,35 @@ export class PartyGamePage implements OnInit, OnDestroy {
   user: User
   game: any
   userSub: Subscription
-  state = 'lobby'
+  state: 'lobby' | 'starting' | 'started' | 'ended'
   matchLink: string
   chosen: boolean = false
+  qrcode: any
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public store: Store<AppState>,
     public modalCtrl: ModalController,
+    private barcodeScanner: BarcodeScanner,
   ) { }
 
   ngOnInit() {
     this.party = this.navParams.get('party');
     this.game = this.navParams.get('game');
-
+    this.state = this.game.state;
+    
     this.userSub = this.store.select('user').subscribe((user) => {
       this.user = user;
+      if (this.game.match_it_id && this.game.match_it_id == this.user.id) {
+        this.chosen = true;
+      }
     });
 
     app.service('game').on('patched', (data) => {
       this.state = data.state;
 
-      if (data.name === 'match') {
+      if (data.name === 'match' && data.match_it) {
         if (data.state === 'starting') {
           this.chosen = data.match_it.user_id === this.user.id;
         } else if (data.state === 'started') {
@@ -59,8 +66,8 @@ export class PartyGamePage implements OnInit, OnDestroy {
     app.service('game').patch(this.game.id, { state: 'starting' });
   }
 
-  endGame() {
-    app.service('game').patch(this.game.id, { state: 'ended' });
+  endGame(itUserId) {
+    app.service('game').patch(this.game.id, { state: 'ended', itUserId });
   }
 
   goToUpload() {
@@ -74,7 +81,11 @@ export class PartyGamePage implements OnInit, OnDestroy {
   }
 
   scanQR() {
-
+    this.barcodeScanner.scan()
+      .then((barcodeData) => {
+        const itUserId = barcodeData.text;
+        return this.endGame(itUserId);
+      });
   }
 
 }

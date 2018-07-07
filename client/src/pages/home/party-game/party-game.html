@@ -14,11 +14,11 @@
     <img [src]="matchLink" />
     <div *ngIf="!chosen">
       <h2>Go Find Them</h2>
-      <!-- qr scanner -->
       <button (click)="scanQR()" ion-button>Scan QR</button>
     </div>
     <div *ngIf="chosen">
-      <!-- qr code -->
+      <h2>Once someone finds you, have them scan your QR</h2>
+      <ngx-qrcode [qrc-value]="user.id.toString()"></ngx-qrcode>
     </div>
   </div>
   <div *ngSwitchCase="'ended'">

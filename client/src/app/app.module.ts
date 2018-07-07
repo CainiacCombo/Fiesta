@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Camera } from '@ionic-native/camera';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
@@ -66,6 +67,7 @@ import { reducers } from '../store/reducers';
     FileTransfer,
     Camera,
     GooglePlus,
+    BarcodeScanner,
   ]
 })
 export class AppModule {}
