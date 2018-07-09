@@ -6,7 +6,7 @@
   <div *ngSwitchCase="'starting'">
     <p>Starting The Game...</p>
     <div *ngIf="chosen">
-      <h2>You've been chosen</h2>
+      <h2>You've been chosen!</h2>
       <button ion-button full (click)="goToUpload()">Upload</button>
     </div>
   </div>
@@ -23,5 +23,6 @@
   </div>
   <div *ngSwitchCase="'ended'">
     <h2>Game Ended!</h2>
+    <button (click)="leave()" ion-button>Leave</button>
   </div>
 </ion-content>
