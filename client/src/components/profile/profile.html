@@ -16,7 +16,7 @@
   <div>
     <ion-row>
       <ion-col col-6>
-        <ion-row><img [src]="user.avatar"></ion-row>
+        <ion-row><img [src]="user.avatar" class="avatar"></ion-row>
         <ion-row><rating [rating]="user.rating"></rating></ion-row>
       </ion-col>
       <ion-col col-6>
@@ -30,13 +30,12 @@
     </ion-row>
     <ion-row>
       <div class="container">
-        <ion-col class="count-bar-item" >2 <br/> Friends</ion-col>
+        <ion-col class="count-bar-item">2 <br/> Friends</ion-col>
         <ion-col class="count-bar-item">{{partiesHosted.length}} <br/> Hosted</ion-col>
         <ion-col class="count-bar-item">{{parties.length}} <br/> Attended</ion-col>
       </div>
     </ion-row>
   </div>
-  <!-- profile timeline -->
   <ion-list>
     <span *ngIf="parties.length === 0">This user isn't poppin :(</span>
     <ion-item *ngFor="let party of parties">
