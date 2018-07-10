@@ -1,7 +1,6 @@
 <ion-content [ngSwitch]="game.name" padding margin-top>
   <div *ngSwitchCase="'match'" [ngSwitch]="state">
     <h1>Match!</h1>
-    {{state}}
     <div *ngSwitchCase="'lobby'">
       <button ion-button full (click)="startGame()">Start Game</button>
     </div>
@@ -29,38 +28,23 @@
     </div>
   </div>
   <div *ngSwitchCase="'hot'" [ngSwitch]="state">
-    <h1>Hot!</h1>
+    <h1>HotTot!</h1>
     {{state}}
+    <div *ngSwitchCase="'lobby'">
+      <button ion-button full (click)="startGame()">Start Game</button>
+    </div>
+    <div *ngSwitchCase="'starting'">
+      <h4> Starting...</h4>
+    </div>
+    <div *ngSwitchCase="'started'">
+      <div *ngIf="chosen">
+        <h2>Get rid of that hot tot!</h2>
+        <p>Shake your device to pass it to someone else</p>
+      </div>
+    </div>
+    <div *ngSwitchCase="'ended'">
+      <h2>Game Ended!</h2>
+      <button (click)="leave()" ion-button>Leave</button>
+    </div>
   </div>
 </ion-content>
-
-
-
-<!-- <ion-content [ngSwitch]="state" padding margin-top>
-  <h1>Match!</h1>
-  <div *ngSwitchCase="'lobby'">
-    <button ion-button full (click)="startGame()">Start Game</button>
-  </div>
-  <div *ngSwitchCase="'starting'">
-    <p>Starting The Game...</p>
-    <div *ngIf="chosen">
-      <h2>You've been chosen!</h2>
-      <button ion-button full (click)="goToUpload()">Upload</button>
-    </div>
-  </div>
-  <div *ngSwitchCase="'started'">
-    <img [src]="matchLink" />
-    <div *ngIf="!chosen">
-      <h2>Go Find Them</h2>
-      <button (click)="scanQR()" ion-button>Scan QR</button>
-    </div>
-    <div *ngIf="chosen">
-      <h2>Once someone finds you, have them scan your QR</h2>
-      <ngx-qrcode [qrc-value]="user.id.toString()"></ngx-qrcode>
-    </div>
-  </div>
-  <div *ngSwitchCase="'ended'">
-    <h2>Game Ended!</h2>
-    <button (click)="leave()" ion-button>Leave</button>
-  </div>
-</ion-content> -->

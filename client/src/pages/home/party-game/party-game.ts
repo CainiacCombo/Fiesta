@@ -55,14 +55,13 @@ export class PartyGamePage implements OnInit, OnDestroy {
       this.motionSub = this.deviceMotion
         .watchAcceleration({ frequency: 800 })
         .subscribe((acceleration: DeviceMotionAccelerationData) => {
-          // if chosen
-          // if () {
+          if (this.chosen) {
             const x = Math.abs(acceleration.x)
             const y = Math.abs(acceleration.y)
             const z = Math.abs(acceleration.z)
 
             if (x >= 7 || y >= 7 || z >= 15) {
-              console.log('you shooook');
+              this.pass();
             } else {
               // debounce this
               // this.toastCtrl.create({
@@ -71,14 +70,13 @@ export class PartyGamePage implements OnInit, OnDestroy {
               //   position: 'top',
               // }).present();
             }
-          // }
+          }
         });
     }
 
 
     app.service('game').on('patched', (data) => {
       this.state = data.state;
-
       if (data.name === 'match') {
         if (data.state === 'starting') {
           if (data.match_it) {
@@ -86,6 +84,10 @@ export class PartyGamePage implements OnInit, OnDestroy {
           }
         } else if (data.state === 'started') {
           this.matchLink = data.match_link;
+        }
+      } else if (data.name === 'hot') {
+        if (data.hot_it) {
+          this.chosen = data.hot_it.user_id == this.user.id;
         }
       }
 
@@ -99,6 +101,10 @@ export class PartyGamePage implements OnInit, OnDestroy {
     if (this.motionSub) {
       this.motionSub.unsubscribe();
     }
+  }
+
+  pass() {
+    app.service('game').patch(this.game.id, { action: 'pass' });
   }
 
   startGame() {
