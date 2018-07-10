@@ -9,6 +9,7 @@ import { AppState } from '../../../store/reducers';
 import { UploadComponent } from '../../../components/upload/upload';
 import { app } from '../../../feathers';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion';
+import { UserProvider } from '../../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -24,6 +25,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   motionSub: Subscription
   state: 'lobby' | 'starting' | 'started' | 'ended'
   matchLink: string
+  hotLoser: string
   chosen: boolean = false
   qrcode: any
 
@@ -37,6 +39,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private deviceMotion: DeviceMotion,
     public toastCtrl: ToastController,
+    public userProvider: UserProvider,
   ) { }
 
   ngOnInit() {
@@ -86,6 +89,13 @@ export class PartyGamePage implements OnInit, OnDestroy {
           this.matchLink = data.match_link;
         }
       } else if (data.name === 'hot') {
+        if (data.state === 'ended') {
+          this.stopMotion();
+          this.userProvider.findUser({ id: data.hot_it_id })
+            .then((user) => {
+              this.hotLoser = user.nickname;
+            });
+        }
         if (data.hot_it) {
           this.chosen = data.hot_it.user_id == this.user.id;
         }
@@ -98,6 +108,10 @@ export class PartyGamePage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.changeDetectorRef.detach();
     this.userSub.unsubscribe();
+    this.stopMotion();
+  }
+  
+  stopMotion() {
     if (this.motionSub) {
       this.motionSub.unsubscribe();
     }
