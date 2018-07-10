@@ -32,13 +32,13 @@ module.exports = {
         if (context.data.state === 'starting') {
           if(context.result.name === 'match'){
             const { id, party_id } = context.result;
-            const randomUser = getRandomUser(party_id);
+            const randomUser = await getRandomUser(party_id);
 
             context.result.match_it = randomUser;
             await context.app.service('game').patch(id, { match_it_id: randomUser.user_id });
           } else if (context.result.name === 'hot') {
             const { id, party_id } = context.result;
-            const randomUser = getRandomUser(party_id);
+            const randomUser = await getRandomUser(party_id);
 
             context.result.hot_it = randomUser;
             await context.app.service('game').patch(id, { hot_it_id: randomUser.user_id });
