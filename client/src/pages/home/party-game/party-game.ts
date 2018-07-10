@@ -8,6 +8,7 @@ import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { UploadComponent } from '../../../components/upload/upload';
 import { app } from '../../../feathers';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion';
 
 @IonicPage()
 @Component({
@@ -33,6 +34,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
     public modalCtrl: ModalController,
     private barcodeScanner: BarcodeScanner,
     private changeDetectorRef: ChangeDetectorRef,
+    private deviceMotion: DeviceMotion,
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,15 @@ export class PartyGamePage implements OnInit, OnDestroy {
         this.chosen = true;
       }
     });
+    
+    console.log('leggo');
+    if (this.game.name === 'hot') {
+      console.log('??');
+      var subscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
+        console.log(JSON.stringify(acceleration));
+      });
+    }
+
 
     app.service('game').on('patched', (data) => {
       this.state = data.state;
