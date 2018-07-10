@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IonicPage, NavController, ViewController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Subscription } from 'rxjs/Subscription';
 import { Party } from '../../../interfaces/Party';
@@ -21,6 +21,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   user: User
   game: any
   userSub: Subscription
+  motionSub: Subscription
   state: 'lobby' | 'starting' | 'started' | 'ended'
   matchLink: string
   chosen: boolean = false
@@ -35,6 +36,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
     private barcodeScanner: BarcodeScanner,
     private changeDetectorRef: ChangeDetectorRef,
     private deviceMotion: DeviceMotion,
+    public toastCtrl: ToastController,
   ) { }
 
   ngOnInit() {
@@ -49,12 +51,28 @@ export class PartyGamePage implements OnInit, OnDestroy {
       }
     });
     
-    console.log('leggo');
     if (this.game.name === 'hot') {
-      console.log('??');
-      var subscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
-        console.log(JSON.stringify(acceleration));
-      });
+      this.motionSub = this.deviceMotion
+        .watchAcceleration({ frequency: 800 })
+        .subscribe((acceleration: DeviceMotionAccelerationData) => {
+          // if chosen
+          // if () {
+            const x = Math.abs(acceleration.x)
+            const y = Math.abs(acceleration.y)
+            const z = Math.abs(acceleration.z)
+  
+            if (x >= 7 || y >= 7 || z >= 15) {
+              console.log('you shooook');
+            } else {
+              // debounce this
+              // this.toastCtrl.create({
+              //   message: 'Shake a little harder',
+              //   duration: 4000,
+              //   position: 'top',
+              // }).present();
+            }
+          // }
+        });
     }
 
 
@@ -77,6 +95,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSub.unsubscribe();
+    this.motionSub.unsubscribe();
   }
 
   startGame() {
