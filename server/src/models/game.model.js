@@ -16,6 +16,9 @@ module.exports = function (app) {
     match_it_id: {
       type: DataTypes.UUID,
     },
+    hot_it_id: {
+      type: DataTypes.UUID,
+    },
     party_id: {
       type: DataTypes.UUID,
     },
