@@ -21,28 +21,39 @@ module.exports = {
     update: [],
     patch: [
       async context => {
-        const getRandomUser = async (party_id) => {
-          const userResponse = await context.app.service('group-users').find({ query: { party_id } });
-          const random = Math.floor(Math.random() * userResponse.total);
-          const randomUser = userResponse.data[random];
-
+        const getRandomUser = async (party_id, notId) => {
+          let randomUser;
+          do {
+            const userResponse = await context.app.service('group-users').find({ query: { party_id } });
+            const random = Math.floor(Math.random() * userResponse.total);
+            randomUser = userResponse.data[random];
+          } while (randomUser.id == notId);
           return randomUser;
         };
 
-        if (context.data.state === 'starting') {
-          if(context.result.name === 'match'){
-            const { id, party_id } = context.result;
-            const randomUser = await getRandomUser(party_id);
+        const { id, name, party_id, match_it_id, hot_it_id } = context.result;
+        const { state, action } = context.data;
+
+        if (name === 'match') {
+          if (state === 'starting') {
+            const randomUser = await getRandomUser(party_id, match_it_id);
 
             context.result.match_it = randomUser;
+            context.result.match_it_id = randomUser.user_id;
             await context.app.service('game').patch(id, { match_it_id: randomUser.user_id });
-          } else if (context.result.name === 'hot') {
-            const { id, party_id } = context.result;
-            const randomUser = await getRandomUser(party_id);
+          }
+        } else if (name === 'hot') {
+          if (state === 'starting' || action === 'pass') {
+            const randomUser = await getRandomUser(party_id, hot_it_id);
 
             context.result.hot_it = randomUser;
+            context.result.hot_it_id = randomUser.user_id;
+            context.result.state = 'started';
             await context.app.service('game').patch(id, { hot_it_id: randomUser.user_id });
-            setTimeout(() => context.app.service('game').patch(id, { state: 'ended' }), 30000);
+
+            if (state === 'starting') {
+              setTimeout(() => context.app.service('game').patch(id, { state: 'ended' }), 30000);
+            }
           }
         }
 
