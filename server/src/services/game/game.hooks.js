@@ -45,12 +45,8 @@ module.exports = {
             const randomUser = userResponse.data[random];
 
             context.result.hot_it = randomUser;
-            await context.app.service('game').patch(id, { hot_it_id: random.user_id })
-              .then(response => {
-                setTimeout(() => {
-                  `Hot Tater lands on you ${response}`;
-                }, 30000);
-              });
+            await context.app.service('game').patch(id, { hot_it_id: random.user_id });
+            setTimeout(() => context.app.service('game').patch(id, {state: 'ended'}), 30000);
           }
         }
         
