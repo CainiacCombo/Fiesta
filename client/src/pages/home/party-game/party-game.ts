@@ -96,7 +96,9 @@ export class PartyGamePage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.changeDetectorRef.detach();
     this.userSub.unsubscribe();
-    this.motionSub.unsubscribe();
+    if (this.motionSub) {
+      this.motionSub.unsubscribe();
+    }
   }
 
   startGame() {
