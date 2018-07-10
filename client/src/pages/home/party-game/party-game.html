@@ -29,7 +29,6 @@
   </div>
   <div *ngSwitchCase="'hot'" [ngSwitch]="state">
     <h1>HotTot!</h1>
-    {{state}}
     <div *ngSwitchCase="'lobby'">
       <button ion-button full (click)="startGame()">Start Game</button>
     </div>
@@ -44,6 +43,7 @@
     </div>
     <div *ngSwitchCase="'ended'">
       <h2>Game Ended!</h2>
+      <h4>{{hotLoser}} COULDN'T SHAKE THAT HOT TOT!</h4>
       <button (click)="leave()" ion-button>Leave</button>
     </div>
   </div>
