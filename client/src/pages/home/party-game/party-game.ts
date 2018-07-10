@@ -50,7 +50,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
         this.chosen = true;
       }
     });
-    
+
     if (this.game.name === 'hot') {
       this.motionSub = this.deviceMotion
         .watchAcceleration({ frequency: 800 })
@@ -60,7 +60,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
             const x = Math.abs(acceleration.x)
             const y = Math.abs(acceleration.y)
             const z = Math.abs(acceleration.z)
-  
+
             if (x >= 7 || y >= 7 || z >= 15) {
               console.log('you shooook');
             } else {
@@ -94,6 +94,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.changeDetectorRef.detach();
     this.userSub.unsubscribe();
     this.motionSub.unsubscribe();
   }
