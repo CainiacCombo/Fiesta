@@ -39,7 +39,7 @@ module.exports = {
             const randomUser = await getRandomUser(party_id, match_it_id);
 
             context.result.match_it = randomUser;
-            context.result.match_it_id = randomUser.id;
+            context.result.match_it_id = randomUser.user_id;
             await context.app.service('game').patch(id, { match_it_id: randomUser.user_id });
           }
         } else if (name === 'hot') {
