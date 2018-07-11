@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
       .take(1)
       .subscribe((user) => {
         this.currentUser = user;
-        this.isUserProfile = this.isUserProfile || user.id === this.user.id;
+        this.isUserProfile = this.isUserProfile || user.id == this.user.id;
       });
 
     this.isFriendOfCurrentUser$ = this.store.select('friends').pipe(
