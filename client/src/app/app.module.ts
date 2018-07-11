@@ -30,6 +30,7 @@ import { FriendRequestsPageModule } from '../pages/home/friend-requests/friend-r
 
 import { UserProvider } from '../providers/user/user';
 import { PartyProvider } from '../providers/party/party';
+import { LoadingUiProvider } from '../providers/loading-ui/loading-ui';
 
 import { reducers } from '../store/reducers';
 
@@ -72,6 +73,7 @@ import { reducers } from '../store/reducers';
     GooglePlus,
     BarcodeScanner,
     DeviceMotion,
+    LoadingUiProvider,
   ]
 })
 export class AppModule {}
