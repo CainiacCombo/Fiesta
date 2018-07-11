@@ -2,13 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { IonicPage, LoadingController, ModalController, ToastController } from 'ionic-angular';
-import { User } from '../../../interfaces/User';
+import { IonicPage, LoadingController, ToastController } from 'ionic-angular';
 import { FriendRequest } from '../../../interfaces/FriendRequest';
 import { AppState } from '../../../store/reducers';
 import { AddFriendRequests } from '../../../store/friend-requests/friend-requests.actions';
 import { UserProvider } from '../../../providers/user/user';
-import { ProfileComponent } from '../../../components/profile/profile';
 
 type FriendRequestHandler = {
   friendRequest: FriendRequest
@@ -29,7 +27,6 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
 
   constructor(
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public userProvider: UserProvider,
     private store: Store<AppState>,
@@ -73,10 +70,6 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
     } finally {
       loading.dismiss();
     }
-  }
-
-  goToProfile(user: User) {
-    this.modalCtrl.create(ProfileComponent, { user }).present();
   }
 
   acceptFriendRequest(friendRequest: FriendRequest) {

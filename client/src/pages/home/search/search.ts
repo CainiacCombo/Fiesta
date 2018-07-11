@@ -27,7 +27,7 @@ export class SearchPage {
   users: User[] = []
   parties$: Observable<Party[]>
   users$: Observable<User[]>
-  userId: string
+  userId: number
   relationship: 'parties' | 'users' = 'parties'
 
   constructor(
@@ -48,7 +48,7 @@ export class SearchPage {
       .then(parties => this.parties = parties.data);
 
     this.userProvider.getUsersByUsername(this.query)
-    .then(users => this.users = users.data);
+      .then(users => this.users = users.data);
   }
 
   reset() {
@@ -56,7 +56,7 @@ export class SearchPage {
       .then(parties => this.parties = parties.data);
 
     this.userProvider.getUsers()
-    .then(users => this.users = users.data);
+      .then(users => this.users = users.data);
   }
 
   isUserParty(id: string): Observable<boolean> {

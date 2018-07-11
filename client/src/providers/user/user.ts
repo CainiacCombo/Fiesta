@@ -75,6 +75,10 @@ export class UserProvider {
     return app.service('group-users').find({ query: { user_id } });
   }
 
+  getUserFriends(user_id): Promise<UsersResponse> {
+    return app.service('friends').find({ query: { user_id } });
+  }
+
   getFriendRequests(user_id): Promise<FriendRequestsResponse> {
     return app.service('friend-requests').find({ query: { to_user_id: user_id }});
   }
