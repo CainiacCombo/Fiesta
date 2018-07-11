@@ -21,6 +21,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class EditProfilePage {
 
+  user: User
   nickname: string = ''
   bio: string = ''
   user$: Observable<User>
@@ -33,6 +34,7 @@ export class EditProfilePage {
     private store: Store<AppState>,
   ) {
     this.user$ = store.select('user');
+    this.user = navParams.get('user');
   }
 
   closeModal() {
