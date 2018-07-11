@@ -24,8 +24,9 @@
   </ion-list>
 
   <ion-list *ngIf="fromFriendRequests$ | async as fromFriendRequests">
-    <div>
-      <h5 padding>Sent Friend Requests</h5>
+    <div padding>
+      <h5>Sent Friend Requests</h5>
+      <span *ngIf="fromFriendRequests.length === 0">You currently don't have any sent friend requests!</span>
     </div>
     <ion-item *ngFor="let fr of fromFriendRequests">
       <user-card [user]="fr.to"></user-card>
