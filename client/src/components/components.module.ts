@@ -8,6 +8,7 @@ import { MediaComponent } from './media/media';
 import { ProfileComponent } from './profile/profile';
 import { PartySidebarComponent } from './party-sidebar/party-sidebar';
 import { CreateGameComponent } from './create-game/create-game';
+import { UserCardComponent } from './user-card/user-card';
 
 @NgModule({
 	declarations: [
@@ -18,7 +19,8 @@ import { CreateGameComponent } from './create-game/create-game';
     MediaComponent,
     ProfileComponent,
     PartySidebarComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    UserCardComponent,
   ],
 	imports: [
     IonicModule,
@@ -31,7 +33,8 @@ import { CreateGameComponent } from './create-game/create-game';
     MediaComponent,
     ProfileComponent,
     PartySidebarComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    UserCardComponent,
   ],
   entryComponents: [
     RatingComponent,
@@ -42,6 +45,7 @@ import { CreateGameComponent } from './create-game/create-game';
     ProfileComponent,
     PartySidebarComponent,
     CreateGameComponent,
+    UserCardComponent,
   ],
 })
 export class ComponentsModule {}

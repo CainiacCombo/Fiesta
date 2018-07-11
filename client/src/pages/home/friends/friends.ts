@@ -1,25 +1,20 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FriendsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { User } from '../../../interfaces/User';
 
 @IonicPage()
 @Component({
   selector: 'page-friends',
   templateUrl: 'friends.html',
 })
-export class FriendsPage {
+export class FriendsPage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  friends: User[] = []
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FriendsPage');
+  constructor(public navCtrl: ViewController, public navParams: NavParams) { }
+
+  ngOnInit() {
+    this.friends = this.navParams.get('friends');
   }
 
 }

@@ -15,7 +15,7 @@ module.exports = (options = {}) => async context => {
 
     // map over the friend objects, replacing them with the userId's friend's data
     friendsResponse.data = await Promise.all(friendsResponse.data.map(async (friendship) => {
-      const friendedUserId = friendship.user1_id === userId ? friendship.user2_id : friendship.user1_id;
+      const friendedUserId = friendship.user1_id == userId ? friendship.user2_id : friendship.user1_id;
       const friendedUser = await context.app.service('users').get(friendedUserId);
 
       return friendedUser;

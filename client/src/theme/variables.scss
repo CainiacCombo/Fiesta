@@ -38,7 +38,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  google:     lightcoral
 );
 
 
@@ -46,7 +47,8 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$tabs-ios-tab-min-height: 60px;
+$tabs-ios-tab-icon-size: 30px;
 
 
 // App Material Design Variables

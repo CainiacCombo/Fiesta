@@ -26,6 +26,7 @@ import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.m
 import { InvitePageModule } from '../pages/home/invite/invite.module'
 import { PartyInfoPageModule } from '../pages/home/party-info/party-info.module'
 import { PartyGamePageModule } from '../pages/home/party-game/party-game.module';
+import { FriendRequestsPageModule } from '../pages/home/friend-requests/friend-requests.module';
 
 import { UserProvider } from '../providers/user/user';
 import { PartyProvider } from '../providers/party/party';
@@ -49,6 +50,7 @@ import { reducers } from '../store/reducers';
     PartyPageModule,
     PartyInfoPageModule,
     PartyGamePageModule,
+    FriendRequestsPageModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

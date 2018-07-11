@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Friend Requests</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="friendRequests$ | async as friendRequests">
+    <span *ngIf="friendRequests.length === 0">You currently don't have any friend requests!</span>
+    <ion-item-sliding *ngFor="let fr of friendRequests">
+      <ion-item>
+        <user-card [user]="fr.from"></user-card>
+      </ion-item>
+      <ion-item-options (ionSwipe)="acceptFriendRequest(fr)" side="right">
+        <button (click)="acceptFriendRequest(fr)" ion-button expandable>Accept</button>
+      </ion-item-options>
+      <ion-item-options (ionSwipe)="declineFriendRequest(fr)" side="left">
+        <button (click)="declineFriendRequest(fr)" color="danger" ion-button expandable>Decline</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

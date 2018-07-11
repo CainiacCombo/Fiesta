@@ -8,8 +8,8 @@
   },
   "cloudinary": {
     "cloud_name": "<cloud name>",
-    "apiKey": "<apikey>",
-    "apiSecret": "<apiSecret>"
+    "api_key": "<api key>",
+    "api_secret": "<api secret>"
   },
   "twilio": {
     "accountSid": "<account sid>",
