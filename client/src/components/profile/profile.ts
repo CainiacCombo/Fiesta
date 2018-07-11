@@ -7,7 +7,10 @@ import { User } from '../../interfaces/User';
 import { Party } from '../../interfaces/Party';
 import { AppState } from '../../store/reducers';
 import { Logout } from '../../store/user/user.actions';
+import { AddFriendRequests } from '../../store/friend-requests/friend-requests.actions';
+import { AddFriends } from '../../store/friends/friends.actions';
 import { UserProvider } from '../../providers/user/user';
+import { LoadingUiProvider } from '../../providers/loading-ui/loading-ui';
 import { LoginPage } from '../../pages/login/login';
 
 @Component({
@@ -20,6 +23,7 @@ export class ProfileComponent implements OnInit {
   @Input('isProfilePage') isProfilePage: boolean
 
   user: User
+  currentUser: User
   isUserProfile: boolean
   isFriendOfCurrentUser$: Observable<boolean>
   hasAskedToFriend$: Observable<boolean>
@@ -34,6 +38,7 @@ export class ProfileComponent implements OnInit {
     public view: ViewController,
     public navParams: NavParams,
     public userProvider: UserProvider,
+    public loadingUIProvider: LoadingUiProvider,
     private store: Store<AppState>,
   ) { }
 
@@ -48,7 +53,10 @@ export class ProfileComponent implements OnInit {
 
     this.store.select('user')
       .take(1)
-      .subscribe(user => this.isUserProfile = this.isUserProfile || user.id === this.user.id);
+      .subscribe((user) => {
+        this.currentUser = user;
+        this.isUserProfile = this.isUserProfile || user.id === this.user.id;
+      });
 
     this.isFriendOfCurrentUser$ = this.store.select('friends').pipe(
       map(friends => !!friends.find(friend => friend.id === this.user.id))
@@ -89,9 +97,20 @@ export class ProfileComponent implements OnInit {
   }
 
   acceptFriendRequest() {
-    console.log('acceptFriendRequest!');
-    // await this.userProvider.acceptFriendRequest(from_user_id, to_user_id);
-    // dispatch new friends/friendRequests
+    const { user, currentUser } = this;
+
+    this.loadingUIProvider.load(
+      async () => {
+        await this.userProvider.acceptFriendRequest(user.id, currentUser.id);
+        await Promise.all([
+          this.userProvider.getFriendRequests(currentUser.id)
+            .then(friendRequests => this.store.dispatch(new AddFriendRequests(friendRequests.data))),
+          this.userProvider.getUserFriends(currentUser.id)
+            .then(friends => this.store.dispatch(new AddFriends(friends.data))),
+        ])
+      },
+      'Something went wrong when accepting the friend request.',
+    );
   }
 
   sendFriendRequest() {
