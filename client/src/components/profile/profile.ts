@@ -114,15 +114,27 @@ export class ProfileComponent implements OnInit {
   }
 
   sendFriendRequest() {
-    console.log('sendFriendRequest!');
-    // await this.userProvider.sendFriendReqest(store user.id, this.user.id);
-    // dispatch new friendsRequests
+    const { user, currentUser } = this;
+
+    this.loadingUIProvider.load(
+      async () => {
+        await this.userProvider.sendFriendRequest(currentUser.id, user.id);
+      },
+      'Something went wrong when sending the friend request.',
+    );
   }
 
   unfriend() {
-    console.log('unfriend!');
-    // await this.userProvider.unfriend(store user.id, this.user.id);
-    // dispatch new friends
+    const { user, currentUser } = this;
+
+    this.loadingUIProvider.load(
+      async () => {
+        await this.userProvider.unfriend(currentUser.id, user.id);
+        const friendsResponse = await this.userProvider.getUserFriends(currentUser.id);
+        this.store.dispatch(new AddFriends(friendsResponse.data));
+      },
+      'Something went wrong when sending the friend request.',
+    );
   }
 
 }

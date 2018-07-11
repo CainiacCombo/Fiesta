@@ -28,6 +28,7 @@
           <button *ngIf="isProfilePage else isNotUserProfile" (click)="goToEditProfile()" class="edit-button" color="light" ion-button>Edit Profile</button>
           <ng-template #isNotUserProfile>
             <button *ngIf="(hasAskedToFriend$ | async) else hasNotAskedToFriend" (click)="acceptFriendRequest()" ion-button>Accept Friend Request</button>
+            <!-- if just sent one "Sent FR" -->
             <ng-template #hasNotAskedToFriend>
               <button *ngIf="!(isFriendOfCurrentUser$ | async)" (click)="sendFriendRequest()" ion-button>Send Friend Request</button>
               <button *ngIf="(isFriendOfCurrentUser$ | async)" (click)="unfriend()" color="danger" ion-button>Unfriend</button>
