@@ -79,4 +79,15 @@ export class UserProvider {
     return app.service('friend-requests').find({ query: { to_user_id: user_id }});
   }
 
+  acceptFriendRequest(to_user_id, from_user_id) {
+    return app.service('friends').create({
+      user1_id: to_user_id,
+      user2_id: from_user_id,
+    });
+  }
+
+  declineFriendRequest(friendRequestId) {
+    return app.service('friend-requests').delete(friendRequestId);
+  }
+
 }
