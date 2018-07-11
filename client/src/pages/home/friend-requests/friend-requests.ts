@@ -3,9 +3,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { IonicPage, LoadingController, ToastController } from 'ionic-angular';
+import { map } from 'rxjs/operators/map';
 import { FriendRequest } from '../../../interfaces/FriendRequest';
 import { AppState } from '../../../store/reducers';
-import { AddFriendRequests } from '../../../store/friend-requests/friend-requests.actions';
+import { AddToFriendRequests, AddFromFriendRequests } from '../../../store/friend-requests/friend-requests.actions';
 import { UserProvider } from '../../../providers/user/user';
 
 type FriendRequestHandler = {
@@ -23,7 +24,8 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
 
   userId: number
   userSub: Subscription
-  friendRequests$: Observable<FriendRequest[]>
+  toFriendRequests$: Observable<FriendRequest[]>
+  fromFriendRequests$: Observable<FriendRequest[]>
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -34,7 +36,8 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userSub = this.store.select('user').subscribe(user => this.userId = user.id);
-    this.friendRequests$ = this.store.select('friend-requests');
+    this.toFriendRequests$ = this.store.select('friend-requests').pipe(map(allFriendRequests => allFriendRequests.to));
+    this.fromFriendRequests$ = this.store.select('friend-requests').pipe(map(allFriendRequests => allFriendRequests.from));
     this.getFriendRequests();
   }
 
@@ -43,8 +46,12 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
   }
 
   getFriendRequests() {
-    return this.userProvider.getFriendRequests(this.userId)
-      .then(friendRequestResponse => this.store.dispatch(new AddFriendRequests(friendRequestResponse.data)));
+    return Promise.all([
+      this.userProvider.getToFriendRequests(this.userId)
+        .then(friendRequestResponse => this.store.dispatch(new AddToFriendRequests(friendRequestResponse.data))),
+      this.userProvider.getFromFriendRequests(this.userId)
+        .then(friendRequestResponse => this.store.dispatch(new AddFromFriendRequests(friendRequestResponse.data))),
+    ]);
   }
 
   async handleFriendRequest(data: FriendRequestHandler) {

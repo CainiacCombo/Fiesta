@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="friendRequests$ | async as friendRequests">
-    <span *ngIf="friendRequests.length === 0">You currently don't have any friend requests!</span>
-    <ion-item-sliding *ngFor="let fr of friendRequests">
+  <ion-list *ngIf="toFriendRequests$ | async as toFriendRequests">
+    <div padding>
+      <h5>New Friend Requests</h5>
+      <span *ngIf="toFriendRequests.length === 0">You currently don't have any friend requests!</span>
+    </div>
+    <ion-item-sliding *ngFor="let fr of toFriendRequests">
       <ion-item>
         <user-card [user]="fr.from"></user-card>
       </ion-item>
@@ -18,5 +21,14 @@
         <button (click)="declineFriendRequest(fr)" color="danger" ion-button expandable>Decline</button>
       </ion-item-options>
     </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="fromFriendRequests$ | async as fromFriendRequests">
+    <div>
+      <h5 padding>Sent Friend Requests</h5>
+    </div>
+    <ion-item *ngFor="let fr of fromFriendRequests">
+      <user-card [user]="fr.to"></user-card>
+    </ion-item>
   </ion-list>
 </ion-content>
