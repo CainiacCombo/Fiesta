@@ -7,6 +7,8 @@ import { User } from '../../interfaces/User';
 import { AppState } from '../../store/reducers';
 import { Login } from '../../store/user/user.actions';
 import { AddUserParties } from '../../store/parties/parties.actions';
+import { AddFriends } from '../../store/friends/friends.actions';
+import { AddFriendRequests } from '../../store/friend-requests/friend-requests.actions';
 
 import { UserProvider } from '../../providers/user/user';
 import { PartyProvider } from '../../providers/party/party';
@@ -41,10 +43,16 @@ export class LoginPage {
 
   authenticate(user: User, googleAccessToken: string) {
     return this.userProvider.authenticate(user.id, googleAccessToken)
-      .then(() => this.partyProvider.getUserParties(user.id))
-      .then((parties) => {
+      .then(() => Promise.all([
+        this.partyProvider.getUserParties(user.id)
+          .then(parties => this.store.dispatch(new AddUserParties(parties))),
+        this.userProvider.getFriendRequests(user.id)
+          .then(friendRequests => this.store.dispatch(new AddFriendRequests(friendRequests.data))),
+        this.userProvider.getUserFriends(user.id)
+          .then(friends => this.store.dispatch(new AddFriends(friends.data))),
+      ]))
+      .then(() => {
         this.store.dispatch(new Login(user));
-        this.store.dispatch(new AddUserParties(parties));
         this.navCtrl.setRoot('HomePage', null, { animate: true, direction: 'right' });
       });
   }
