@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.inUser || this.navParams.get('user');
+    this.ionViewWillLoad();
   }
 
   ionViewWillLoad() {
@@ -56,7 +57,7 @@ export class ProfileComponent implements OnInit {
       .take(1)
       .subscribe((user) => {
         this.currentUser = user;
-        this.isUserProfile = this.isUserProfile || user.id === this.user.id;
+        this.isUserProfile = this.isUserProfile || user.id == this.user.id;
       });
 
     this.isFriendOfCurrentUser$ = this.store.select('friends').pipe(
