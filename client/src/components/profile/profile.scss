@@ -1,33 +1,39 @@
 profile {
-  .username{
-      font-size: 18px;
-      font-weight: bold;
+  .logout {
+    ion-icon {
+      font-size: 2.3rem;
+    }
   }
-  .nickname-bio{
-      font-size: 18px;
-      padding-top: .5rem;
+
+  .username {
+    font-size: 18px;
+    font-weight: bold;
   }
-  .count-bar-item{
-      padding: 2.5rem;
-      padding-top: .5rem;
-      padding-bottom: 1.5rem;
-      font-size: 18px;
+  .nickname-bio {
+    font-size: 18px;
+    padding-top: .5rem;
   }
-  .edit-button{
-      padding-top: .5rem;
+  .count-bar-item {
+    padding: 2.5rem;
+    padding-top: .5rem;
+    padding-bottom: 1.5rem;
+    font-size: 18px;
   }
-  ion-content{
-      overflow: auto;
+  .edit-button {
+    padding-top: .5rem;
+  }
+  ion-content {
+    overflow: auto;
   }
   .item {
-      padding-left: 0;
+    padding-left: 0;
   }
-  .container{
-      display: flex;
-      text-align: center;
+  .container {
+    display: flex;
+    text-align: center;
   }
-  .people{
-      margin-left: auto;
+  .people {
+    margin-left: auto;
   }
 
   .avatar {

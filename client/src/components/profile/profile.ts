@@ -5,7 +5,6 @@ import { User } from '../../interfaces/User';
 import { Party } from '../../interfaces/Party';
 import { UserProvider } from '../../providers/user/user';
 import { AppState } from '../../store/reducers';
-import { FriendsPage } from '../../pages/home/friends/friends';
 import { Logout } from '../../store/user/user.actions';
 import { LoginPage } from '../../pages/login/login';
 
@@ -18,6 +17,7 @@ export class ProfileComponent implements OnInit {
   @Input('user') inUser: User
   @Input('isUserProfile') isUserProfile: boolean
   user: User
+  friends: User[] = []
   parties: Party[] = []
   partiesHosted: Party[] = []
 
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     public app: App,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
-    public view: ViewController, 
+    public view: ViewController,
     public navParams: NavParams,
     public userProvider: UserProvider,
     private store: Store<AppState>,
@@ -33,6 +33,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.inUser || this.navParams.get('user');
+
+    this.userProvider.getUserFriends(this.user.id)
+      .then(friends => {
+        console.log(this.user.id, JSON.stringify(friends.data));
+        this.friends = friends.data
+      });
+
     this.userProvider.getUserParties(this.user.id)
       .then((parties) => {
         this.parties = parties.data.map(groupUser => groupUser.party);
@@ -41,13 +48,13 @@ export class ProfileComponent implements OnInit {
           .map(groupUser => groupUser.party);
       });
   }
-  
+
   closeModal() {
     this.view.dismiss();
   }
 
   goToFriendsList() {
-    this.navCtrl.push(FriendsPage);
+    this.navCtrl.push('FriendsPage', { friends: this.friends });
   }
 
   goToEditProfile() {

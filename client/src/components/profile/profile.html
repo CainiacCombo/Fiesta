@@ -1,11 +1,12 @@
-<ion-header margin-top>
-  <ion-navbar padding-top>
+<ion-header>
+  <ion-navbar>
     <ion-buttons *ngIf="!isUserProfile" start>
       <button ion-button (click)="closeModal()">Close</button>
     </ion-buttons>
     <ion-title>@{{user.username}}</ion-title>
     <ion-buttons *ngIf="isUserProfile" (click)="signout()" right>
-      <button ion-button>
+      <button class="logout" ion-button>
+        Logout&nbsp;&nbsp;
         <ion-icon name="log-out"></ion-icon>
       </button>
     </ion-buttons>
@@ -23,14 +24,14 @@
         <ion-row class="username">@{{user.username}}</ion-row>
         <ion-row class="nickname-bio">{{user.nickname}}</ion-row>
         <ion-row class="nickname-bio">{{user.bio}}</ion-row>
-        <ion-row class="edit-button" *ngIf="isUserProfile">
-          <button ion-button small color="light" (click)="goToEditProfile()">Edit Profile</button>
+        <ion-row class="action">
+          <button *ngIf="isUserProfile" (click)="goToEditProfile()" class="edit-button" color="light" ion-button>Edit Profile</button>
         </ion-row>
       </ion-col>
     </ion-row>
     <ion-row>
       <div class="container">
-        <ion-col class="count-bar-item">2 <br/> Friends</ion-col>
+        <ion-col class="count-bar-item" (click)="goToFriendsList()">{{friends.length}} <br/> Friends</ion-col>
         <ion-col class="count-bar-item">{{partiesHosted.length}} <br/> Hosted</ion-col>
         <ion-col class="count-bar-item">{{parties.length}} <br/> Attended</ion-col>
       </div>
