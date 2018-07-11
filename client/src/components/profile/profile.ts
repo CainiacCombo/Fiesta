@@ -94,7 +94,8 @@ export class ProfileComponent implements OnInit {
   }
 
   goToEditProfile() {
-    this.modalCtrl.create('EditProfilePage').present();
+    const user = this.user;
+    this.modalCtrl.create('EditProfilePage', { user }).present();
   }
 
   signout() {

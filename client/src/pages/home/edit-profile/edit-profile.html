@@ -11,12 +11,12 @@
 <ion-content padding>
   <div>
     <div ion-item>
-      <ion-label for="#nickname" floating>Nickname</ion-label>
-      <ion-input [(ngModel)]="nickname" id="nickname" type="text"></ion-input>
+      <ion-label for="#nickname" fixed>Nickname</ion-label>
+      <ion-input [(ngModel)]="nickname" id="nickname" type="text" placeholder={{user.nickname}}></ion-input>
     </div>
     <div ion-item>
-      <ion-label for="#bio" floating>bio</ion-label>
-      <ion-textarea [(ngModel)]="bio" id="bio" type="text"></ion-textarea>
+      <ion-label for="#bio" fixed>bio</ion-label>
+      <ion-textarea [(ngModel)]="bio" id="bio" type="text" placeholder={{user.bio}}></ion-textarea>
     </div>
     <button ion-button full (click)="updateProfile()">Update Profile</button>
   </div>
