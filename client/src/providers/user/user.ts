@@ -79,8 +79,12 @@ export class UserProvider {
     return app.service('friends').find({ query: { user_id } });
   }
 
-  getFriendRequests(user_id): Promise<FriendRequestsResponse> {
+  getToFriendRequests(user_id): Promise<FriendRequestsResponse> {
     return app.service('friend-requests').find({ query: { to_user_id: user_id }});
+  }
+
+  getFromFriendRequests(user_id): Promise<FriendRequestsResponse> {
+    return app.service('friend-requests').find({ query: { from_user_id: user_id }});
   }
 
   acceptFriendRequest(to_user_id, from_user_id) {

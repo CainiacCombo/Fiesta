@@ -7,7 +7,7 @@ import { User } from '../../interfaces/User';
 import { Party } from '../../interfaces/Party';
 import { AppState } from '../../store/reducers';
 import { Logout } from '../../store/user/user.actions';
-import { AddFriendRequests } from '../../store/friend-requests/friend-requests.actions';
+import { AddToFriendRequests, AddFromFriendRequests } from '../../store/friend-requests/friend-requests.actions';
 import { AddFriends } from '../../store/friends/friends.actions';
 import { UserProvider } from '../../providers/user/user';
 import { LoadingUiProvider } from '../../providers/loading-ui/loading-ui';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   user: User
   currentUser: User
   isUserProfile: boolean
+  isPendingFriendRequest$: Observable<boolean>
   isFriendOfCurrentUser$: Observable<boolean>
   hasAskedToFriend$: Observable<boolean>
   friends: User[] = []
@@ -62,7 +63,13 @@ export class ProfileComponent implements OnInit {
       map(friends => !!friends.find(friend => friend.id === this.user.id))
     );
 
+    this.isPendingFriendRequest$ = this.store.select('friend-requests').pipe(
+      map(allFriendRequests => allFriendRequests.from),
+      map(friendsRequests => !!friendsRequests.find(request => request.to_user_id === this.user.id.toString()))
+    );
+
     this.hasAskedToFriend$ = this.store.select('friend-requests').pipe(
+      map(allFriendRequests => allFriendRequests.to),
       map(friendsRequests => !!friendsRequests.find(request => request.from_user_id === this.user.id.toString()))
     );
 
@@ -103,8 +110,8 @@ export class ProfileComponent implements OnInit {
       async () => {
         await this.userProvider.acceptFriendRequest(user.id, currentUser.id);
         await Promise.all([
-          this.userProvider.getFriendRequests(currentUser.id)
-            .then(friendRequests => this.store.dispatch(new AddFriendRequests(friendRequests.data))),
+          this.userProvider.getToFriendRequests(currentUser.id)
+            .then(friendRequests => this.store.dispatch(new AddToFriendRequests(friendRequests.data))),
           this.userProvider.getUserFriends(currentUser.id)
             .then(friends => this.store.dispatch(new AddFriends(friends.data))),
         ])
@@ -119,6 +126,8 @@ export class ProfileComponent implements OnInit {
     this.loadingUIProvider.load(
       async () => {
         await this.userProvider.sendFriendRequest(currentUser.id, user.id);
+        const friendRequestsResponse = await this.userProvider.getFromFriendRequests(currentUser.id);
+        this.store.dispatch(new AddFromFriendRequests(friendRequestsResponse.data));
       },
       'Something went wrong when sending the friend request.',
     );
