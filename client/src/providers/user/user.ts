@@ -79,8 +79,12 @@ export class UserProvider {
     return app.service('friends').find({ query: { user_id } });
   }
 
-  getFriendRequests(user_id): Promise<FriendRequestsResponse> {
+  getToFriendRequests(user_id): Promise<FriendRequestsResponse> {
     return app.service('friend-requests').find({ query: { to_user_id: user_id }});
+  }
+
+  getFromFriendRequests(user_id): Promise<FriendRequestsResponse> {
+    return app.service('friend-requests').find({ query: { from_user_id: user_id }});
   }
 
   acceptFriendRequest(to_user_id, from_user_id) {
@@ -92,6 +96,43 @@ export class UserProvider {
 
   declineFriendRequest(friendRequestId) {
     return app.service('friend-requests').delete(friendRequestId);
+  }
+
+  sendFriendRequest(from_user_id, to_user_id) {
+    return app.service('friend-requests').create({ from_user_id, to_user_id });
+  }
+
+  findFriendship(user1_id, user2_id) {
+    return Promise.all([
+      app.service('friends').find({
+        query: {
+          user1_id,
+          user2_id,
+        },
+      }),
+      app.service('friends').find({
+        query: {
+          user1_id: user2_id,
+          user2_id: user1_id,
+        },
+      }),
+    ]).then((values) => {
+      const friendship1 = values[0].data[0];
+      const friendship2 = values[1].data[0];
+
+      if (friendship1) {
+        return friendship1.id;
+      } else if (friendship2) {
+        return friendship2.id;
+      } else {
+        return null;
+      }
+    });
+  }
+
+  unfriend(user1_id, user2_id) {
+    return this.findFriendship(user1_id, user2_id)
+      .then(id => app.service('friends').remove(id));
   }
 
 }

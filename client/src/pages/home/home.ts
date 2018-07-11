@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IonicPage } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { FriendRequest } from '../../interfaces/FriendRequest';
 import { AppState } from '../../store/reducers';
+import { FriendRequestsState } from '../../store/friend-requests/friend-requests';
 
 
 @IonicPage()
@@ -19,7 +19,7 @@ export class HomePage {
   friendRequestsRoot = 'FriendRequestsPage'
   profileRoot = 'ProfilePage'
 
-  friendRequests$: Observable<FriendRequest[]>
+  friendRequests$: Observable<FriendRequestsState>
 
   constructor(private store: Store<AppState>) {
     this.friendRequests$ = this.store.select('friend-requests');

@@ -29,8 +29,11 @@
           <ng-template #isNotUserProfile>
             <button *ngIf="(hasAskedToFriend$ | async) else hasNotAskedToFriend" (click)="acceptFriendRequest()" ion-button>Accept Friend Request</button>
             <ng-template #hasNotAskedToFriend>
-              <button *ngIf="!(isFriendOfCurrentUser$ | async)" (click)="sendFriendRequest()" ion-button>Send Friend Request</button>
-              <button *ngIf="(isFriendOfCurrentUser$ | async)" (click)="unfriend()" color="danger" ion-button>Unfriend</button>
+              <button *ngIf="(isPendingFriendRequest$ | async) else isNotPendingFriendRequest" color="light" ion-button disabled>Sent Friend Request</button>
+              <ng-template #isNotPendingFriendRequest>
+                <button *ngIf="!(isFriendOfCurrentUser$ | async)" (click)="sendFriendRequest()" ion-button>Send Friend Request</button>
+                <button *ngIf="(isFriendOfCurrentUser$ | async)" (click)="unfriend()" color="danger" ion-button>Unfriend</button>
+              </ng-template>
             </ng-template>
           </ng-template>
         </ion-row>
