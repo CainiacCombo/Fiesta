@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.inUser || this.navParams.get('user');
+    this.ionViewWillLoad();
   }
 
   ionViewWillLoad() {
