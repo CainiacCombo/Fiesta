@@ -39,16 +39,15 @@ export class TimelinePage implements OnInit {
           const friendParties = parties.data.map(groupUser => groupUser.party)
           .reduce((friendsParties, party) => {
             if (!(party.id in friendsPartiesMap)) {
-              friendsParties.push(party);
+              friendsParties.unshift(party);
             }
             friendsPartiesMap[party.id] = true;
             return friendsParties
           }, []);
-          this.parties.push(...friendParties);
+          this.parties.unshift(...friendParties);
       });
       })
     })
-
   }
 }
 
