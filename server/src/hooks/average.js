@@ -18,5 +18,13 @@ module.exports = (options = {}) => async context => {
     }
   });
 
+  const newUserRating = allHost.data.reduce((rating, user) => { 
+    const userParties = await context.app.service('group-users').find(user.id, {
+      query: {
+        is_host: true,
+      }
+    });
+  }, 0);
+
   return context;
 };
