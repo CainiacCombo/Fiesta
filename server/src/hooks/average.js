@@ -12,5 +12,11 @@ module.exports = (options = {}) => async context => {
 
   context.result.newPartyRating = patchResponse.rating;
 
+  const allHost = await context.app.service('group-users').find(party_id, {
+    query: {
+      is_host: true,
+    }
+  });
+
   return context;
 };
