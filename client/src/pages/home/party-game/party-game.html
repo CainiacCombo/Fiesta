@@ -33,12 +33,15 @@
       <button ion-button full (click)="startGame()">Start Game</button>
     </div>
     <div *ngSwitchCase="'starting'">
-      <h4> Starting...</h4>
+      <h4>Starting...</h4>
     </div>
     <div *ngSwitchCase="'started'">
       <div *ngIf="chosen">
         <h2>Get rid of that hot tot!</h2>
         <p>Shake your device to pass it to someone else</p>
+      </div>
+      <div *ngIf="!chosen">
+        <h2>Watch out for that hot tot!</h2>
       </div>
     </div>
     <div *ngSwitchCase="'ended'">

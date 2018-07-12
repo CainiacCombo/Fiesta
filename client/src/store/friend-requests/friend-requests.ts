@@ -12,7 +12,7 @@ const defaultState = {
   to: [],
 };
 
-export const friendRequestsReducer = (state = defaultState, action: FriendRequestsActions | Logout) => {
+export function friendRequestsReducer(state = defaultState, action: FriendRequestsActions | Logout) {
   switch (action.type) {
     case FriendRequestsTypes.ADD_TO_FRIEND_REQUESTS:
       return {
