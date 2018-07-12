@@ -19,6 +19,10 @@ profile {
     padding-bottom: 1.5rem;
     font-size: 18px;
   }
+  .action button {
+    width: 100%;
+    font-size: 1.4rem;
+  }
   .edit-button {
     padding-top: .5rem;
   }
@@ -39,12 +43,10 @@ profile {
   .avatar {
     width: 100px;
     height: 100px;
-    object-fit: cover;
-    border-radius: 100%;
   }
 
   rating .star {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
 
 }
