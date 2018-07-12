@@ -7,7 +7,7 @@ type LoadOptions = {
   loadingOptions: LoadingOptions
   toastOptions: ToastOptions
   delay: number
-}
+};
 
 @Injectable()
 export class LoadingUiProvider {
