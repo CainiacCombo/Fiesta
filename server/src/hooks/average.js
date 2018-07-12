@@ -12,8 +12,9 @@ module.exports = (options = {}) => async context => {
 
   context.result.newPartyRating = patchResponse.rating;
 
-  const allHost = await context.app.service('group-users').find(party_id, {
+  const allHost = await context.app.service('group-users').find({
     query: {
+      id: party_id,
       is_host: true,
     }
   });
@@ -32,8 +33,16 @@ module.exports = (options = {}) => async context => {
 
     const avgRating = totalUserPartyRating / userParties.total;
 
-    return avgRating; 
-  }, 0);
+    const patchedRating = await context.app.service('users').patch(user.id, {
+      rating: avgRating,
+    });
+
+    context.result.newHostRating = patchedRating.rating;
+
+    return avgRating;
+  }, 0); 
+
+  
 
   return context;
 };
