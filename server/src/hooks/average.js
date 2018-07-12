@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => async context => {
   const party_id = context.result.party_id;
-
+  console.log(party_id);
   const response = await context.app.service('party-ratings').find({ query: { party_id } });
 
   const allRating = response.data.reduce((rating, party) => party.rating + rating, 0);
@@ -19,11 +19,11 @@ module.exports = (options = {}) => async context => {
     }
   });
 
-  allHost.data.forEach(async (user) => { 
-
+  context.result.newHostRatings = await Promise.all(allHost.data.map(async (user) => { 
+    console.log(user);
     const userParties = await context.app.service('group-users').find({
       query: {
-        user_id: user.id,
+        user_id: user.user_id,
         is_host: true,
       }
     });
@@ -33,13 +33,16 @@ module.exports = (options = {}) => async context => {
     }, 0);
 
     const avgRating = totalUserPartyRating / userParties.total;
-
-    const patchedRating = await context.app.service('users').patch(user.id, {
+    console.log('avg', avgRating);
+    const patchedRating = await context.app.service('users').patch(user.user_id, {
       rating: avgRating,
     });
 
-    context.result.newHostRating = patchedRating.rating;
-  }); 
+    return {
+      user_id: user.id,
+      newUserRating: patchedRating.rating,
+    };
+  })); 
 
   
 
