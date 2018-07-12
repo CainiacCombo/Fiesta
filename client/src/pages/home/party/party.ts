@@ -19,11 +19,11 @@ import { AddUserParties } from '../../../store/parties/parties.actions';
 })
 export class PartyPage implements OnInit, OnDestroy{
 
-  messages: Message[] = [];
-  message: string = '';
-  party: Party;
-  user: any = {};
-  userSub: Subscription;
+  messages: Message[] = []
+  message: string = ''
+  party: Party
+  user: any = {}
+  userSub: Subscription
 
   constructor(
     public navCtrl: NavController,
@@ -33,32 +33,32 @@ export class PartyPage implements OnInit, OnDestroy{
     private store: Store<AppState>,
   ) {
     this.party = navParams.get('party')
+    this.onNewMessage = this.onNewMessage.bind(this);
+    this.onGameCreated = this.onGameCreated.bind(this);
   }
 
   ngOnInit() {
-    this.partyProvider.getPartyMessages(this.party.id)
-      .then(response => this.messages = response.data);
+    app.service('group-messages').on('created', this.onNewMessage);
+    app.service('game').on('created', this.onGameCreated);
 
     this.userSub = this.store.select('user').subscribe(user => this.user = user);
-
-    app.service('group-messages').on('created', newMessage => this.partyProvider.getGroupMessageUser(newMessage)
-      .then((message) => {
-        if (message.user_id != this.user.id) {
-          this.messages.push(message);
-        }
-      }));
-
-    this.partyProvider.findGame(this.party.id)
-      .then((games) => {
-        const game = games[0];
-        if (game) {
-          this.navCtrl.setRoot('PartyGamePage', { party: this.party, game }, { animate: true, direction: 'right' });
-        }
-      });
+    this.partyProvider.getPartyMessages(this.party.id).then(response => this.messages = response.data);
+    this.checkForGame();
   }
 
   ngOnDestroy() {
+    app.service('group-messages').off('created', this.onNewMessage);
+    app.service('game').off('created', this.onGameCreated);
     this.userSub.unsubscribe();
+  }
+
+  checkForGame() {
+    this.partyProvider.findGame(this.party.id).then((games) => {
+      const game = games[0];
+      if (game) {
+        this.navCtrl.push('PartyGamePage', { party: this.party, game });
+      }
+    });
   }
 
   exitChat() {
@@ -76,6 +76,20 @@ export class PartyPage implements OnInit, OnDestroy{
     this.partyProvider.createMessage(newMessage)
     .then(message => messages.push(message))
     .catch(() => console.log('ERROR WHEN CREATING MESSAGE'))
+  }
+
+  onNewMessage(newMessage) {
+    this.partyProvider.getGroupMessageUser(newMessage).then((message) => {
+      if (message.user_id != this.user.id) {
+        this.messages.push(message);
+      }
+    });
+  }
+
+  onGameCreated(game) {
+    if (game.party_id == this.party.id) {
+      this.checkForGame();
+    }
   }
 
   getPartyInfo() {
