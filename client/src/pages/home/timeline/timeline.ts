@@ -45,9 +45,6 @@ export class TimelinePage implements OnInit {
             return friendsParties
           }, []);
           this.parties.push(...friendParties);
-        // friendParties.forEach((party) => {
-        //   this.parties.push(party)
-        // });
       });
       })
     })
