@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IonicPage } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
 import { Party } from '../../../interfaces/Party';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
+import { User } from '../../../interfaces/User';
+import { UserProvider } from '../../../providers/user/user';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -13,12 +15,44 @@ import { PartyProvider } from '../../../providers/party/party';
 })
 export class TimelinePage implements OnInit {
 
-  parties$: Observable<Party[]>
+  user: User
+  userSub: Subscription
+  parties: Party[] = []
+  friends: User[] = []
 
-  constructor(public partyProvider: PartyProvider, private store: Store<AppState>) { }
+  constructor(
+    public partyProvider: PartyProvider, 
+    private store: Store<AppState>,
+    public userProvider: UserProvider) { }
 
   ngOnInit() {
-    this.parties$ = this.store.select('parties');
-  }
+    this.userSub = this.store.select('user').subscribe((user) => {
+      this.user = user;
+    });
 
+    this.userProvider.getUserFriends(this.user.id)
+    .then((friends) => {
+      const friendsPartiesMap = {};
+      this.friends = friends.data
+      this.friends.forEach(friend => {
+        this.userProvider.getUserParties(friend.id).then((parties) => {
+          const friendParties = parties.data.map(groupUser => groupUser.party)
+          .reduce((friendsParties, party) => {
+            if (!(party.id in friendsPartiesMap)) {
+              friendsParties.push(party);
+            }
+            friendsPartiesMap[party.id] = true;
+            return friendsParties
+          }, []);
+          this.parties.push(...friendParties);
+        // friendParties.forEach((party) => {
+        //   this.parties.push(party)
+        // });
+      });
+      })
+    })
+
+  }
 }
+
+
