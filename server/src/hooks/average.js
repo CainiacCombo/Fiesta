@@ -19,11 +19,20 @@ module.exports = (options = {}) => async context => {
   });
 
   const newUserRating = allHost.data.reduce(async (rating, user) => { 
+
     const userParties = await context.app.service('group-users').find(user.id, {
       query: {
         is_host: true,
       }
     });
+
+    const totalUserPartyRating = userParties.data.reduce((totalRating, userParty) => {
+      return userParty.rating + totalRating;
+    }, 0);
+
+    const avgRating = totalUserPartyRating / userParties.total;
+
+    return avgRating; 
   }, 0);
 
   return context;
