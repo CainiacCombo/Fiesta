@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let party of parties$ | async" class="story">
+  <div *ngFor="let party of parties" class="story">
     <party-story [party]="party"></party-story>
   </div>
 </ion-content>
