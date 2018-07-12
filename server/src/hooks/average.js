@@ -14,21 +14,22 @@ module.exports = (options = {}) => async context => {
 
   const allHost = await context.app.service('group-users').find({
     query: {
-      id: party_id,
+      party_id,
       is_host: true,
     }
   });
 
-  const newUserRating = allHost.data.reduce(async (rating, user) => { 
+  allHost.data.forEach(async (user) => { 
 
-    const userParties = await context.app.service('group-users').find(user.id, {
+    const userParties = await context.app.service('group-users').find({
       query: {
+        user_id: user.id,
         is_host: true,
       }
     });
 
     const totalUserPartyRating = userParties.data.reduce((totalRating, userParty) => {
-      return userParty.rating + totalRating;
+      return userParty.party.rating + totalRating;
     }, 0);
 
     const avgRating = totalUserPartyRating / userParties.total;
@@ -38,9 +39,7 @@ module.exports = (options = {}) => async context => {
     });
 
     context.result.newHostRating = patchedRating.rating;
-
-    return avgRating;
-  }, 0); 
+  }); 
 
   
 
