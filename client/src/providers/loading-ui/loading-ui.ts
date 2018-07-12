@@ -4,9 +4,9 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 import { timer } from 'rxjs/observable/timer';
 
 type LoadOptions = {
-  loadingOptions: LoadingOptions
-  toastOptions: ToastOptions
-  delay: number
+  loadingOptions?: LoadingOptions
+  toastOptions?: ToastOptions
+  delay?: number
 };
 
 @Injectable()
@@ -35,7 +35,7 @@ export class LoadingUiProvider {
 
     try {
       loading.present();
-      return delayedAction();
+      return await delayedAction();
     } catch (e) {
       toast.present();
     } finally {
