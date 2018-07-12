@@ -41,21 +41,20 @@ export class PartyPage implements OnInit, OnDestroy{
 
     this.userSub = this.store.select('user').subscribe(user => this.user = user);
 
-    app.service('group-messages').on('created', newMessage =>
-      this.partyProvider.getGroupMessageUser(newMessage)
-        .then((message) => {
-          if (message.user_id != this.user.id) {
-            this.messages.push(message);
-          }
-        }));
+    app.service('group-messages').on('created', newMessage => this.partyProvider.getGroupMessageUser(newMessage)
+      .then((message) => {
+        if (message.user_id != this.user.id) {
+          this.messages.push(message);
+        }
+      }));
 
-      this.partyProvider.findGame(this.party.id)
+    this.partyProvider.findGame(this.party.id)
       .then((games) => {
         const game = games[0];
         if (game) {
           this.navCtrl.setRoot('PartyGamePage', { party: this.party, game }, { animate: true, direction: 'right' });
         }
-      })
+      });
   }
 
   ngOnDestroy() {
@@ -87,22 +86,22 @@ export class PartyPage implements OnInit, OnDestroy{
     const endTime = party.start_date;
     const endTimeDate = new Date(endTime);
     const end = endTimeDate.toString()
+
     party.end_date = end;
     party.start_date = start;
-    const partyModal = this.modalCtrl.create('PartyInfoPage', { party })
-    partyModal.present();
+
+    this.modalCtrl.create('PartyInfoPage', { party }).present()
   }
 
   goToRate() {
     const { party } = this;
-    const partyModal = this.modalCtrl.create(RateComponent, { party })
-    partyModal.present();
+    this.modalCtrl.create(RateComponent, { party }).present();
   }
 
   goToUpload() {
-    this.modalCtrl.create(UploadComponent, { 
+    this.modalCtrl.create(UploadComponent, {
       party: this.party,
-      upload: (dataUri) => this.partyProvider.uploadToStory({
+      upload: dataUri => this.partyProvider.uploadToStory({
         dataUri,
         userId: this.user.id,
         party_id: this.party.id
