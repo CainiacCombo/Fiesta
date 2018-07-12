@@ -3,7 +3,7 @@ import { UserActions, UserTypes } from './user.actions';
 
 const defaultState: User = null;
 
-export const userReducer = (state = defaultState, action: UserActions) => {
+export function userReducer(state = defaultState, action: UserActions) {
   switch (action.type) {
     case UserTypes.LOGIN:
       return action.payload;
