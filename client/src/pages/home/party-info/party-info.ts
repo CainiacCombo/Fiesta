@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { PartyProvider } from '../../../providers/party/party';
 import { Party } from '../../../interfaces/Party';
 import moment from 'moment';
+import { UserProvider } from '../../../providers/user/user';
+import { User } from '../../../interfaces/User';
 
 
 @IonicPage()
@@ -13,12 +15,20 @@ import moment from 'moment';
 export class PartyInfoPage {
 
   party: Party;
+  users: User[] = []
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public view: ViewController,
-    public partyProvider: PartyProvider, ) { this.party = navParams.get('party') }
+    public partyProvider: PartyProvider, 
+    public userProvider: UserProvider,
+  ) { this.party = navParams.get('party') }
+
+  ngOnInit() {
+    this.userProvider.getUsersInParty(this.party.id)
+    .then(response => this.users = response.data.map(user => user));
+  }
 
   closeModal() {
     this.view.dismiss();
