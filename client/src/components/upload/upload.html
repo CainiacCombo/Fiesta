@@ -5,17 +5,14 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-  
+
 <ion-content padding>
-  <ion-item>
-    <p>{{imageURI}}</p>
-    <button ion-button color="secondary" (click)="getImage()">Get Image</button>
-  </ion-item>
-  <ion-item>
-    <h4>Image Preview</h4>
-    <img [src]="dataUri" *ngIf="dataUri" alt="Ionic File" width="300" />
-  </ion-item>
-  <ion-item>
-    <button ion-button (click)="upload()">Upload</button>
-  </ion-item>
+  <div class="d-flex">
+    <button (click)="takePhoto()" color="primary" class="w-50" ion-button large>Take Photo</button>
+    <button (click)="getPhoto()" color="orange" class="w-50" ion-button large>Get Image</button>
+  </div>
+  <div *ngIf="dataUri">
+    <img [src]="dataUri" width="300" />
+    <button (click)="upload()" ion-button large>Upload</button>
+  </div>
 </ion-content>

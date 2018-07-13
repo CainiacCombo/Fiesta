@@ -19,11 +19,11 @@ import { AddUserParties } from '../../../store/parties/parties.actions';
 })
 export class PartyPage implements OnInit, OnDestroy{
 
-  messages: Message[] = [];
-  message: string = '';
-  party: Party;
-  user: any = {};
-  userSub: Subscription;
+  messages: Message[] = []
+  message: string = ''
+  party: Party
+  user: any = {}
+  userSub: Subscription
 
   constructor(
     public navCtrl: NavController,
@@ -33,33 +33,32 @@ export class PartyPage implements OnInit, OnDestroy{
     private store: Store<AppState>,
   ) {
     this.party = navParams.get('party')
+    this.onNewMessage = this.onNewMessage.bind(this);
+    this.onGameCreated = this.onGameCreated.bind(this);
   }
 
   ngOnInit() {
-    this.partyProvider.getPartyMessages(this.party.id)
-      .then(response => this.messages = response.data);
+    app.service('group-messages').on('created', this.onNewMessage);
+    app.service('game').on('created', this.onGameCreated);
 
     this.userSub = this.store.select('user').subscribe(user => this.user = user);
-
-    app.service('group-messages').on('created', newMessage =>
-      this.partyProvider.getGroupMessageUser(newMessage)
-        .then((message) => {
-          if (message.user_id != this.user.id) {
-            this.messages.push(message);
-          }
-        }));
-
-      this.partyProvider.findGame(this.party.id)
-      .then((games) => {
-        const game = games[0];
-        if (game) {
-          this.navCtrl.setRoot('PartyGamePage', { party: this.party, game }, { animate: true, direction: 'right' });
-        }
-      })
+    this.partyProvider.getPartyMessages(this.party.id).then(response => this.messages = response.data);
+    this.checkForGame();
   }
 
   ngOnDestroy() {
+    app.service('group-messages').off('created', this.onNewMessage);
+    app.service('game').off('created', this.onGameCreated);
     this.userSub.unsubscribe();
+  }
+
+  checkForGame() {
+    this.partyProvider.findGame(this.party.id).then((games) => {
+      const game = games[0];
+      if (game) {
+        this.navCtrl.push('PartyGamePage', { party: this.party, game });
+      }
+    });
   }
 
   exitChat() {
@@ -79,6 +78,20 @@ export class PartyPage implements OnInit, OnDestroy{
     .catch(() => console.log('ERROR WHEN CREATING MESSAGE'))
   }
 
+  onNewMessage(newMessage) {
+    this.partyProvider.getGroupMessageUser(newMessage).then((message) => {
+      if (message.user_id != this.user.id) {
+        this.messages.push(message);
+      }
+    });
+  }
+
+  onGameCreated(game) {
+    if (game.party_id == this.party.id) {
+      this.checkForGame();
+    }
+  }
+
   getPartyInfo() {
     const { party } = this;
     const startTime = party.start_date;
@@ -87,22 +100,22 @@ export class PartyPage implements OnInit, OnDestroy{
     const endTime = party.start_date;
     const endTimeDate = new Date(endTime);
     const end = endTimeDate.toString()
+
     party.end_date = end;
     party.start_date = start;
-    const partyModal = this.modalCtrl.create('PartyInfoPage', { party })
-    partyModal.present();
+
+    this.modalCtrl.create('PartyInfoPage', { party }).present()
   }
 
   goToRate() {
     const { party } = this;
-    const partyModal = this.modalCtrl.create(RateComponent, { party })
-    partyModal.present();
+    this.modalCtrl.create(RateComponent, { party }).present();
   }
 
   goToUpload() {
-    this.modalCtrl.create(UploadComponent, { 
+    this.modalCtrl.create(UploadComponent, {
       party: this.party,
-      upload: (dataUri) => this.partyProvider.uploadToStory({
+      upload: dataUri => this.partyProvider.uploadToStory({
         dataUri,
         userId: this.user.id,
         party_id: this.party.id
