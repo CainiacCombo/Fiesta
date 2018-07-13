@@ -7,9 +7,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-menu [content]="partyContent" type="overlay" side="right">
-  <party-sidebar [party]="party"></party-sidebar>
-</ion-menu>
+<div *ngIf="isHost" >
+  <ion-menu [content]="partyContent" type="overlay" side="right">
+    <party-sidebar [party]="party" ></party-sidebar>
+  </ion-menu>
+</div>
 
 <ion-content padding #partyContent>
   <div ion-list class="list">
