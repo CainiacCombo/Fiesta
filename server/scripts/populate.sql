@@ -3,10 +3,6 @@ USE fiesta;
 -- USERS
 DELETE FROM users;
 
-/* INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (1, "fake-google-id-1", "bob", "Bobby Boy", "https://images-na.ssl-images-amazon.com/images/M/MV5BODYzNzg4MjAxMF5BMl5BanBnXkFtZTgwNDEyODQ0MzI@._CR792,139,275,275_UX402_UY402._SY201_SX201_AL_.jpg", "I am bob, bob i am", "bob@hotmail.to", "444-1111", 3, NOW(), NOW());
-INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (2, "fake-google-id-3", "therealtaylorswift", "T-Swizzle", "http://theweeklyspoon.com/wp-content/uploads/NOW()/05/F814A5D3-D18F-4A2F-81D2-D385431B1C92.jpeg", "Hey its your local country girl Taylor!!", "taylorswift@taylorswift.taylorswift", "444-3333", 5, NOW(), NOW());
-INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (3, "fake-google-id-4", "sasha", "Sasha", "https://vignette.wikia.nocookie.net/bratzmagicschool/images/3/36/Sasha.jpg/revision/latest?cb=20111230024851", "It's Sasha", "sasha@gooooooogle.com", "444-1112", 1, NOW(), NOW());
-INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) VALUES (4, "fake-google-id-5", "andy", "Andy Nguyen", "https://ca.slack-edge.com/T02P3HQD6-U867E4UUA-800f2ed4f4f6-512", "Holy Moly! This app is great!", "andynguyen@andynguen.andynguen", "444-1113", 1, NOW(), NOW());*/
 insert into users (id, googleid, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) values (1, '1GgKGCp4ii7ofmFTo6uiLqBQtPPg9VXwkK', 'Hamel Ottey', 'hottey0', 'https://robohash.org/velvoluptatenostrum.bmp?size=50x50&set=set1', 'Odeon', 'hottey0@unc.edu', '519-250-3183', 5, NOW(), NOW());
 insert into users (id, googleid, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) values (2, '1ChwSLtbcxLMtHAb3Vprv2m4mjsduNvxSA', 'Murial Port', 'mport1', 'https://robohash.org/autemametut.png?size=50x50&set=set1', 'Company Set-up', 'mport1@slate.com', '520-647-2957', 3, NOW(), NOW());
 insert into users (id, googleid, username, nickname, avatar, bio, email, phone, rating, createdAt, updatedAt) values (3, '1JjK8bBTcvGDYApeMzjsLMjx1tgDyEquRF', 'Candace Healey', 'chealey2', 'https://robohash.org/nemosedcumque.bmp?size=50x50&set=set1', 'KOL Management', 'chealey2@epa.gov', '456-716-2147', 4, NOW(), NOW());
@@ -34,24 +30,24 @@ INSERT INTO users (id, googleId, username, nickname, avatar, bio, email, phone, 
 -- FRIENDS
 DELETE FROM friends;
 
-INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (1, 2, NOW(), NOW());
-INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (1, 3, NOW(), NOW());
-INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (2, 3, NOW(), NOW());
+INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (23, 22, NOW(), NOW());
+INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (22, 21, NOW(), NOW());
+INSERT INTO friends (user1_id, user2_id, createdAt, updatedAt) VALUES (23, 21, NOW(), NOW());
 
 -- FRIEND REQUESTS
 DELETE FROM friend_requests;
 
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 2, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (5, 2, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (1, 6, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (2, 6, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (3, 6, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 6, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (1, 7, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (2, 7, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (3, 7, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 7, NOW(), NOW());
-INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (6, 7, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 23, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (5, 22, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (1, 21, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (2, 21, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (3, 22, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (4, 23, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (1, 22, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (2, 23, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (9, 23, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (10, 22, NOW(), NOW());
+INSERT INTO friend_requests (from_user_id, to_user_id, createdAt, updatedAt) VALUES (11, 21, NOW(), NOW());
 
 -- PARTIES
 DELETE FROM parties;
