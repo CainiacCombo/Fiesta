@@ -32,7 +32,7 @@ export class CreateGameComponent {
 
     try {
       const game = await partyProvider.createGame({ name, party_id });
-      this.navCtrl.push('PartyGamePage', { party, game }, { animate: true, direction: 'right' });
+      this.navCtrl.push('PartyGamePage', { party, game });
     } catch (e) {
       toastCtrl.create({
         message: 'Oops! Something went wrong when creating your game.',

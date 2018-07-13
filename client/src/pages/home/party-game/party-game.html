@@ -2,7 +2,12 @@
   <div *ngSwitchCase="'match'" [ngSwitch]="state">
     <h1>Match!</h1>
     <div *ngSwitchCase="'lobby'">
-      <button ion-button full (click)="startGame()">Start Game</button>
+        <div *ngIf="isHost">
+          <button ion-button full (click)="startGame()">Start Game</button>
+        </div>
+        <div *ngIf="!isHost">
+          <h4>Waiting for the host to start the game...</h4>
+        </div>
     </div>
     <div *ngSwitchCase="'starting'">
       <p>Starting The Game...</p>
@@ -30,7 +35,12 @@
   <div *ngSwitchCase="'hot'" [ngSwitch]="state">
     <h1>HotTot!</h1>
     <div *ngSwitchCase="'lobby'">
-      <button ion-button full (click)="startGame()">Start Game</button>
+      <div *ngIf="isHost">
+        <button ion-button full (click)="startGame()">Start Game</button>
+      </div>
+      <div *ngIf="!isHost">
+        <h4>Waiting for the host to start the game...</h4>
+      </div>
     </div>
     <div *ngSwitchCase="'starting'">
       <h4>Starting...</h4>
@@ -39,7 +49,7 @@
       <div *ngIf="chosen">
         <h2>Get rid of that hot tot!</h2>
         <p>Shake your device to pass it to someone else</p>
-        <img src="../../../assets/imgs/hotTot.png">
+        <img src="../../../assets/imgs/hotTot.png" class="animated shake infinite">
       </div>
       <div *ngIf="!chosen">
         <h2>Watch out for that hot tot!</h2>
@@ -47,7 +57,7 @@
     </div>
     <div *ngSwitchCase="'ended'">
       <h2>Game Ended!</h2>
-      <h4>{{hotLoser}} COULDN'T SHAKE THAT HOT TOT!</h4>
+      <h4>{{hotLoser}} couldn't shake that hot tot!</h4>
       <button (click)="leave()" ion-button>Leave</button>
     </div>
   </div>

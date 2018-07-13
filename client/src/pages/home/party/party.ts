@@ -7,6 +7,7 @@ import { Party } from '../../../interfaces/Party';
 import { Message } from '../../../interfaces/Message';
 import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
+import { UserProvider } from '../../../providers/user/user';
 import { RateComponent } from '../../../components/rate/rate';
 import { UploadComponent } from '../../../components/upload/upload';
 import { app } from '../../../feathers';
@@ -24,6 +25,7 @@ export class PartyPage implements OnInit, OnDestroy{
   party: Party
   user: any = {}
   userSub: Subscription
+  isHost: boolean
 
   constructor(
     public navCtrl: NavController,
@@ -31,6 +33,7 @@ export class PartyPage implements OnInit, OnDestroy{
     public partyProvider: PartyProvider,
     public modalCtrl: ModalController,
     private store: Store<AppState>,
+    private userProvider: UserProvider,
   ) {
     this.party = navParams.get('party')
     this.onNewMessage = this.onNewMessage.bind(this);
@@ -41,9 +44,16 @@ export class PartyPage implements OnInit, OnDestroy{
     app.service('group-messages').on('created', this.onNewMessage);
     app.service('game').on('created', this.onGameCreated);
 
-    this.userSub = this.store.select('user').subscribe(user => this.user = user);
+    this.userSub = this.store.select('user').subscribe(user => {
+      this.user = user
+      
+      this.userProvider.getHostOfParty(this.party.id, this.user.id)
+      .then(response => this.isHost = response.total > 0);
+    });
+
     this.partyProvider.getPartyMessages(this.party.id).then(response => this.messages = response.data);
     this.checkForGame();
+
   }
 
   ngOnDestroy() {

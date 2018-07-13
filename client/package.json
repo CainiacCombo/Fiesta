@@ -62,6 +62,7 @@
     "rxjs": "5.5.11",
     "socket.io-client": "^2.1.1",
     "sw-toolbox": "3.6.0",
+    "throttle-debounce": "^2.0.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
