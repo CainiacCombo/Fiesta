@@ -12,6 +12,7 @@ import { AddToFriendRequests, AddFromFriendRequests } from '../../store/friend-r
 
 import { UserProvider } from '../../providers/user/user';
 import { PartyProvider } from '../../providers/party/party';
+import { LoadingUiProvider } from '../../providers/loading-ui/loading-ui';
 
 @IonicPage()
 @Component({
@@ -25,20 +26,24 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public userProvider: UserProvider,
     public partyProvider: PartyProvider,
+    public loadingUIProvider: LoadingUiProvider,
     private store: Store<AppState>,
   ) { }
 
   googleLogin() {
-    const loader = this.loadingCtrl.create();
-
-    loader.present();
-
-    this.userProvider.googleSignin()
-      .then(googleUser => this.userProvider.findUser({ googleId: googleUser.googleId })
-        .then(user => !user
+    this.loadingUIProvider.load(
+      async () => {
+        const googleUser = await this.userProvider.googleSignin();
+        const user = await this.userProvider.findUser({ googleId: googleUser.googleId });
+        await (!user
           ? this.navCtrl.push('SignupPage', { googleUser, authenticate: this.authenticate.bind(this) })
-          : this.authenticate(user, googleUser.accessToken))
-        .then(() => loader.dismiss()))
+          : this.authenticate(user, googleUser.accessToken));
+      },
+      'We couldn\'t log you in with Google. Try Again.',
+      {
+        loadingOptions: { content: 'Logging you in' },
+      },
+    );
   }
 
   authenticate(user: User, googleAccessToken: string) {
@@ -55,7 +60,7 @@ export class LoginPage {
       ]))
       .then(() => {
         this.store.dispatch(new Login(user));
-        this.navCtrl.setRoot('HomePage', null, { animate: true, direction: 'right' });
+        this.navCtrl.setRoot('HomePage', null);
       });
   }
 
