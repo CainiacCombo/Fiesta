@@ -89,6 +89,10 @@ export class UserProvider {
     });
   }
 
+  getUsersInParty(party_id): Promise<UsersResponse> {
+    return app.service('group-users').find({ query: { party_id } })
+  }
+
   getUserFriends(user_id): Promise<UsersResponse> {
     return app.service('friends').find({ query: { user_id } });
   }

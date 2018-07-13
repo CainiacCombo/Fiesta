@@ -86,9 +86,4 @@ export class SearchPage {
     }
   }
 
-  goToProfile(user) {
-    const userModal= this.modalCtrl.create(ProfileComponent, { user })
-    userModal.present();
-  }
-
 }
