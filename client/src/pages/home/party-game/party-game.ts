@@ -28,6 +28,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   hotLoser: string
   chosen: boolean = false
   qrcode: any
+  isHost: boolean
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +53,9 @@ export class PartyGamePage implements OnInit, OnDestroy {
       if (this.game.match_it_id && this.game.match_it_id == this.user.id) {
         this.chosen = true;
       }
+      
+      this.userProvider.getHostOfParty(this.party.id, this.user.id)
+      .then(response => this.isHost = response.total > 0);
     });
 
     if (this.game.name === 'hot') {
