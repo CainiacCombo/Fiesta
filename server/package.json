@@ -19,7 +19,7 @@
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
+    "start": "nodemon src/",
     "mocha": "mocha test/ --recursive --exit",
     "coverage": "istanbul cover _mocha test/",
     "showcoverage": "open coverage/lcov-report/index.html"
