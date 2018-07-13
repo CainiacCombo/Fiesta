@@ -11,18 +11,18 @@ import { AppState } from '../../store/reducers';
 })
 export class RateComponent {
 
-  rating: number = 0; 
+  rating: number = 0;
   party: Party
 
   constructor(
-    public viewCtrl: ViewController, 
-    public partyProvider: PartyProvider, 
-    public store: Store<AppState>, 
+    public viewCtrl: ViewController,
+    public partyProvider: PartyProvider,
+    public store: Store<AppState>,
     navParams: NavParams) {
     this.party = navParams.get('party')
   }
 
-  rate(){
+  rate() {
     this.store.select('user')
       .take(1)
       .subscribe(user => this.partyProvider.rateParty({
@@ -33,8 +33,8 @@ export class RateComponent {
     this.viewCtrl.dismiss();
   }
 
-  changeRating(rating){
-    this.rating = rating;
+  changeRating(rating) {
+    this.rating = this.rating === rating ? 0 : rating;
   }
 
   closeModal() {

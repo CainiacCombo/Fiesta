@@ -123,6 +123,10 @@ $red-violet: color($colors, red-violet);
   border-radius: 100%;
 }
 
+.star:not(.star--empty) {
+  color: gold;
+}
+
 // OVERRIDE
 .toolbar-background, .tabbar {
   @extend .bg-gradient;
@@ -133,6 +137,12 @@ $red-violet: color($colors, red-violet);
 }
 .bar-button * {
   font-weight: 600;
+}
+ion-content {
+  background-color: #fafafa !important;
+  .card {
+    background-color: #fefefe !important;
+  }
 }
 
 // FIX
