@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { IonicPage, NavController, ViewController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Subscription } from 'rxjs/Subscription';
+import { throttle } from 'throttle-debounce';
 import { Party } from '../../../interfaces/Party';
 import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
@@ -41,7 +42,10 @@ export class PartyGamePage implements OnInit, OnDestroy {
     private deviceMotion: DeviceMotion,
     public toastCtrl: ToastController,
     public userProvider: UserProvider,
-  ) { }
+  ) {
+    this.onGameUpdate = this.onGameUpdate.bind(this);
+    this.pass = <any>throttle(800, this.pass.bind(this));
+  }
 
   ngOnInit() {
     this.party = this.navParams.get('party');
@@ -63,58 +67,55 @@ export class PartyGamePage implements OnInit, OnDestroy {
         .watchAcceleration({ frequency: 800 })
         .subscribe((acceleration: DeviceMotionAccelerationData) => {
           if (this.chosen) {
-            const x = Math.abs(acceleration.x)
-            const y = Math.abs(acceleration.y)
-            const z = Math.abs(acceleration.z)
+            const x = Math.abs(acceleration.x);
+            const y = Math.abs(acceleration.y);
+            const z = Math.abs(acceleration.z);
 
             if (x >= 7 || y >= 7 || z >= 15) {
               this.pass();
-            } else {
-              // debounce this
-              // this.toastCtrl.create({
-              //   message: 'Shake a little harder',
-              //   duration: 4000,
-              //   position: 'top',
-              // }).present();
             }
           }
         });
     }
 
-
-    app.service('game').on('patched', (data) => {
-      this.state = data.state;
-      if (data.name === 'match') {
-        if (data.state === 'starting') {
-          if (data.match_it) {
-            this.chosen = data.match_it.user_id == this.user.id;
-          }
-        } else if (data.state === 'started') {
-          this.matchLink = data.match_link;
-        }
-      } else if (data.name === 'hot') {
-        if (data.state === 'ended') {
-          this.stopMotion();
-          this.userProvider.findUser({ id: data.hot_it_id })
-            .then((user) => {
-              this.hotLoser = user.nickname;
-            });
-        }
-        if (data.hot_it) {
-          this.chosen = data.hot_it.user_id == this.user.id;
-        }
-      }
-
-      this.changeDetectorRef.detectChanges();
-    });
+    app.service('game').on('patched', this.onGameUpdate);
   }
 
   ngOnDestroy() {
-    this.changeDetectorRef.detach();
-    this.userSub.unsubscribe();
+    app.service('game').off('patched', this.onGameUpdate);
     this.stopMotion();
+    this.userSub.unsubscribe();
+    this.changeDetectorRef.detach();
   }
-  
+
+  onGameUpdate(data) {
+    this.state = this.state === 'ended' ? 'ended' : data.state;
+    if (data.name === 'match') {
+      if (data.state === 'starting') {
+        if (data.match_it) {
+          this.chosen = data.match_it.user_id == this.user.id;
+        }
+      } else if (data.state === 'started') {
+        this.matchLink = data.match_link;
+      }
+    } else if (data.name === 'hot') {
+      if (data.state === 'ended') {
+        this.stopMotion();
+        this.userProvider.findUser({ id: data.hot_it_id })
+          .then((user) => {
+            this.hotLoser = user.nickname;
+          });
+      }
+      if (data.hot_it) {
+        this.chosen = data.hot_it.user_id == this.user.id;
+      }
+    }
+
+    try {
+      this.changeDetectorRef.detectChanges();
+    } catch (e) { console.log('UPDATE FAILED') }
+  }
+
   stopMotion() {
     if (this.motionSub) {
       this.motionSub.unsubscribe();
@@ -152,7 +153,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   }
 
   leave() {
-    this.navCtrl.setRoot('PartyPage', { party: this.party }, { animate: true, direction: 'left' });
+    this.navCtrl.pop();
   }
 
 }
