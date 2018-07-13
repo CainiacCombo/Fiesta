@@ -74,8 +74,8 @@ INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) V
 -- MESSAGES
 DELETE FROM messages;
 
-INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (1, 1, "You guys ready to pawtay?", NOW(), NOW());
-INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (2, 1, "...Because I am!", NOW(), NOW());
+INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (1, 21, "You guys ready to pawtay?", NOW(), NOW());
+INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (2, 22, "...Because I am!", NOW(), NOW());
 
 -- GROUP MESSAGES
 DELETE FROM group_messages;
