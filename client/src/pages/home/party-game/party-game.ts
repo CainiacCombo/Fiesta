@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { IonicPage, NavController, ViewController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Subscription } from 'rxjs/Subscription';
+import { throttle } from 'throttle-debounce';
 import { Party } from '../../../interfaces/Party';
 import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
@@ -42,6 +43,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
     public userProvider: UserProvider,
   ) {
     this.onGameUpdate = this.onGameUpdate.bind(this);
+    this.pass = <any>throttle(800, this.pass.bind(this));
   }
 
   ngOnInit() {
@@ -58,12 +60,12 @@ export class PartyGamePage implements OnInit, OnDestroy {
 
     if (this.game.name === 'hot') {
       this.motionSub = this.deviceMotion
-        .watchAcceleration({ frequency: 700 })
+        .watchAcceleration({ frequency: 800 })
         .subscribe((acceleration: DeviceMotionAccelerationData) => {
           if (this.chosen) {
-            const x = Math.abs(acceleration.x)
-            const y = Math.abs(acceleration.y)
-            const z = Math.abs(acceleration.z)
+            const x = Math.abs(acceleration.x);
+            const y = Math.abs(acceleration.y);
+            const z = Math.abs(acceleration.z);
 
             if (x >= 7 || y >= 7 || z >= 15) {
               this.pass();
@@ -83,7 +85,7 @@ export class PartyGamePage implements OnInit, OnDestroy {
   }
 
   onGameUpdate(data) {
-    this.state = data.state;
+    this.state = this.state === 'ended' ? 'ended' : data.state;
     if (data.name === 'match') {
       if (data.state === 'starting') {
         if (data.match_it) {
@@ -105,7 +107,9 @@ export class PartyGamePage implements OnInit, OnDestroy {
       }
     }
 
-    this.changeDetectorRef.detectChanges();
+    try {
+      this.changeDetectorRef.detectChanges();
+    } catch (e) { console.log('UPDATE FAILED') }
   }
 
   stopMotion() {
