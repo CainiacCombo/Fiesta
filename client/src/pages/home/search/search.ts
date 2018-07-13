@@ -13,7 +13,6 @@ import { AppState } from '../../../store/reducers';
 import { PartyProvider } from '../../../providers/party/party';
 import { UserProvider } from '../../../providers/user/user';
 import { AddUserParties } from '../../../store/parties/parties.actions';
-import { ProfileComponent } from '../../../components/profile/profile';
 
 @IonicPage()
 @Component({
