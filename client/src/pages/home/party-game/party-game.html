@@ -2,7 +2,12 @@
   <div *ngSwitchCase="'match'" [ngSwitch]="state">
     <h1>Match!</h1>
     <div *ngSwitchCase="'lobby'">
-      <button ion-button full (click)="startGame()">Start Game</button>
+        <div *ngIf="isHost">
+          <button ion-button full (click)="startGame()">Start Game</button>
+        </div>
+        <div *ngIf="!isHost">
+          <h4>Waiting for the host to start the game...</h4>
+        </div>
     </div>
     <div *ngSwitchCase="'starting'">
       <p>Starting The Game...</p>
@@ -30,7 +35,12 @@
   <div *ngSwitchCase="'hot'" [ngSwitch]="state">
     <h1>HotTot!</h1>
     <div *ngSwitchCase="'lobby'">
-      <button ion-button full (click)="startGame()">Start Game</button>
+      <div *ngIf="isHost">
+        <button ion-button full (click)="startGame()">Start Game</button>
+      </div>
+      <div *ngIf="!isHost">
+        <h4>Waiting for the host to start the game...</h4>
+      </div>
     </div>
     <div *ngSwitchCase="'starting'">
       <h4>Starting...</h4>

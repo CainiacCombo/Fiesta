@@ -63,6 +63,15 @@ export class UserProvider {
     return app.service('users').find({ query });
   }
 
+  getHostOfParty(party_id: string, user_id: any): Promise<GroupUsersResponse> {
+    return app.service('group-users').find({
+      query: { 
+        user_id,
+        party_id,
+        is_host: true 
+      } })
+ }
+
   getUsersByUsername(username: string): Promise<UsersResponse> {
     return this.getUsers({
       username: {
