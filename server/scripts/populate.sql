@@ -107,11 +107,11 @@ INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (
 
 DELETE FROM media
 
-insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.chepstow-racecourse.co.uk%2Fimages%2Fupload%2Fxmas-party-50-50.jpg&f=1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flearnthaiwithmod.com%2Fwp-content%2Fuploads%2F2015%2F07%2FParty-time.jpg&f=1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.gettyimages.com%2Fphotos%2Fparty-picture-id502910240%3Fs%3D612x612&f=1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.macleans.ca%2Fwp-content%2Fuploads%2F2016%2F02%2FSt.-FX-Concert-1024x683.jpg&f=1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.black-moon-games.com%2Fwp-content%2Fuploads%2F2016%2F04%2FSurprise-party-618x413.jpg&f=1', null, 1);
 insert into media (id, userId , link, caption, party_id) values (6, 21, 'https://robohash.org/consequaturverorerum.bmp?size=50x50&set=set1', null, 2);
 insert into media (id, userId , link, caption, party_id) values (7, 10, 'https://robohash.org/expeditaautcumque.bmp?size=50x50&set=set1', null, 2);
 insert into media (id, userId , link, caption, party_id) values (8, 22, 'https://robohash.org/temporeidvel.jpg?size=50x50&set=set1', null, 2);
