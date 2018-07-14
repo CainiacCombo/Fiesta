@@ -57,6 +57,15 @@ INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude
 INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (3, "Johnson Family Reunion", 3, true, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
 INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (4, "Taylor's Fiesta", 1, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
 INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (5, "Eric's Birthday", 0, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (6, "Harold's Cookout", 3, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (7, "Watson Family Vacation", 4, true, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (8, "Car Convention", 2, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (9, "Javascript Summit", 5, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (10, "Nola Film Festival", 5, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (11, "Company Retreat", 3, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (12, "Abbey's Glow Party", 2, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+INSERT INTO parties (id, name, rating, is_private, location, longitude, latitude, start_date, end_date, createdAt, updatedAt) VALUES (13, "Software Engineer Conference", 4, false, "748 Camp St.", "29.945961", "-90.070023", NOW(), NOW(), NOW(), NOW());
+
 
 -- GROUP USERS
 DELETE FROM group_users;
@@ -70,6 +79,18 @@ INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) V
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (7, 22, 5, false, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (8, 22, 4, true, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (9, 23, 5, true, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 21, 9, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 22, 9, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 23, 9, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 21, 13, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 23, 13, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 22, 13, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 21, 10, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 23, 10, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 22, 10, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 21, 11, false, NOW(), NOW());
+INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (7, 22, 18, false, NOW(), NOW());
+
 
 -- MESSAGES
 DELETE FROM messages;
