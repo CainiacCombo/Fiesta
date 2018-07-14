@@ -14,7 +14,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-// UTIL
+// UTILS
 .w-auto {
   width: auto;
 }
@@ -138,7 +138,7 @@ $red-violet: color($colors, red-violet);
 .bar-button * {
   font-weight: 600;
 }
-ion-content {
+ion-content, .item {
   background-color: #fafafa !important;
   .card {
     background-color: #fefefe !important;
