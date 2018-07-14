@@ -13,7 +13,7 @@ export class PartyProvider {
   constructor() { }
 
   getParties(query?): Promise<PartiesResponse> {
-    return app.service('parties').find({ 
+    return app.service('parties').find({
       query: {
         $sort: { createdAt: -1 }
       },

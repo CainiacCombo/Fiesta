@@ -14,7 +14,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-// UTIL
+// UTILS
 .w-auto {
   width: auto;
 }
@@ -80,10 +80,69 @@
   text-overflow: ellipsis;
 }
 
+// Gradients
+$blue: color($colors, blue);
+$blue-violet: color($colors, blue-violet);
+$red-violet: color($colors, red-violet);
+
+@keyframes BackgroundGradient {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes ColorGradient {
+  0%, 85% {
+    color: $blue;
+  }
+  20% {
+    color: $blue-violet;
+  }
+  50% {
+    color: $red-violet;
+  }
+}
+
+.bg-gradient {
+  background: linear-gradient(-270deg, $blue, $blue-violet, $red-violet) !important;
+  background-size: 500% 500% !important;
+  animation: BackgroundGradient 9s ease infinite !important;
+}
+
+.col-gradient {
+  color: $blue;
+  animation: ColorGradient 9s ease infinite;
+}
+
 // MISC
 .avatar {
   object-fit: cover;
   border-radius: 100%;
+}
+
+.star:not(.star--empty) {
+  color: gold;
+}
+
+// OVERRIDE
+.toolbar-background, .tabbar {
+  @extend .bg-gradient;
+  animation: BackgroundGradient 12s ease-in-out infinite;
+}
+.toolbar-title, .bar-button {
+  color: #f8f8f8;
+}
+.bar-button * {
+  font-weight: 600;
+}
+ion-content, .item {
+  background-color: #fafafa !important;
+  .card {
+    background-color: #fefefe !important;
+  }
 }
 
 // FIX

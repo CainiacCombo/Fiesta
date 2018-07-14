@@ -1,32 +1,33 @@
 <ion-header>
   <ion-navbar>
-      <ion-buttons start>
-          <button ion-button (click)="closeModal()">Close</button>
-        </ion-buttons>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
     <ion-title>Rate</ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content text-center>
   <div padding>
     <button (click)="changeRating(1)">
-      <ion-icon *ngIf="rating >= 1" name="star"></ion-icon>
-      <ion-icon *ngIf="rating < 1"name="star-outline"></ion-icon>
+      <ion-icon *ngIf="rating >= 1" name="star" class="star"></ion-icon>
+      <ion-icon *ngIf="rating < 1" name="star-outline" class="star star--empty"></ion-icon>
     </button>
     <button (click)="changeRating(2)">
-      <ion-icon *ngIf="rating >= 2"name="star"></ion-icon>
-      <ion-icon *ngIf="rating < 2"name="star-outline"></ion-icon>
+      <ion-icon *ngIf="rating >= 2" name="star" class="star"></ion-icon>
+      <ion-icon *ngIf="rating < 2" name="star-outline" class="star star--empty"></ion-icon>
     </button>
     <button (click)="changeRating(3)">
-      <ion-icon *ngIf="rating >= 3"name="star"></ion-icon>
-      <ion-icon *ngIf="rating < 3"name="star-outline"></ion-icon>
+      <ion-icon *ngIf="rating >= 3" name="star" class="star"></ion-icon>
+      <ion-icon *ngIf="rating < 3" name="star-outline" class="star star--empty"></ion-icon>
     </button>
     <button (click)="changeRating(4)">
-      <ion-icon *ngIf="rating >= 4"name="star"></ion-icon>
-      <ion-icon *ngIf="rating < 4"name="star-outline"></ion-icon>
+      <ion-icon *ngIf="rating >= 4" name="star" class="star"></ion-icon>
+      <ion-icon *ngIf="rating < 4" name="star-outline" class="star star--empty"></ion-icon>
     </button>
     <button (click)="changeRating(5)">
-      <ion-icon *ngIf="rating >= 5"name="star"></ion-icon>
-      <ion-icon *ngIf="rating < 5"name="star-outline"></ion-icon>
+      <ion-icon *ngIf="rating >= 5" name="star" class="star"></ion-icon>
+      <ion-icon *ngIf="rating < 5" name="star-outline" class="star star--empty"></ion-icon>
     </button>
   </div>
   <button ion-button (click)="rate()">Submit</button>

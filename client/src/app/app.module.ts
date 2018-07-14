@@ -20,13 +20,6 @@ import { ComponentsModule } from '../components/components.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { HomePageModule } from '../pages/home/home.module';
-import { PartyPageModule } from '../pages/home/party/party.module';
-import { FriendsPageModule } from '../pages/home/friends/friends.module';
-import { EditProfilePageModule } from '../pages/home/edit-profile/edit-profile.module';
-import { InvitePageModule } from '../pages/home/invite/invite.module'
-import { PartyInfoPageModule } from '../pages/home/party-info/party-info.module'
-import { PartyGamePageModule } from '../pages/home/party-game/party-game.module';
-import { FriendRequestsPageModule } from '../pages/home/friend-requests/friend-requests.module';
 
 import { UserProvider } from '../providers/user/user';
 import { PartyProvider } from '../providers/party/party';
@@ -45,13 +38,6 @@ import { reducers } from '../store/reducers';
     LoginPageModule,
     SignupPageModule,
     HomePageModule,
-    FriendsPageModule,
-    EditProfilePageModule,
-    InvitePageModule,
-    PartyPageModule,
-    PartyInfoPageModule,
-    PartyGamePageModule,
-    FriendRequestsPageModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
@@ -65,14 +51,14 @@ import { reducers } from '../store/reducers';
     GooglePlus,
     SplashScreen,
     StatusBar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider,
-    PartyProvider,
     FileTransfer,
     Camera,
     GooglePlus,
     BarcodeScanner,
     DeviceMotion,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider,
+    PartyProvider,
     LoadingUiProvider,
   ]
 })
