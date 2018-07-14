@@ -127,11 +127,11 @@ insert into media (id, userId , link, caption, party_id) values (18, 2, 'https:/
 insert into media (id, userId , link, caption, party_id) values (16, 4, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.discoversg.com%2Fwp-content%2F2017%2F03%2FCinema-sentosa.jpg&f=1', null, 5);
 insert into media (id, userId , link, caption, party_id) values (19, 19, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fphotos.visitphilly.com%2FAwesomeFest_M.Fischetti001-9-vp.jpg&f=1', null, 5);
 insert into media (id, userId , link, caption, party_id) values (20, 12, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FBNtndUkCIAESFo3.jpg%3Alarge&f=1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (21, 11, 'https://robohash.org/estmodivoluptas.bmp?size=50x50&set=set1', null, 11);
-insert into media (id, userId , link, caption, party_id) values (22, 17, 'https://robohash.org/eligendiestsimilique.jpg?size=50x50&set=set1', null, 11);
-insert into media (id, userId , link, caption, party_id) values (23, 2, 'https://robohash.org/explicaboatqueconsequatur.bmp?size=50x50&set=set1', null, 11);
-insert into media (id, userId , link, caption, party_id) values (24, 4, 'https://robohash.org/enimquisat.bmp?size=50x50&set=set1', null, 11);
-insert into media (id, userId , link, caption, party_id) values (25, 13, 'https://robohash.org/suntquofuga.bmp?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (21, 11, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.qualia.com.au%2Fqualia%2Fmedia%2FBackgroundImages%2FEvents%2FCorporate-Retreats%2F02-MG_1455.jpg&f=1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (22, 17, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.thebusinessretreat.co.uk%2Fwp-content%2Fuploads%2F2012%2F09%2Fslider-the-business-retreat.jpg&f=1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (23, 2, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Flifesourceretreats.com%2Fwp-content%2Fuploads%2F2016%2F05%2FCopy-of-IMG_5677-1024x768.jpg&f=1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (24, 4, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fgnostic.in%2Fwp-content%2Fuploads%2F2017%2F05%2FOnsite-Courses-Conscious-Business-03.gif&f=1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (25, 13, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.corporateretreat.co.uk%2Fblog%2Fwp-content%2Fuploads%2Fsites%2F2%2F2017%2F02%2FBubble-football.jpg&f=1', null, 11);
 insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 13);
 insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 13);
 insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 13);
