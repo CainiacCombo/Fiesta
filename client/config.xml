@@ -3,7 +3,7 @@
     <name>¡Fiesta!</name>
     <description>An awesome party app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Cainiac Combo</author>
-    <content original-src="index.html" src="http://172.24.6.45:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -104,6 +104,7 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.297220851081-gntof27b2e1gb7279qcak31o1fjoeohc" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="508966744275-71kg0n4705b07hg8eembqfi4jc84q10q.apps.googleusercontent.com" />
     </plugin>
+    <allow-navigation href="http://172.24.4.60:8102" />
     <engine name="android" spec="7.1.0" />
     <engine name="browser" spec="5.0.3" />
     <engine name="ios" spec="4.5.4" />

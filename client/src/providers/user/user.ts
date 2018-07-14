@@ -82,7 +82,7 @@ export class UserProvider {
 
   getUserParties(user_id): Promise<GroupUsersResponse> {
     return app.service('group-users').find({
-      query: { 
+      query: {
         user_id,
         $sort: {createdAt: -1 },
       },

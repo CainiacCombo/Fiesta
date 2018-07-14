@@ -15,7 +15,7 @@ export class LoadingUiProvider {
   defaultOptions: LoadOptions = {
     loadingOptions: {},
     toastOptions: {
-      duration: 3000,
+      duration: 4000,
       position: 'bottom'
     },
     delay: 0,

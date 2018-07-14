@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title (click)="getPartyInfo()">{{party.name}}</ion-title>
     <ion-buttons right>
-      <button (click)="goToRate()"><ion-icon name="star"></ion-icon></button>
+      <button (click)="goToRate()" class="star"><ion-icon name="star"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -28,18 +28,12 @@
   </div>
 </ion-content>
 
-<ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-8>
-        <ion-textarea for=#message [(ngModel)]="message" class="chat_input" placeholder="Send Chat"></ion-textarea>
-      </ion-col>
-      <ion-col col-2>
-        <button ion-button small (click)="onSend()">send</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button small (click)="goToUpload()"><ion-icon name="camera"></ion-icon></button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-footer class="d-flex chat">
+  <ion-textarea [(ngModel)]="message" class="w-80" placeholder="Send Chat"></ion-textarea>
+  <button (click)="onSend()" class="w-auto" ion-button clear>
+    <ion-icon name="send"></ion-icon>
+  </button>
+  <button (click)="goToUpload()" class="w-auto" ion-button clear>
+    <ion-icon name="camera"></ion-icon>
+  </button>
 </ion-footer>
