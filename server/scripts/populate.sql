@@ -75,10 +75,40 @@ INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) V
 DELETE FROM messages;
 
 INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (1, 21, "You guys ready to pawtay?", NOW(), NOW());
-INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (2, 22, "...Because I am!", NOW(), NOW());
+INSERT INTO messages (id, user_id, text, createdAt, updatedAt) VALUES (2, 21, "...Because I am!", NOW(), NOW());
 
 -- GROUP MESSAGES
 DELETE FROM group_messages;
 
 INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (1, 1, NOW(), NOW());
 INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (2, 1, NOW(), NOW());
+
+--MADEA
+
+DELETE FROM media
+
+insert into =media (id, userId , link, caption, party_id) values (1, 23, 'https://robohash.org/reprehenderitcorruptiamet.png?size=50x50&set=set1', null, 1);
+insert into =media (id, userId , link, caption, party_id) values (2, 22, 'https://robohash.org/nonillosed.jpg?size=50x50&set=set1', null, 1);
+insert into =media (id, userId , link, caption, party_id) values (3, 2, 'https://robohash.org/excepturiautemtempore.png?size=50x50&set=set1', null, 4);
+insert into =media (id, userId , link, caption, party_id) values (4, 18, 'https://robohash.org/autasperioreslibero.bmp?size=50x50&set=set1', null, 2);
+insert into =media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/laudantiumcumincidunt.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (6, 2, 'https://robohash.org/architectoquisquamrecusandae.jpg?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (7, 22, 'https://robohash.org/omnisquiavoluptas.bmp?size=50x50&set=set1', null, 4);
+insert into =media (id, userId , link, caption, party_id) values (8, 9, 'https://robohash.org/etdistinctioiusto.png?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (9, 9, 'https://robohash.org/officiadignissimosquo.bmp?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (10, 1, 'https://robohash.org/possimusexcepturiet.bmp?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (11, 10, 'https://robohash.org/numquamvoluptatumnulla.png?size=50x50&set=set1', null, 2);
+insert into =media (id, userId , link, caption, party_id) values (12, 5, 'https://robohash.org/nesciuntundesed.bmp?size=50x50&set=set1', null, 4);
+insert into =media (id, userId , link, caption, party_id) values (13, 1, 'https://robohash.org/illocupiditateharum.bmp?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (14, 10, 'https://robohash.org/cumqueeaqueaccusamus.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (15, 18, 'https://robohash.org/fugitetquia.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (16, 19, 'https://robohash.org/quidemmagniexercitationem.bmp?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (17, 20, 'https://robohash.org/corruptiexercitationemaut.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (18, 20, 'https://robohash.org/inciduntsedad.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (19, 23, 'https://robohash.org/minimavelrepudiandae.png?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (20, 8, 'https://robohash.org/illumculpadoloribus.bmp?size=50x50&set=set1', null, 3);
+insert into =media (id, userId , link, caption, party_id) values (21, 1, 'https://robohash.org/totamquidemlibero.png?size=50x50&set=set1', null, 4);
+insert into =media (id, userId , link, caption, party_id) values (22, 10, 'https://robohash.org/iuremollitiaexercitationem.png?size=50x50&set=set1', null, 4);
+insert into =media (id, userId , link, caption, party_id) values (23, 20, 'https://robohash.org/suscipitlaudantiumodit.jpg?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (24, 16, 'https://robohash.org/etestodio.png?size=50x50&set=set1', null, 5);
+insert into =media (id, userId , link, caption, party_id) values (25, 20, 'https://robohash.org/rerumperferendiseum.png?size=50x50&set=set1', null, 4);
