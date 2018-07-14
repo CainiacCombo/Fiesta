@@ -89,7 +89,6 @@ INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) V
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 23, 10, false, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 22, 10, false, NOW(), NOW());
 INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (10, 21, 11, false, NOW(), NOW());
-INSERT INTO group_users (id, user_id, party_id, is_host, createdAt, updatedAt) VALUES (7, 22, 18, false, NOW(), NOW());
 
 
 -- MESSAGES
@@ -108,28 +107,43 @@ INSERT INTO group_messages (message_id, party_id, createdAt, updatedAt) VALUES (
 
 DELETE FROM media
 
-insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 4);
-insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (6, 21, 'https://robohash.org/consequaturverorerum.bmp?size=50x50&set=set1', null, 4);
+insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 1);
+insert into media (id, userId , link, caption, party_id) values (6, 21, 'https://robohash.org/consequaturverorerum.bmp?size=50x50&set=set1', null, 2);
 insert into media (id, userId , link, caption, party_id) values (7, 10, 'https://robohash.org/expeditaautcumque.bmp?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (8, 22, 'https://robohash.org/temporeidvel.jpg?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (9, 22, 'https://robohash.org/voluptatempraesentiuminventore.bmp?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (10, 6, 'https://robohash.org/quiestipsam.jpg?size=50x50&set=set1', null, 4);
-insert into media (id, userId , link, caption, party_id) values (11, 6, 'https://robohash.org/maximedignissimosnulla.png?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (12, 2, 'https://robohash.org/dictadoloremqueconsectetur.png?size=50x50&set=set1', null, 4);
-insert into media (id, userId , link, caption, party_id) values (13, 12, 'https://robohash.org/teneturremest.png?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (14, 5, 'https://robohash.org/magnamminussunt.png?size=50x50&set=set1', null, 4);
+insert into media (id, userId , link, caption, party_id) values (8, 22, 'https://robohash.org/temporeidvel.jpg?size=50x50&set=set1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (9, 22, 'https://robohash.org/voluptatempraesentiuminventore.bmp?size=50x50&set=set1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (10, 6, 'https://robohash.org/quiestipsam.jpg?size=50x50&set=set1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (11, 6, 'https://robohash.org/maximedignissimosnulla.png?size=50x50&set=set1', null, 3);
+insert into media (id, userId , link, caption, party_id) values (12, 2, 'https://robohash.org/dictadoloremqueconsectetur.png?size=50x50&set=set1', null, 3);
+insert into media (id, userId , link, caption, party_id) values (13, 12, 'https://robohash.org/teneturremest.png?size=50x50&set=set1', null, 3);
+insert into media (id, userId , link, caption, party_id) values (14, 5, 'https://robohash.org/magnamminussunt.png?size=50x50&set=set1', null, 3);
 insert into media (id, userId , link, caption, party_id) values (15, 17, 'https://robohash.org/aliasipsambeatae.jpg?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (16, 4, 'https://robohash.org/dolorumdoloresconsequatur.png?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (17, 18, 'https://robohash.org/etplaceatab.jpg?size=50x50&set=set1', null, 4);
+insert into media (id, userId , link, caption, party_id) values (16, 4, 'https://robohash.org/dolorumdoloresconsequatur.png?size=50x50&set=set1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (17, 18, 'https://robohash.org/etplaceatab.jpg?size=50x50&set=set1', null, 5);
 insert into media (id, userId , link, caption, party_id) values (18, 2, 'https://robohash.org/etcorruptivitae.bmp?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (19, 19, 'https://robohash.org/sedquiaet.jpg?size=50x50&set=set1', null, 4);
-insert into media (id, userId , link, caption, party_id) values (20, 12, 'https://robohash.org/voluptatumutab.png?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (21, 11, 'https://robohash.org/estmodivoluptas.bmp?size=50x50&set=set1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (22, 17, 'https://robohash.org/eligendiestsimilique.jpg?size=50x50&set=set1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (23, 2, 'https://robohash.org/explicaboatqueconsequatur.bmp?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (24, 4, 'https://robohash.org/enimquisat.bmp?size=50x50&set=set1', null, 4);
-insert into media (id, userId , link, caption, party_id) values (25, 13, 'https://robohash.org/suntquofuga.bmp?size=50x50&set=set1', null, 3);
+insert into media (id, userId , link, caption, party_id) values (19, 19, 'https://robohash.org/sedquiaet.jpg?size=50x50&set=set1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (20, 12, 'https://robohash.org/voluptatumutab.png?size=50x50&set=set1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (21, 11, 'https://robohash.org/estmodivoluptas.bmp?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (22, 17, 'https://robohash.org/eligendiestsimilique.jpg?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (23, 2, 'https://robohash.org/explicaboatqueconsequatur.bmp?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (24, 4, 'https://robohash.org/enimquisat.bmp?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (25, 13, 'https://robohash.org/suntquofuga.bmp?size=50x50&set=set1', null, 11);
+insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 13);
+insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 13);
+insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 13);
+insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 13);
+insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 13);
+insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 10);
+insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 10);
+insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 10);
+insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 10);
+insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 10);
+insert into media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 9);
+insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 9);
+insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 9);
+insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 9);
+insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 9);
