@@ -122,11 +122,11 @@ insert into media (id, userId , link, caption, party_id) values (12, 2, 'https:/
 insert into media (id, userId , link, caption, party_id) values (13, 12, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.allofourfamily.com%2Fwp-content%2Fuploads%2Frobert-johnson.jpg&f=1', null, 3);
 insert into media (id, userId , link, caption, party_id) values (14, 5, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2F62f268_5dca51b95158f120e6cfd30bcb1fed8c.jpg_srz_920_555_85_22_0.50_1.20_0.00_jpg_srz&f=1', null, 3);
 insert into media (id, userId , link, caption, party_id) values (15, 17, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fjtsfamilyreunion.yolasite.com%2Fresources%2FDSC_0147.JPG.opt533x355o0%252C0s533x355.JPG&f=1', null, 3);
-insert into media (id, userId , link, caption, party_id) values (16, 4, 'https://robohash.org/dolorumdoloresconsequatur.png?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (17, 18, 'https://robohash.org/etplaceatab.jpg?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (18, 2, 'https://robohash.org/etcorruptivitae.bmp?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (19, 19, 'https://robohash.org/sedquiaet.jpg?size=50x50&set=set1', null, 5);
-insert into media (id, userId , link, caption, party_id) values (20, 12, 'https://robohash.org/voluptatumutab.png?size=50x50&set=set1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (17, 18, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fhoodwork-production.s3.amazonaws.com%2Fuploads%2Fstory%2Fimage%2F15923%2FPROXY.jpg&f=1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (18, 2, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.kastphotos.com%2Fwp-content%2Fuploads%2F2015%2F07%2FMovie-Night-Under-the-Stars-Event-Hawaii-Tropical-Plantation-Big-Lebowski--1024x732.jpg&f=1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (16, 4, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.discoversg.com%2Fwp-content%2F2017%2F03%2FCinema-sentosa.jpg&f=1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (19, 19, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fphotos.visitphilly.com%2FAwesomeFest_M.Fischetti001-9-vp.jpg&f=1', null, 5);
+insert into media (id, userId , link, caption, party_id) values (20, 12, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FBNtndUkCIAESFo3.jpg%3Alarge&f=1', null, 5);
 insert into media (id, userId , link, caption, party_id) values (21, 11, 'https://robohash.org/estmodivoluptas.bmp?size=50x50&set=set1', null, 11);
 insert into media (id, userId , link, caption, party_id) values (22, 17, 'https://robohash.org/eligendiestsimilique.jpg?size=50x50&set=set1', null, 11);
 insert into media (id, userId , link, caption, party_id) values (23, 2, 'https://robohash.org/explicaboatqueconsequatur.bmp?size=50x50&set=set1', null, 11);
