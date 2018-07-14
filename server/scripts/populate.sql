@@ -141,8 +141,8 @@ INSERT INTO media (id, userId , link, caption, party_id) values (1, 18, 'https:/
 INSERT INTO media (id, userId , link, caption, party_id) values (2, 6, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwvue.images.worldnow.com%2Fimages%2F17857904_BG1.png&f=1', null, 10);
 INSERT INTO media (id, userId , link, caption, party_id) values (3, 19, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Forpheumnola.com%2Fwp-content%2Fuploads%2F2016%2F05%2F18974533-large-212x300.jpg&f=1', null, 10);
 INSERT INTO media (id, userId , link, caption, party_id) values (4, 14, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.neworleans.me%2Fuploads%2Flarge%2Fnew-orleans-film-festival-annd-me-1476092758.jpg&f=1', null, 10);
-INSERT INTO media (id, userId , link, caption, party_id) values (1, 18, 'https://robohash.org/attemporibusamet.jpg?size=50x50&set=set1', null, 9);
-INSERT INTO media (id, userId , link, caption, party_id) values (2, 6, 'https://robohash.org/sequiasit.png?size=50x50&set=set1', null, 9);
-INSERT INTO media (id, userId , link, caption, party_id) values (3, 19, 'https://robohash.org/voluptateeiusvoluptatem.png?size=50x50&set=set1', null, 9);
-INSERT INTO media (id, userId , link, caption, party_id) values (4, 14, 'https://robohash.org/inventorenonut.png?size=50x50&set=set1', null, 9);
-INSERT INTO media (id, userId , link, caption, party_id) values (5, 10, 'https://robohash.org/quidemdelenitiut.jpg?size=50x50&set=set1', null, 9);
+INSERT INTO media (id, userId , link, caption, party_id) values (1, 18, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.munichjs.org%2Fwp-content%2Fuploads%2F2011%2F03%2Fjskongress.jpg&f=1', null, 9);
+INSERT INTO media (id, userId , link, caption, party_id) values (2, 6, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fmea.gov.in%2Faseanindia%2FPortal%2FPhoto_Gallery%2F46%2F9_Participants_at_the_EAS_Conference_on_Disaster_Risk_Management_and_Regional_Cooperation__2_Nov._2016__New_Delhi_.jpg&f=1', null, 9);
+INSERT INTO media (id, userId , link, caption, party_id) values (3, 19, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F493925600.jpg%3Fmw%3D1920%26mh%3D1080%26q%3D70&f=1', null, 9);
+INSERT INTO media (id, userId , link, caption, party_id) values (4, 14, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pcmaconvene.org%2Fwp-content%2Fuploads%2F2018%2F01%2FJS4076.jpg&f=1', null, 9);
+INSERT INTO media (id, userId , link, caption, party_id) values (5, 10, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fleadership2017.eu%2Ffileadmin%2Fscale_conference%2Fimages%2Fbanner.jpg&f=1', null, 9);
