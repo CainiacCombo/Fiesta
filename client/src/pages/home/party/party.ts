@@ -46,7 +46,7 @@ export class PartyPage implements OnInit, OnDestroy{
 
     this.userSub = this.store.select('user').subscribe(user => {
       this.user = user
-      
+
       this.userProvider.getHostOfParty(this.party.id, this.user.id)
       .then(response => this.isHost = response.total > 0);
     });
@@ -84,8 +84,9 @@ export class PartyPage implements OnInit, OnDestroy{
     };
 
     this.partyProvider.createMessage(newMessage)
-    .then(message => messages.push(message))
-    .catch(() => console.log('ERROR WHEN CREATING MESSAGE'))
+      .then(message => messages.push(message))
+      .then(() => this.message = '')
+      .catch(() => console.log('ERROR WHEN CREATING MESSAGE'))
   }
 
   onNewMessage(newMessage) {
