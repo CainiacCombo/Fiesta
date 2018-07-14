@@ -112,11 +112,11 @@ insert into media (id, userId , link, caption, party_id) values (2, 6, 'https://
 insert into media (id, userId , link, caption, party_id) values (3, 19, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.gettyimages.com%2Fphotos%2Fparty-picture-id502910240%3Fs%3D612x612&f=1', null, 1);
 insert into media (id, userId , link, caption, party_id) values (4, 14, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.macleans.ca%2Fwp-content%2Fuploads%2F2016%2F02%2FSt.-FX-Concert-1024x683.jpg&f=1', null, 1);
 insert into media (id, userId , link, caption, party_id) values (5, 10, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.black-moon-games.com%2Fwp-content%2Fuploads%2F2016%2F04%2FSurprise-party-618x413.jpg&f=1', null, 1);
-insert into media (id, userId , link, caption, party_id) values (6, 21, 'https://robohash.org/consequaturverorerum.bmp?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (7, 10, 'https://robohash.org/expeditaautcumque.bmp?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (8, 22, 'https://robohash.org/temporeidvel.jpg?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (9, 22, 'https://robohash.org/voluptatempraesentiuminventore.bmp?size=50x50&set=set1', null, 2);
-insert into media (id, userId , link, caption, party_id) values (10, 6, 'https://robohash.org/quiestipsam.jpg?size=50x50&set=set1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (6, 21, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fc%2Fc3%2FHLR-FOAM-PARTY-02.JPG&f=1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (7, 10, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fun-bounce.co.uk%2Fuserfiles%2FFoam%2520party%2520Hire%2520newcastle.jpeg&f=1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (8, 22, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2F69%2Fbc%2F90%2F69bc9035433b1edb0d40c98b11be4277.jpg&f=1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (9, 22, 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia3.s-nbcnews.com%2Fi%2Fstreams%2F2012%2FJune%2F120606%2F405439-tdy-120606-foam-party.jpg&f=1', null, 2);
+insert into media (id, userId , link, caption, party_id) values (10, 6, 'https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fearthrobert.files.wordpress.com%2F2017%2F02%2Fimg_3434.jpg&f=1', null, 2);
 insert into media (id, userId , link, caption, party_id) values (11, 6, 'https://robohash.org/maximedignissimosnulla.png?size=50x50&set=set1', null, 3);
 insert into media (id, userId , link, caption, party_id) values (12, 2, 'https://robohash.org/dictadoloremqueconsectetur.png?size=50x50&set=set1', null, 3);
 insert into media (id, userId , link, caption, party_id) values (13, 12, 'https://robohash.org/teneturremest.png?size=50x50&set=set1', null, 3);
