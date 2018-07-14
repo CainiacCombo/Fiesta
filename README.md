@@ -1,4 +1,4 @@
-# ¡Fiesta!
+![](.github/logo.png)
 [![Build Status](https://travis-ci.org/CainiacCombo/Fiesta.svg?branch=master)](https://travis-ci.org/CainiacCombo/Fiesta)
 
 > _¡Fiesta!_ is social platform for viewing, creating, organizing and rating parties.
