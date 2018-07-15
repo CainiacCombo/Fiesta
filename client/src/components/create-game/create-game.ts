@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavParams, LoadingController, NavController, ToastController, ViewController } from 'ionic-angular';
+import { NavParams, NavController, ViewController } from 'ionic-angular';
 import { Party } from '../../interfaces/Party';
 import { PartyProvider } from '../../providers/party/party';
+import { LoadingUiProvider } from '../../providers/loading-ui/loading-ui';
 
 @Component({
   selector: 'create-game',
@@ -9,38 +10,41 @@ import { PartyProvider } from '../../providers/party/party';
 })
 export class CreateGameComponent {
 
-  name: 'match' = 'match'
   party: Party
+  games = [
+    {
+      name: 'match',
+      title: 'Match!',
+      description: 'Find The Mystery Person!',
+    },
+    {
+      name: 'hot',
+      title: 'HotTot!',
+      description: 'Pass That HotTot!',
+    }
+  ]
 
   constructor(
     navParams: NavParams,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public toastCtrl: ToastController,
     public viewCtrl: ViewController,
     public partyProvider: PartyProvider,
+    public loadingUIProvider: LoadingUiProvider,
   ) {
     this.party = navParams.get('party');
   }
 
-  async create() {
-    const { name, party, loadingCtrl, toastCtrl, partyProvider } = this;
-    const party_id = party.id;
-    const loading = loadingCtrl.create();
+  create(name) {
+    this.loadingUIProvider.load(
+      async () => {
+        const { party, partyProvider } = this;
+        const party_id = party.id;
 
-    loading.present();
-
-    try {
-      const game = await partyProvider.createGame({ name, party_id });
-      this.navCtrl.push('PartyGamePage', { party, game });
-    } catch (e) {
-      toastCtrl.create({
-        message: 'Oops! Something went wrong when creating your game.',
-        duration: 3000,
-      }).present();
-    } finally {
-      loading.dismiss();
-    }
+        const game = await partyProvider.createGame({ name, party_id });
+        this.navCtrl.push('PartyGamePage', { party, game });
+      },
+      'Oops! Something went wrong when creating your game.',
+    )
   }
 
 }

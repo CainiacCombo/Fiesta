@@ -7,13 +7,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-label>Game</ion-label>
-    <ion-select [(ngModel)]="name">
-      <ion-option value="match">Match!</ion-option>
-      <ion-option value="hot">Hot!</ion-option>
-    </ion-select>
-  </ion-item>
-  <button (click)="create()" ion-button>Submit</button>
+<ion-content>
+  <ion-slides pager="true" loop="true">
+    <ion-slide *ngFor="let game of games" [ngClass]="game.name" class="game">
+      <div [ngSwitch]="game.name" class="icon">
+        <span *ngSwitchCase="'match'">🔎</span>
+        <span *ngSwitchCase="'hot'">🔥</span>
+      </div>
+      <h1 class="title">
+        {{game.title}}
+      </h1>
+      <p class="desc">{{game.description}}</p>
+      <button (click)="create(game.name)" class="create" ion-button outline large>Create</button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
