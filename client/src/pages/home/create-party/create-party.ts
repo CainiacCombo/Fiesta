@@ -6,6 +6,7 @@ import { User } from '../../../interfaces/User';
 import { AppState } from '../../../store/reducers';
 import { AddUserParties } from '../../../store/parties/parties.actions';
 import { PartyProvider } from '../../../providers/party/party'
+import moment from 'moment';
 
 declare var google;
 
@@ -15,7 +16,7 @@ declare var google;
   templateUrl: 'create-party.html',
 })
 export class CreatePartyPage implements OnDestroy {
-  autocomplete:any 
+  autocomplete:any
   name: string = ''
   location: string = ''
   startDate: string = ''
@@ -34,7 +35,7 @@ export class CreatePartyPage implements OnDestroy {
     public navCtrl: NavController,
     public navParams: NavParams,
     private store: Store<AppState>,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.userSub = this.store.select('user').subscribe((user) => {
@@ -84,6 +85,6 @@ export class CreatePartyPage implements OnDestroy {
     const [hour, minutes] = time.split(':');
     const date = new Date(Number(year), Number(month), Number(day), Number(hour), Number(minutes), 0);
 
-    return date.toISOString();
+    return moment(date).format('YYYY-MM-DD HH:mm:ss');
   }
 }
