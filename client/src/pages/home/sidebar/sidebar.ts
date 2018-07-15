@@ -31,14 +31,16 @@ export class SidebarPage {
     this.user$ = store.select('user');
     this.parties$ = store.select('parties');
     this.parties$.subscribe((parties) => {
-      this.parties = parties;
+      this.parties = parties.sort((a, b) => {
+        if (a.name === b.name) return 0;
+        return a.name > b.name ? 1 : -1;
+      });
     });
   }
 
   onQuery() {
-    this.query = this.query.toLowerCase();
     this.parties$.subscribe((parties) => {
-      this.parties = parties.filter(party => party.name.toLowerCase().includes(this.query));
+      this.parties = parties.filter(party => party.name.toLowerCase().includes(this.query.toLowerCase()));
     });
   }
 
