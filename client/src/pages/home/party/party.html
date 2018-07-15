@@ -7,9 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-<div *ngIf="isHost" >
+<div *ngIf="isHost">
   <ion-menu [content]="partyContent" type="overlay" side="right">
-    <party-sidebar [party]="party" ></party-sidebar>
+    <ion-toolbar>
+    </ion-toolbar>
+    <ion-content>
+      <party-sidebar [party]="party"></party-sidebar>
+    </ion-content>
   </ion-menu>
 </div>
 
