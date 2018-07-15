@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavParams, LoadingController, ViewController, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PartyProvider } from '../../providers/party/party'
@@ -22,12 +22,23 @@ export class UploadComponent {
   constructor(
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private camera: Camera,
+    public camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     public partyProvider: PartyProvider,
     public loadingUIProvider: LoadingUiProvider,
+    private changeDetectorRef: ChangeDetectorRef,
   ) { }
+
+  ngOnDestroy() {
+    this.changeDetectorRef.detach();
+  }
+
+  detectChanges() {
+    try {
+      this.changeDetectorRef.detectChanges();
+    } catch (e) { console.log('UPDATE FAILED') }
+  }
 
   upload() {
     this.loadingUIProvider.load(
@@ -43,16 +54,20 @@ export class UploadComponent {
     this.camera.getPicture({
       ...this.cameraOptions,
       sourceType: this.camera.PictureSourceType.CAMERA,
-    }).then(imageData => this.dataUri = `data:image/jpeg;base64,${imageData}`)
-      .catch(() => {});
+    }).then((imageData) => {
+      this.dataUri = `data:image/jpeg;base64,${imageData}`;
+      this.detectChanges();
+    }).catch(() => {});
   }
 
   getPhoto() {
     this.camera.getPicture({
       ...this.cameraOptions,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-    }).then(imageData => this.dataUri = `data:image/jpeg;base64,${imageData}`)
-      .catch(() => {});
+    }).then((imageData) => {
+      this.dataUri = `data:image/jpeg;base64,${imageData}`;
+      this.detectChanges();
+    }).catch(() => {});
   }
 
 }
