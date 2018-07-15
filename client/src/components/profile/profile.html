@@ -47,10 +47,9 @@
       </div>
     </ion-row>
   </div>
-  <ion-list>
+  <div>
+    <hr />
     <span *ngIf="parties.length === 0">This user isn't poppin :(</span>
-    <ion-item *ngFor="let party of parties">
-      <party-story [party]="party"></party-story>
-    </ion-item>
-  </ion-list>
+    <party-story *ngFor="let party of parties" [party]="party"></party-story>
+  </div>
 </ion-content>
