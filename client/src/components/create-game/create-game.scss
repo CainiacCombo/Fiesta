@@ -1,3 +1,54 @@
 create-game {
+  .game {
+    .icon {
+      font-size: 5rem;
+    }
+    .title {
+      font-size: 5.8rem;
+    }
+    .desc {
+      font-size: 2.2rem;
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+    }
+    .create {
+      font-size: 2.2rem;
+      width: 50%;
+      margin-top: 100px;
+    }
+  }
+
+  .match {
+    .title, .desc, .create {
+      color: #68A9FF;
+    }
+    .title {
+      font-size: 7.5rem;
+      font-family: 'Luckiest Guy', cursive;
+    }
+    .create {
+      border-color: #68A9FF;
+    }
+    .create:hover, .create:focus, .create:active {
+      color: #f8f8f8;
+      background: #68A9FF;
+    }
+  }
+  .hot {
+    .title, .desc, .create {
+      color: #DF551B;
+    }
+    .title {
+      font-size: 5.5rem;
+      font-family: 'Blazed' !important;
+    }
+    .create {
+      border-color: #DF551B;
+    }
+    .create:hover, .create:focus, .create:active {
+      color: #f8f8f8;
+      background: #DF551B;
+    }
+  }
 
 }

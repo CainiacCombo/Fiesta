@@ -56,7 +56,7 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
 
   async handleFriendRequest(data: FriendRequestHandler) {
     const { type, errorMessage, friendRequest } = data;
-    const { from_user_id, to_user_id } = friendRequest;
+    const { id, from_user_id, to_user_id } = friendRequest;
 
     const loading = this.loadingCtrl.create();
     loading.present();
@@ -64,10 +64,10 @@ export class FriendRequestsPage implements OnInit, OnDestroy {
     try {
       if (type === 'accept') {
         await this.userProvider.acceptFriendRequest(from_user_id, to_user_id);
-        await this.getFriendRequests();
       } else if (type === 'decline') {
-        await this.userProvider.declineFriendRequest(friendRequest.id);
+        await this.userProvider.declineFriendRequest(id);
       }
+      await this.getFriendRequests();
     } catch (e) {
       this.toastCtrl.create({
         message: errorMessage,

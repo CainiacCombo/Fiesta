@@ -1,13 +1,11 @@
 <ion-header>
   <ion-navbar>
-  <ion-buttons start>
-    <button ion-button (click)="closeModal()">Close</button>
-  </ion-buttons>
-    <ion-title class="party-name">{{party.name}}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+    <ion-title>{{party.name}}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <h2>Party Info</h2>
@@ -28,7 +26,7 @@
 
   <h2>Members</h2>
   <ion-list>
-    <ion-item *ngFor="let user of users" class="user" name="user" no-padding>
+    <ion-item *ngFor="let user of users" class="user" no-padding>
       <user-card [user]="user.user"></user-card>
     </ion-item>
   </ion-list>

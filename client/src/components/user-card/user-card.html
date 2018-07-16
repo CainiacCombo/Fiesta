@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div (click)="goToProfile()" class="d-flex" >
   <img [src]="user.avatar" alt="" class="avatar obj-cover" margin-right />
   <div class="flex-1 overflow-hidden">
     <h5>@{{user.username}}</h5>
@@ -6,7 +6,7 @@
     <p class="truncate">{{user.bio}}</p>
   </div>
   <div class="w-15">
-    <button (click)="goToProfile()" class="go-to-profile center" ion-button clear>
+    <button class="go-to-profile center" ion-button clear>
       <ion-icon name="arrow-forward"></ion-icon>
     </button>
   </div>

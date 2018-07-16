@@ -3,6 +3,7 @@ party-story {
     .header {
       justify-content: space-between;
     }
+
     .star {
       font-size: 2.2rem;
     }
@@ -11,6 +12,13 @@ party-story {
       object-fit: cover;
       width: 80px;
       height: 80px;
+      border: 1.5px solid transparent;
+    }
+
+    .go {
+      position: relative;
+      transform: translateX(10%);
+      font-size: 2.5rem;
     }
   }
 }

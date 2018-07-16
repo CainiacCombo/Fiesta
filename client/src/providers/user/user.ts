@@ -65,10 +65,10 @@ export class UserProvider {
 
   getHostOfParty(party_id: string, user_id: any): Promise<GroupUsersResponse> {
     return app.service('group-users').find({
-      query: { 
+      query: {
         user_id,
         party_id,
-        is_host: true 
+        is_host: true
       } })
  }
 
@@ -113,7 +113,7 @@ export class UserProvider {
   }
 
   declineFriendRequest(friendRequestId) {
-    return app.service('friend-requests').delete(friendRequestId);
+    return app.service('friend-requests').remove(friendRequestId);
   }
 
   sendFriendRequest(from_user_id, to_user_id) {

@@ -35,6 +35,8 @@ export class EditProfilePage {
   ) {
     this.user$ = store.select('user');
     this.user = navParams.get('user');
+    this.nickname = this.user.nickname;
+    this.bio = this.user.bio;
   }
 
   closeModal() {

@@ -18,16 +18,16 @@ export class PartyInfoPage {
   users: User[] = []
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     public view: ViewController,
-    public partyProvider: PartyProvider, 
+    public partyProvider: PartyProvider,
     public userProvider: UserProvider,
   ) { this.party = navParams.get('party') }
 
   ngOnInit() {
     this.userProvider.getUsersInParty(this.party.id)
-    .then(response => this.users = response.data.map(user => user));
+    .then(response => this.users = response.data);
   }
 
   closeModal() {

@@ -1,15 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title (click)="getPartyInfo()">{{party.name}}</ion-title>
+    <ion-title (click)="goToPartyInfo()">{{party.name}}</ion-title>
     <ion-buttons right>
       <button (click)="goToRate()" class="star"><ion-icon name="star"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<div *ngIf="isHost" >
+<div *ngIf="isHost">
   <ion-menu [content]="partyContent" type="overlay" side="right">
-    <party-sidebar [party]="party" ></party-sidebar>
+    <ion-toolbar>
+    </ion-toolbar>
+    <ion-content>
+      <party-sidebar [party]="party"></party-sidebar>
+    </ion-content>
   </ion-menu>
 </div>
 

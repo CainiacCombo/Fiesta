@@ -5,11 +5,13 @@
       <span>{{getPartyStartDate(party.start_time)}}</span>
     </div>
     <rating [rating]="party.rating" class="party__rating"></rating>
-    <button (click)="goToParty(party)" ion-button>Go</button>
   </ion-card-header>
   <ion-card-content class="d-flex">
     <div *ngFor="let media of party.media | slice:0:3; index as i" class="party__media">
       <img (click)="openMedia(i)" [src]="media.link" alt="media.caption" />
     </div>
+    <button (click)="goToParty(party)" class="go" ion-button clear>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
   </ion-card-content>
 </ion-card>
