@@ -44,7 +44,7 @@
     "nodemon": "^1.17.5",
     "passport-custom": "^1.0.5",
     "passport-google-oauth20": "^1.0.0",
-    "sequelize": "^4.38.0",
+    "sequelize": "^5.15.1",
     "serve-favicon": "^2.5.0",
     "twilio": "^3.17.4",
     "winston": "^3.0.0"
